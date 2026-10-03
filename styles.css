@@ -420,3 +420,10 @@ textarea { min-height: 90px; resize: vertical; }
 @media (min-width: 720px) {
   .tiles { grid-template-columns: 1fr 1fr; }
 }
+
+.who { background: var(--sand); border-radius: 14px; padding: 10px 12px; margin-bottom: 12px; }
+.who .btn { margin-top: 8px; }
+.cpl-safety { background: #f7ecec; border: 1px solid #e3b4b4; }
+.cpl-safety h1 { color: #6e2c2c; font-size: 1.55rem; }
+.nav { height: auto; min-height: var(--nav-h); }
+.nav button { font-size: 0.7rem; padding: 8px 1px; }
