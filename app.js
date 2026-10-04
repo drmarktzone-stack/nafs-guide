@@ -310,7 +310,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
   "summaryOnly": "الصورة المشتركة بس. الكلام الخاص ما بيننسخ لهون.",
   "startWeek": "ابدأ خطة السبع أيام للزوجين",
   "planTitle": "سبع أيام",
-  "planIntro": "أول تلات أيام فردية. الدليل ببدّل مين الجلسة إله: الشريك الأول، بعدين الثاني، بعدين الأول. من اليوم الرابع الجلسات مشتركة، والاثنين يكونوا موجودين. اليوم اللي بعده بيضل مقفول ليومه.",
+  "planIntro": "أول تلات أيام فردية. الدليل ببدّل مين الجلسة إله: الشريك الأول، بعدين الثاني، بعدين الأول. من اليوم الرابع الجلسات مشتركة، والاثنين يكونوا موجودين، وفيها تمرين دور المتكلم والمستمع بمؤقت. اليوم اللي بعده بيضل مقفول ليومه.",
   "planProgress": "خلص {done} من {total} جلسات. بلشت {start}.",
   "dayLabel": "يوم {n}",
   "openDay": "افتح الجلسة",
@@ -329,6 +329,16 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
   "complete": "علّم الجلسة خلصت",
   "done": "خلصت",
   "backPlan": "رجوع للسبع أيام",
+  "slTitle": "دور المتكلم والمستمع",
+  "slBody": "واحد بيحكي لدور موقّت. الثاني بس بيسمع، وبعدين بيلخّص: «سمعتك تقول…» قبل أي رد. ممنوع نقاش أو دفاع أثناء الدور.",
+  "slSpeaker": "المتكلم هسّة: {name}",
+  "slListener": "المستمع هسّة: {name}",
+  "slStart": "ابدأ دور ٣ دقايق",
+  "slSwitch": "بدّل الأدوار",
+  "slStop": "وقّف المؤقت",
+  "slDone": "خلص الوقت. المستمع يلخّص بجملة، وبعدين بدّلوا.",
+  "slTick": "باقي {m}:{s}",
+  "reopenSum": "رجّع للصورة المشتركة",
   "safetyTitle": "سلامتك قبل أي خطة زوجية",
   "safetyBody": "اللي انكتب بيحكي عن عنف، أو تهديد، أو خوف من الشريك. الدليل مش رح يمشّي خطة زوجية عادية من هالكلام. تمرين حكي مش هو الخطوة الجاية.",
   "safetyLeave": "اطلع إذا مش آمن أو آمنة.",
@@ -484,6 +494,8 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
 
   var state = { view: "home", dayId: null, crisis: null, hold: false, guideText: "", guide: null, pad: "", pst: {}, check: null, result: null, formError: "", confirmClear: false, cplErr: "", cplReset: false };
   var breath = { running: false, timer: null, mode: "468", phaseIdx: 0, left: 4, cycle: 0, totalCycles: 5, dayId: null, finishedMsg: "" };
+  var slClock = null;
+  var slTurn = { left: 180, running: false, done: false };
 
   function breathModes() {
     return {
@@ -827,6 +839,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
   function render() {
     var breathingHere = state.view === "breathe" || (state.view === "day" && state.dayId === "t1");
     if (!breathingHere) stopBreath(false);
+    if (!slSessionOpen()) stopSl(true);
     var app = document.getElementById("app");
     if (!app) return;
     app.innerHTML = shell(viewHTML());
@@ -1287,12 +1300,105 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
       "<h1>" + esc(CPL.reviewTitle) + "</h1><p>" + esc(CPL.reviewNote) + "</p>" + rows +
       '<button type="button" class="btn secondary block" data-action="cpl-to-who">' + esc(CPL.backWho) + "</button></section>";
   }
+  function slClockLabel() {
+    if (slTurn.done) return CPL.slDone;
+    var m = Math.floor(slTurn.left / 60);
+    var sec = slTurn.left % 60;
+    return fill(CPL.slTick, { m: String(m), s: sec < 10 ? "0" + sec : String(sec) });
+  }
+  function slSpeakerOf(meta) {
+    if (meta.slSpeakerSide === "a" || meta.slSpeakerSide === "b") return meta.slSpeakerSide;
+    return meta.active === "b" ? "b" : "a";
+  }
+  function clearSlClock() {
+    if (slClock) clearInterval(slClock);
+    slClock = null;
+  }
+  function stopSl(reset) {
+    clearSlClock();
+    slTurn.running = false;
+    if (reset) {
+      slTurn.left = 180;
+      slTurn.done = false;
+    }
+  }
+  function slSessionOpen() {
+    if (state.crisis || state.hold || state.view !== "couples") return false;
+    var meta = loadCplMeta();
+    if (!meta || meta.safety || meta.screen !== "session") return false;
+    var plan = loadCplPlan();
+    var found = cplDayDef(meta.openDay);
+    if (!plan || !found || found.def.mode !== "joint") return false;
+    if (found.index > todayIndex(plan, jerusalemToday())) return false;
+    return true;
+  }
+  function syncSlDom() {
+    if (typeof document === "undefined") return;
+    var el = document.getElementById("cpl-sl-tick");
+    if (!el) return;
+    el.textContent = slClockLabel();
+    el.className = "cpl-sl-time" + (slTurn.done ? " done" : "") + (slTurn.running ? " run" : "");
+  }
+  function onSlTick() {
+    if (!slSessionOpen() || !slTurn.running) {
+      stopSl(!slSessionOpen());
+      return;
+    }
+    slTurn.left -= 1;
+    if (slTurn.left <= 0) {
+      slTurn.left = 0;
+      slTurn.running = false;
+      slTurn.done = true;
+      clearSlClock();
+    }
+    syncSlDom();
+  }
+  function startSl() {
+    if (!slSessionOpen()) return;
+    clearSlClock();
+    slTurn.left = 180;
+    slTurn.running = true;
+    slTurn.done = false;
+    render();
+    if (!slSessionOpen()) { stopSl(true); return; }
+    slClock = setInterval(onSlTick, 1000);
+    syncSlDom();
+  }
+  function flushJointNote(meta) {
+    var note = readCplBox("cpl-note");
+    if (note == null) return;
+    var plan = loadCplPlan();
+    var found = cplDayDef(meta.openDay);
+    if (!plan || !found || found.def.mode !== "joint") return;
+    var valn = String(note).slice(0, 500);
+    for (var n = 0; n < plan.days.length; n++) if (plan.days[n].id === found.def.id) plan.days[n].note = valn;
+    saveJSON(K_CPL_PLAN, plan);
+  }
+  function cplSlCard(meta) {
+    var speaker = slSpeakerOf(meta);
+    var listener = otherOf(speaker);
+    var cls = "cpl-sl-time" + (slTurn.done ? " done" : "") + (slTurn.running ? " run" : "");
+    return '<section class="card cpl-sl">' +
+      "<h2>" + esc(CPL.slTitle) + "</h2>" +
+      "<p>" + esc(CPL.slBody) + "</p>" +
+      '<p class="cpl-sl-who"><strong>' + esc(fill(CPL.slSpeaker, { name: nameOf(meta, speaker) })) + "</strong></p>" +
+      '<p class="cpl-sl-who">' + esc(fill(CPL.slListener, { name: nameOf(meta, listener) })) + "</p>" +
+      '<p class="' + cls + '" id="cpl-sl-tick" role="timer">' + esc(slClockLabel()) + "</p>" +
+      '<div class="stack">' +
+      '<button type="button" class="btn block" data-action="cpl-sl-start">' + esc(CPL.slStart) + "</button>" +
+      '<button type="button" class="btn secondary block" data-action="cpl-sl-switch">' + esc(CPL.slSwitch) + "</button>" +
+      '<button type="button" class="btn secondary block" data-action="cpl-sl-stop">' + esc(CPL.slStop) + "</button>" +
+      "</div></section>";
+  }
   function viewCplSummary(meta) {
     var sum = loadJSON(K_CPL_SUM, null);
     if (!sum) {
       sum = buildCoupleSummary(loadCplSide("a"), loadCplSide("b"), meta.aName, meta.bName);
       saveJSON(K_CPL_SUM, sum);
     }
+    var back = loadCplPlan()
+      ? '<button type="button" class="btn secondary block" data-action="cpl-back-plan">' + esc(CPL.backPlan) + "</button>"
+      : "";
     return whoBanner(meta) + '<section class="card"><p class="kicker">' + esc(CPL.kicker) + "</p><h1>" + esc(CPL.sumTitle) + "</h1>" +
       "<p>" + esc(CPL.sumIntro) + "</p>" +
       "<h2>" + esc(CPL.problemH) + "</h2><p>" + esc(sum.problem) + "</p>" +
@@ -1300,7 +1406,8 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
       "<h2>" + esc(CPL.needH) + "</h2><p>" + esc(sum.needs) + "</p>" +
       "<h2>" + esc(CPL.appH) + "</h2><p>" + esc(sum.appreciate) + "</p>" +
       '<p class="muted">' + esc(CPL.summaryOnly) + "</p>" +
-      '<button type="button" class="btn block" data-action="cpl-start-plan">' + esc(CPL.startWeek) + "</button></section>";
+      '<div class="stack"><button type="button" class="btn block" data-action="cpl-start-plan">' + esc(CPL.startWeek) + "</button>" +
+      back + "</div></section>";
   }
   function viewCplPlan(meta) {
     var plan = loadCplPlan();
@@ -1320,6 +1427,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
     return whoBanner(meta) + '<section class="card"><p class="kicker">' + esc(CPL.kicker) + "</p><h1>" + esc(CPL.planTitle) + "</h1>" +
       "<p>" + esc(CPL.planIntro) + "</p>" +
       "<p>" + esc(fill(CPL.planProgress, { done: done, total: 7, start: plan.startDate })) + "</p>" +
+      '<button type="button" class="btn secondary block cpl-reopen" data-action="cpl-reopen-sum">' + esc(CPL.reopenSum) + "</button>" +
       list + cplResetBlock() + "</section>";
   }
   function viewCplSession(meta) {
@@ -1360,7 +1468,9 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
     if (def.mode === "joint") {
       both = '<label class="check"><input type="checkbox" data-cpl="both" data-day="' + esc(def.id) + '"' + (day.bothHere ? " checked" : "") + ">" + esc(CPL.bothHere) + "</label>";
     }
+    var slHTML = def.mode === "joint" ? "</section>" + cplSlCard(meta) + '<section class="card">' : "";
     return head + sumHTML +
+      slHTML +
       "<h2>" + esc(CPL.lessonH) + "</h2><p>" + esc(def.lesson) + "</p>" +
       "<h2>" + esc(CPL.exerciseH) + "</h2><p>" + esc(def.exercise) + "</p>" +
       both +
@@ -1526,8 +1636,11 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
       render(); return;
     }
     if (action === "cpl-open") {
+      stopSl(true);
       meta.openDay = t.dataset.day;
       meta.screen = "session";
+      var opened = cplDayDef(meta.openDay);
+      if (opened && opened.def.mode === "joint") meta.slSpeakerSide = meta.active === "b" ? "b" : "a";
       saveCplMeta(meta);
       render(); return;
     }
@@ -1536,6 +1649,35 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
       meta.screen = "plan";
       saveCplMeta(meta);
       render(); return;
+    }
+    if (action === "cpl-reopen-sum") {
+      if (applyGuardToCurrent(meta) === "stop") return;
+      meta.screen = "summary";
+      saveCplMeta(meta);
+      render(); return;
+    }
+    if (action === "cpl-sl-start") {
+      if (applyGuardToCurrent(meta) === "stop") return;
+      flushJointNote(meta);
+      startSl();
+      return;
+    }
+    if (action === "cpl-sl-switch") {
+      if (!slSessionOpen()) return;
+      if (applyGuardToCurrent(meta) === "stop") return;
+      flushJointNote(meta);
+      var curSide = slSpeakerOf(meta);
+      var nextSide = otherOf(curSide);
+      meta.slSpeakerSide = nextSide;
+      meta.active = nextSide;
+      saveCplMeta(meta);
+      render();
+      return;
+    }
+    if (action === "cpl-sl-stop") {
+      stopSl(false);
+      syncSlDom();
+      return;
     }
     if (action === "cpl-done") {
       var plan = loadCplPlan();
@@ -1609,6 +1751,43 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
     eq(html.indexOf(secretA) === -1, "ask view leak");
     eq(html.indexOf("only B topic") !== -1 || html.indexOf(CPL.questions[0]) !== -1, "ask shows B");
     eq(html.indexOf("Omar") !== -1, "who banner");
+    eq(!!CPL.slTitle && !!CPL.slStart && !!CPL.reopenSum, "sl keys");
+    eq(CPL.slSpeaker.indexOf("هسّة") !== -1 && CPL.slListener.indexOf("هسّة") !== -1, "sl hessa");
+    eq((CPL.slTitle + CPL.slBody + CPL.slStart + CPL.planIntro + CPL.reopenSum).indexOf("هلق") === -1, "no halq");
+    eq(CPL.planIntro.indexOf("مؤقت") !== -1, "plan intro timer");
+    eq(CPL.safetyCall.indexOf("100") !== -1 && CPL.safetyCall.indexOf("1201") !== -1, "safety numbers");
+    stopSl(true);
+    var todayParts = jerusalemToday().split("-").map(Number);
+    var backDate = new Date(Date.UTC(todayParts[0], todayParts[1] - 1, todayParts[2] - 3));
+    var plan = makeCplPlan();
+    plan.startDate = backDate.getUTCFullYear() + "-" + String(backDate.getUTCMonth() + 1).padStart(2, "0") + "-" + String(backDate.getUTCDate()).padStart(2, "0");
+    saveJSON(K_CPL_PLAN, plan);
+    saveCplMeta({ aName: "Lina", bName: "Omar", active: "a", screen: "plan", safety: false, openDay: "c4", slSpeakerSide: "a" });
+    state.view = "couples";
+    var planHtml = viewCplPlan(loadCplMeta());
+    eq(planHtml.indexOf(CPL.reopenSum) !== -1, "reopen on plan");
+    eq(planHtml.indexOf('data-action="cpl-reopen-sum"') !== -1, "reopen action");
+    var sumHtml = viewCplSummary(loadCplMeta());
+    eq(sumHtml.indexOf(CPL.startWeek) !== -1 && sumHtml.indexOf(CPL.backPlan) !== -1, "summary back");
+    eq(sumHtml.indexOf(secretA) === -1 && sumHtml.indexOf(secretB) === -1, "reopen no private");
+    var sessMeta = loadCplMeta();
+    sessMeta.screen = "session";
+    sessMeta.openDay = "c4";
+    sessMeta.active = "a";
+    sessMeta.slSpeakerSide = "a";
+    var sess = viewCplSession(sessMeta);
+    eq(sess.indexOf(CPL.slTitle) !== -1, "joint sl title");
+    eq(sess.indexOf(CPL.slStart) !== -1 && sess.indexOf('data-action="cpl-sl-start"') !== -1, "joint sl start");
+    eq(sess.indexOf('data-action="cpl-sl-switch"') !== -1 && sess.indexOf('data-action="cpl-sl-stop"') !== -1, "joint sl controls");
+    eq(sess.indexOf(fill(CPL.slSpeaker, { name: "Lina" })) !== -1, "speaker name");
+    eq(sess.indexOf(fill(CPL.slListener, { name: "Omar" })) !== -1, "listener name");
+    eq(sess.indexOf(secretA) === -1 && sess.indexOf(secretB) === -1, "session no private");
+    sessMeta.openDay = "c1";
+    sessMeta.active = "a";
+    var alone = viewCplSession(sessMeta);
+    eq(alone.indexOf(CPL.slTitle) === -1, "no sl on individual");
+    cplWipe();
+    stopSl(true);
     return errors;
   }
   function init() {
