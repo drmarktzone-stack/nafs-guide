@@ -612,23 +612,24 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
   }
   function navHTML() {
     var items = [["home", C.ui.navHome], ["checkin", C.ui.navCheck], ["guide", C.ui.navGuide], ["program", C.ui.navPlan], ["breathe", C.ui.navBreath], ["couples", CPL.nav]];
-    return '<nav class="nav">' + items.map(function (it) {
-      var on = state.view === it[0] || (it[0] === "program" && state.view === "day");
-      return '<button type="button" data-go="' + it[0] + '"' + (on ? ' class="on"' : "") + ">" + esc(it[1]) + "</button>";
+    return '<nav class="nav" aria-label="' + esc(C.appName) + '">' + items.map(function (it) {
+      var on = state.view === it[0] || (it[0] === "program" && state.view === "day") || (it[0] === "couples" && state.view === "couples");
+      return '<button type="button" data-go="' + it[0] + '"' + (on ? ' class="on" aria-current="page"' : "") + '><span class="nav-dot" aria-hidden="true"></span><span class="nav-label">' + esc(it[1]) + "</span></button>";
     }).join("") + "</nav>";
   }
   function shell(content) {
-    return '<header class="topbar"><button type="button" class="brand" data-go="home"><img class="mark" src="assets/mark.svg" alt=""><span><span class="brand-name">' + esc(C.appName) + '</span><span class="brand-sub">' + esc(C.brandSub) + "</span></span></button>" +
+    return '<header class="topbar"><button type="button" class="brand" data-go="home" aria-label="' + esc(C.appName) + '"><img class="mark" src="assets/mark.svg" width="40" height="40" alt=""><span><span class="brand-name">' + esc(C.appName) + '</span><span class="brand-sub">' + esc(C.brandSub) + "</span></span></button>" +
       '<button type="button" class="top-link" data-go="history">' + esc(C.ui.history) + "</button></header>" +
-      '<p class="disclaimer">' + esc(C.disclaimer) + "</p><main>" + content + "</main>" + navHTML();
+      '<p class="disclaimer compact">' + esc(C.disclaimer) + "</p><main>" + content + "</main>" + navHTML();
   }
   function viewHome() {
     return '<section class="hero"><p class="eyebrow">' + esc(C.ui.eyebrow) + "</p><h1>" + esc(C.appName) + "</h1>" +
       '<p class="lead">' + esc(C.ui.lead) + "</p>" +
-      "<p>" + esc(C.ui.homeMethods) + "</p>" +
-      "<p>" + esc(C.ui.homeBreath) + "</p></section>" +
+      '<p class="muted-block">' + esc(C.ui.homeMethods) + "</p>" +
+      '<p class="muted-block">' + esc(C.ui.homeBreath) + "</p></section>" +
+      '<p class="section-label">' + esc(C.ui.checkKicker) + "</p>" +
       '<div class="tiles">' +
-      '<button type="button" class="tile" data-go="checkin"><strong>' + esc(C.ui.tileCheck) + "</strong><span>" + esc(C.ui.tileCheckSub) + "</span></button>" +
+      '<button type="button" class="tile primary" data-go="checkin"><strong>' + esc(C.ui.tileCheck) + "</strong><span>" + esc(C.ui.tileCheckSub) + "</span></button>" +
       '<button type="button" class="tile" data-go="guide"><strong>' + esc(C.ui.tileGuide) + "</strong><span>" + esc(C.ui.tileGuideSub) + "</span></button>" +
       '<button type="button" class="tile" data-go="program"><strong>' + esc(C.ui.tilePlan) + "</strong><span>" + esc(C.ui.tilePlanSub) + "</span></button>" +
       '<button type="button" class="tile" data-go="breathe"><strong>' + esc(C.ui.tileBreath) + "</strong><span>" + esc(C.ui.tileBreathSub) + "</span></button>" +
@@ -677,7 +678,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
     return viewResult(state.result);
   }
   function viewResult(entry) {
-    if (!entry) return '<section class="card"><p>' + esc(C.ui.noResult) + "</p></section>";
+    if (!entry) return '<section class="card empty-state"><p>' + esc(C.ui.noResult) + '</p><button type="button" class="btn" data-go="checkin">' + esc(C.ui.checkStart) + "</button></section>";
     var phqB = bandPhq(entry.phqScore);
     var gadB = bandGad(entry.gadScore);
     var len = entry.length;
@@ -718,7 +719,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
   function guideResultHTML() {
     var g = state.guide;
     if (!g) return "";
-    if (g.type === "empty") return '<section class="card"><p>' + esc(C.ui.guideEmpty) + "</p></section>";
+    if (g.type === "empty") return '<section class="card empty-state"><p>' + esc(C.ui.guideEmpty) + "</p></section>";
     var notes = "";
     if (g.diag) notes += '<p class="warnbox">' + esc(C.diagNote) + "</p>";
     if (g.meds) notes += '<p class="warnbox">' + esc(C.medNote) + "</p>";
@@ -750,7 +751,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
     if (state.hold) return holdHTML();
     var program = loadProgram();
     if (!program) {
-      return '<section class="card"><h1>' + esc(C.ui.noPlan) + "</h1>" +
+      return '<section class="card empty-state"><h1>' + esc(C.ui.noPlan) + "</h1>" +
         "<p>" + esc(C.ui.noPlanBody) + "</p>" +
         '<button type="button" class="btn" data-go="checkin">' + esc(C.ui.toCheck) + "</button></section>";
     }
@@ -769,7 +770,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
     }).join("");
     return '<section class="card"><h1>' + esc(C.ui.yourPlan) + "</h1><p>" + esc(fill(C.ui.planProgress, { done: done, total: program.days.length, start: program.startDate })) + "</p>" +
       '<div class="progress"><span style="width:' + pct + '%"></span></div>' +
-      '<div class="card" style="box-shadow:none"><p class="kicker">' + esc(fill(C.ui.todayKicker, { n: idx + 1 })) + "</p><h2>" + esc(todayDay.title) + "</h2>" +
+      '<div class="inset"><p class="kicker">' + esc(fill(C.ui.todayKicker, { n: idx + 1 })) + "</p><h2>" + esc(todayDay.title) + "</h2>" +
       "<p>" + esc(todayDay.method) + (todayDay.completed ? " · " + esc(C.ui.stDone) : "") + "</p>" +
       '<button type="button" class="btn" data-go="day" data-day="' + esc(todayDay.id) + '">' + esc(C.ui.openToday) + "</button></div></section><h2>" + esc(C.ui.allDays) + "</h2>" + list;
   }
@@ -797,7 +798,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
   }
   function viewHistory() {
     var list = loadCheckins();
-    var body = !list.length ? "<p>" + esc(C.ui.noHistory) + "</p>" : list.map(function (item) {
+    var body = !list.length ? '<div class="empty-state"><p>' + esc(C.ui.noHistory) + '</p><button type="button" class="btn" data-go="checkin">' + esc(C.ui.checkStart) + "</button></div>" : list.map(function (item) {
       if (item.crisis) return '<article class="history-item"><strong>' + esc(fmtWhen(item.at)) + "</strong><p>" + esc(C.ui.crisisHistory) + "</p></article>";
       var names = areaLabels(item.areas);
       return '<article class="history-item"><strong>' + esc(fmtWhen(item.at)) + "</strong><p>" + esc(fill(C.ui.histLine, { phq: item.phqScore, phqName: bandPhq(item.phqScore).name, gad: item.gadScore, gadName: bandGad(item.gadScore).name, len: item.length })) + "</p><p class=\"muted\">" + esc(bandPhq(item.phqScore).plain) + " " + esc(bandGad(item.gadScore).plain) + "</p>" + (names.length ? "<p>" + esc(fill(C.ui.areasChosen, { names: names.join(C.ui.listSep) })) + "</p>" : "") + "</article>";
@@ -1179,7 +1180,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
   }
   function whoBanner(meta) {
     var name = nameOf(meta, meta.active) || CPL.noname;
-    return '<div class="who"><b>' + esc(fill(CPL.answering, { name: name })) + "</b>" +
+    return '<div class="who" role="status"><b>' + esc(fill(CPL.answering, { name: name })) + "</b>" +
       '<p class="muted">' + esc(CPL.notYou) + "</p>" +
       '<button type="button" class="btn secondary" data-action="cpl-switch">' + esc(CPL.switchBtn) + "</button></div>";
   }
@@ -1337,7 +1338,11 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
     var el = document.getElementById("cpl-sl-tick");
     if (!el) return;
     el.textContent = slClockLabel();
-    el.className = "cpl-sl-time" + (slTurn.done ? " done" : "") + (slTurn.running ? " run" : "");
+    var card = el.closest ? el.closest(".cpl-sl") : null;
+    if (card && card.classList) {
+      card.classList.toggle("is-done", !!slTurn.done);
+      card.classList.toggle("is-run", !!slTurn.running);
+    }
   }
   function onSlTick() {
     if (!slSessionOpen() || !slTurn.running) {
@@ -1377,13 +1382,13 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
   function cplSlCard(meta) {
     var speaker = slSpeakerOf(meta);
     var listener = otherOf(speaker);
-    var cls = "cpl-sl-time" + (slTurn.done ? " done" : "") + (slTurn.running ? " run" : "");
-    return '<section class="card cpl-sl">' +
+    var cardCls = "card cpl-sl" + (slTurn.done ? " is-done" : "") + (slTurn.running ? " is-run" : "");
+    return '<section class="' + cardCls + '">' +
       "<h2>" + esc(CPL.slTitle) + "</h2>" +
       "<p>" + esc(CPL.slBody) + "</p>" +
-      '<p class="cpl-sl-who"><strong>' + esc(fill(CPL.slSpeaker, { name: nameOf(meta, speaker) })) + "</strong></p>" +
-      '<p class="cpl-sl-who">' + esc(fill(CPL.slListener, { name: nameOf(meta, listener) })) + "</p>" +
-      '<p class="' + cls + '" id="cpl-sl-tick" role="timer">' + esc(slClockLabel()) + "</p>" +
+      '<p class="cpl-sl-role"><strong>' + esc(fill(CPL.slSpeaker, { name: nameOf(meta, speaker) })) + "</strong></p>" +
+      '<p class="cpl-sl-role">' + esc(fill(CPL.slListener, { name: nameOf(meta, listener) })) + "</p>" +
+      '<p class="cpl-sl-tick" id="cpl-sl-tick" role="timer">' + esc(slClockLabel()) + "</p>" +
       '<div class="stack">' +
       '<button type="button" class="btn block" data-action="cpl-sl-start">' + esc(CPL.slStart) + "</button>" +
       '<button type="button" class="btn secondary block" data-action="cpl-sl-switch">' + esc(CPL.slSwitch) + "</button>" +
@@ -1424,9 +1429,11 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
         "<strong>" + esc(fill(CPL.dayLabel, { n: i + 1 })) + " · " + esc(def.title) + "</strong>" +
         '<div class="meta">' + esc(open ? (d.completed ? CPL.done : CPL.openDay) : CPL.locked) + "</div></button>";
     }).join("");
+    var pct = Math.round((done / 7) * 100);
     return whoBanner(meta) + '<section class="card"><p class="kicker">' + esc(CPL.kicker) + "</p><h1>" + esc(CPL.planTitle) + "</h1>" +
       "<p>" + esc(CPL.planIntro) + "</p>" +
       "<p>" + esc(fill(CPL.planProgress, { done: done, total: 7, start: plan.startDate })) + "</p>" +
+      '<div class="progress" aria-hidden="true"><span style="width:' + pct + '%"></span></div>' +
       '<button type="button" class="btn secondary block cpl-reopen" data-action="cpl-reopen-sum">' + esc(CPL.reopenSum) + "</button>" +
       list + cplResetBlock() + "</section>";
   }
