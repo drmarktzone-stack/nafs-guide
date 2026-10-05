@@ -6,7 +6,7 @@
   --font-ui: "Cairo", "Noto Naskh Arabic", system-ui, sans-serif;
   --lh: 1.75;
 }
-h1, h2, h3, .btn, .nav button, .brand-name, .choice strong, .score b, .phase-name, .count, .kicker, .eyebrow, .section-label, .tag, .call b, .tile strong, label.field, .top-link, .safety-link, .who b {
+h1, h2, h3, .btn, .nav button, .brand-name, .choice strong, .score b, .phase-name, .count, .kicker, .eyebrow, .section-label, .tag, .call b, .tile strong, label.field, .top-link, .safety-link, .who b, .cpl-nice-count b {
   font-family: var(--font-ui);
 }
 
@@ -814,3 +814,56 @@ textarea { min-height: 100px; resize: vertical; }
 .cpl-sl-tick { text-align: center; }
 .cpl-sl.is-run .cpl-sl-tick { color: var(--clay-deep); }
 .cpl-reopen { margin: 8px 0 14px; }
+
+/* Catch-your-partner-doing-something-nice log */
+.cpl-nice {
+  background: var(--olive-soft);
+  border-color: #c9d9ce;
+}
+.cpl-nice h2 { font-size: 1.15rem; }
+.cpl-nice textarea,
+textarea.cpl-nice-input { min-height: 4.5rem; }
+.cpl-nice-item {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px 12px;
+  margin: 8px 0;
+}
+.cpl-nice-item p { overflow-wrap: anywhere; }
+.cpl-nice-item .meta {
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+}
+.cpl-nice-counts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 4px 0 8px;
+}
+.cpl-nice-count {
+  flex: 1 1 8rem;
+  background: var(--olive-soft);
+  border: 1px solid #c9d9ce;
+  border-radius: 14px;
+  padding: 10px 12px;
+  text-align: center;
+}
+.cpl-nice-count b {
+  display: block;
+  font-size: 1.6rem;
+  line-height: 1.2;
+  color: var(--olive-deep);
+  font-variant-numeric: tabular-nums;
+}
+.cpl-nice-count span {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+.cpl-nice-joint {
+  background: #f7f1e6;
+  border: 1px solid #e0d0b8;
+}
+.cpl-nice-joint h2 { font-size: 1.15rem; }
