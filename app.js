@@ -362,6 +362,30 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
   "niceJointHow": "كل واحد يقرأ ملاحظة واحدة بصوت عالي للثاني. اللي بيسمع يقول بس «شكرًا». من غير نقاش، ومن غير «بس».",
   "niceJointEmpty": "ما في ملاحظات مشاركة هسّة. قبل المرة الجاية، لاحظوا إشي واحد لطيف.",
   "niceBy": "{name} · {date}",
+  "softTitle": "طلب ببداية لطيفة",
+  "softLesson": "الفكرة من تدريب الحكي للزوجين: لما تبلّش بموقف واحد وشعور وطلب ينعمل، الشريك بيسمع الطلب قبل الدفاع. هيك الحكي بيضل عن الموقف، مش عن الشخص. هاد تمرين بدليل ذاتي، مش معالج مرخّص، وما في تشخيص ولا أدوية.",
+  "softSituation": "شو صار؟ موقف واحد محدد",
+  "softFeeling": "كيف حسيت؟",
+  "softFeelingType": "أو اكتب الشعور بكلمتك",
+  "softRequest": "طلب واحد إيجابي: شو بدي يصير",
+  "softPreviewLabel": "الجملة هسّة",
+  "softPreviewEmpty": "عبّي الخانات عشان الجملة تبين.",
+  "softShare": "جيبها للجلسة المشتركة",
+  "softSave": "احفظ المسودة",
+  "softFull": "عندك ٣ مسودات. امسح وحدة إذا بدك مسودة جديدة.",
+  "softNeed": "اكتب الموقف والشعور والطلب، كل واحد بكلمة أو أكثر.",
+  "softPrivateHint": "إذا ما علّمت «جيبها»، بتضل عندك إنت. ما بتنعرض للشريك، ولا بالصورة المشتركة، ولا بالجلسة المشتركة.",
+  "softListTitle": "مسوداتك",
+  "softEmpty": "لسه ما في مسودة. موقف واحد بكفّي.",
+  "softDel": "امسح المسودة",
+  "softHintBlame": "جرّب موقف واحد محدد، من غير «دايمًا» أو «أبدًا» أو وصف للشخص.",
+  "softHintNegative": "الطلب أوضح إذا قلت شو بدي يصير، مش شو أوقف.",
+  "softJointTitle": "طلبات ببداية لطيفة",
+  "softJointHow": "المتكلم يقرأ الجملة. المستمع يعيدها بكلامه: «سمعتك تقول…» قبل ما يرد. المؤقت تبع دور المتكلم والمستمع لنفس الدور.",
+  "softJointEmpty": "ما في طلبات معلّمة للجلسة هسّة. إذا بدك تجيب طلب، علّمه عندك قبل ما تقعدوا.",
+  "softBy": "{name}",
+  "softMax": 3,
+  "softFeelings": ["زعلان", "متدايق", "تعبان", "مهموم", "خجلان", "مستعجل"],
   "resetAsk": "امسح أجوبة الزوجين عن هاد الجهاز",
   "resetYes": "أيوه، امسحها",
   "resetNo": "خلّيها",
@@ -509,7 +533,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
   function loadProgram() { return loadJSON(K_PROGRAM, null); }
   function saveProgram(p) { saveJSON(K_PROGRAM, p); }
 
-  var state = { view: "home", dayId: null, crisis: null, hold: false, guideText: "", guide: null, pad: "", pst: {}, check: null, result: null, formError: "", confirmClear: false, cplErr: "", cplReset: false, cplNiceDraft: "", cplNiceShare: false, cplNiceErr: "" };
+  var state = { view: "home", dayId: null, crisis: null, hold: false, guideText: "", guide: null, pad: "", pst: {}, check: null, result: null, formError: "", confirmClear: false, cplErr: "", cplReset: false, cplNiceDraft: "", cplNiceShare: false, cplNiceErr: "", cplSoftErr: "", cplSoftBySide: { a: { situation: "", feeling: "", request: "", share: false }, b: { situation: "", feeling: "", request: "", share: false } } };
   var breath = { running: false, timer: null, mode: "468", phaseIdx: 0, left: 4, cycle: 0, totalCycles: 5, dayId: null, finishedMsg: "" };
   var slClock = null;
   var slTurn = { left: 180, running: false, done: false };
@@ -1088,7 +1112,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
   }
 
   function cplBlank() {
-    return { answers: ["", "", "", "", "", "", "", ""], done: false, doneAt: null, qi: 0, notes: {}, nice: [] };
+    return { answers: ["", "", "", "", "", "", "", ""], done: false, doneAt: null, qi: 0, notes: {}, nice: [], soft: [] };
   }
   var cplNiceSeq = 0;
   function cplNiceId() {
@@ -1191,11 +1215,13 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
     if (!raw || !raw.answers || raw.answers.length !== 8) {
       rec = cplBlank();
       if (raw && Array.isArray(raw.nice)) rec.nice = sanitizeNiceList(raw.nice);
+      if (raw && Array.isArray(raw.soft)) rec.soft = sanitizeSoftList(raw.soft);
     } else {
       rec = raw;
       if (!rec.notes || typeof rec.notes !== "object") rec.notes = {};
       if (typeof rec.qi !== "number") rec.qi = 0;
       rec.nice = sanitizeNiceList(rec.nice);
+      rec.soft = sanitizeSoftList(rec.soft);
     }
     return rec;
   }
@@ -1255,6 +1281,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
     state.cplNiceDraft = "";
     state.cplNiceShare = false;
     state.cplNiceErr = "";
+    clearSoftDrafts();
   }
   function scrubSide(which) {
     var rec = loadCplSide(which);
@@ -1278,6 +1305,14 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
       keptNice.push(note);
     });
     rec.nice = keptNice;
+    var keptSoft = [];
+    (rec.soft || []).forEach(function (draft) {
+      var blob = softBlob(draft);
+      if (isCrisisText(blob)) { hitC = true; return; }
+      if (cplViolent(blob) || cplViolent(draft && draft.situation) || cplViolent(draft && draft.feeling) || cplViolent(draft && draft.request)) { hitV = true; return; }
+      keptSoft.push(draft);
+    });
+    rec.soft = keptSoft;
     saveCplSide(which, rec);
     return { hitV: hitV, hitC: hitC };
   }
@@ -1290,6 +1325,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
     state.cplNiceDraft = "";
     state.cplNiceShare = false;
     state.cplNiceErr = "";
+    clearSoftDrafts();
     render();
   }
   function screenFor(meta, who) {
@@ -1380,6 +1416,9 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
       }
       state.cplNiceDraft = String(nice).slice(0, 180);
     }
+    var softGuard = readSoftInputs(side);
+    if (softGuard === "crisis") { triggerCrisis("text"); return "stop"; }
+    if (softGuard === "safety") { enterSafety(meta); return "stop"; }
     return "ok";
   }
   function cplNiceCard(meta) {
@@ -1448,6 +1487,276 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
       "<p>" + esc(CPL.niceLesson) + "</p>" +
       "<p>" + esc(CPL.niceJointHow) + "</p>" + body + "</section>";
   }
+  var SOFT_INSULTS = ["كسول", "كسلان", "كسلانه", "كسوله", "اناني", "انانيه", "غبي", "غبيه", "كذاب", "كذابه", "بخيل", "حقود", "تافه", "تافهه", "وقح", "وقحه", "عبيط", "عبيطه", "فاشل", "فاشله"];
+  var SOFT_YOU_NEXT = ["هيك", "مستحيل", "غلط", "سيء", "سيئه", "وحش", "بارد", "مهمل", "مهمله", "شخص"];
+  var SOFT_NEG_TOKEN = { "بطل": 1, "بطلي": 1, "بلاش": 1, "لا": 1, "كف": 1, "كفي": 1, "توقف": 1, "توقفي": 1, "stop": 1, "dont": 1 };
+  var SOFT_NEG_PHRASE = ["ما تعمل", "ما تعملي", "ما تحكي", "ما تصرخ", "ما تقاطع", "ما تزعق", "ما عاد"];
+  function emptySoftDraft() {
+    return { situation: "", feeling: "", request: "", share: false };
+  }
+  function clearSoftDrafts() {
+    state.cplSoftBySide = { a: emptySoftDraft(), b: emptySoftDraft() };
+    state.cplSoftErr = "";
+  }
+  function softDraftFor(side) {
+    var w = side === "b" ? "b" : "a";
+    if (!state.cplSoftBySide) clearSoftDrafts();
+    if (!state.cplSoftBySide[w]) state.cplSoftBySide[w] = emptySoftDraft();
+    return state.cplSoftBySide[w];
+  }
+  function softHasAbsolute(raw) {
+    var t = String(raw || "")
+      .replace(/[\u064B-\u0652\u0640\u0670]/g, "")
+      .replace(/[إآٱ]/g, "ا")
+      .replace(/ؤ/g, "و")
+      .replace(/ئ/g, "ي")
+      .replace(/ى/g, "ي")
+      .replace(/ة/g, "ه")
+      .replace(/[^\u0600-\u06FFa-z0-9\s]/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+    if (!t) return false;
+    var parts = t.split(" ");
+    for (var i = 0; i < parts.length; i++) {
+      var w = parts[i];
+      if (w === "ابدا" || w === "أبدا" || w === "دايما" || w === "دائما") return true;
+      if (w === "عمرك" || w === "عمرها" || w === "always" || w === "never") return true;
+    }
+    if (t.indexOf("ولا مره") !== -1 || t.indexOf("كل مره") !== -1) return true;
+    return false;
+  }
+  function softBlameHit(raw) {
+    if (!String(raw || "").trim()) return false;
+    if (softHasAbsolute(raw)) return true;
+    var n = norm(raw);
+    if (!n) return false;
+    if (n.indexOf("you are") !== -1) return true;
+    var parts = n.split(" ");
+    var i;
+    for (i = 0; i < parts.length; i++) {
+      if (SOFT_INSULTS.indexOf(parts[i]) !== -1) return true;
+      if (parts[i] === "always" || parts[i] === "never") return true;
+    }
+    for (i = 0; i < parts.length - 1; i++) {
+      if (parts[i] === "انت" || parts[i] === "انتي" || parts[i] === "انتو" || parts[i] === "you") {
+        if (SOFT_YOU_NEXT.indexOf(parts[i + 1]) !== -1 || SOFT_INSULTS.indexOf(parts[i + 1]) !== -1) return true;
+      }
+    }
+    return false;
+  }
+  function softNegativeHit(raw) {
+    var t = norm(raw);
+    if (!t) return false;
+    if (t.indexOf("don t") !== -1) return true;
+    var parts = t.split(" ");
+    for (var i = 0; i < parts.length; i++) if (SOFT_NEG_TOKEN[parts[i]]) return true;
+    var padded = " " + t + " ";
+    for (var j = 0; j < SOFT_NEG_PHRASE.length; j++) {
+      if (padded.indexOf(" " + SOFT_NEG_PHRASE[j] + " ") !== -1) return true;
+    }
+    return false;
+  }
+  function softSentence(situation, feeling, request) {
+    var s = String(situation || "").trim();
+    var f = String(feeling || "").trim();
+    var r = String(request || "").trim();
+    if (!s && !f && !r) return "";
+    var bits = [];
+    if (s) bits.push("لما " + s);
+    if (f) bits.push("حسيت إني " + f);
+    if (r) bits.push("واللي بيساعدني: " + r);
+    return bits.join("، ") + ".";
+  }
+  function softBlob(draft) {
+    if (!draft) return "";
+    return [draft.situation || "", draft.feeling || "", draft.request || ""].join(" ");
+  }
+  function softHintsFor(draft) {
+    var d = draft || {};
+    var hints = [];
+    if (softBlameHit([d.situation || "", d.feeling || "", d.request || ""].join(" "))) hints.push(CPL.softHintBlame);
+    if (softNegativeHit(d.request || "")) hints.push(CPL.softHintNegative);
+    return hints;
+  }
+  function softHintsHTML(draft) {
+    return softHintsFor(draft).map(function (h) {
+      return '<p class="warnbox cpl-soft-hint" data-cpl-soft="hint">' + esc(h) + "</p>";
+    }).join("");
+  }
+  function syncSoftPreview(side) {
+    if (typeof document === "undefined") return;
+    var d = softDraftFor(side);
+    var prev = document.getElementById("cpl-soft-preview");
+    if (prev) prev.textContent = softSentence(d.situation, d.feeling, d.request) || CPL.softPreviewEmpty;
+    var hints = document.getElementById("cpl-soft-hints");
+    if (hints) hints.innerHTML = softHintsHTML(d);
+    var chips = document.querySelectorAll("[data-action='cpl-soft-feel']");
+    for (var i = 0; i < chips.length; i++) {
+      if (chips[i].classList) chips[i].classList.toggle("on", chips[i].getAttribute("data-feel") === d.feeling);
+    }
+  }
+  function readSoftInputs(side) {
+    var sit = readCplBox("cpl-soft-situation");
+    var feel = readCplBox("cpl-soft-feeling");
+    var req = readCplBox("cpl-soft-request");
+    if (sit == null && feel == null && req == null) return "absent";
+    var d = softDraftFor(side);
+    if (sit != null) d.situation = String(sit).slice(0, 160);
+    if (feel != null) d.feeling = String(feel).slice(0, 40);
+    if (req != null) d.request = String(req).slice(0, 160);
+    var shareBox = (typeof document !== "undefined") ? document.getElementById("cpl-soft-share") : null;
+    if (shareBox) d.share = !!shareBox.checked;
+    var blob = softBlob(d);
+    if (isCrisisText(blob)) { clearSoftDrafts(); return "crisis"; }
+    if (cplViolent(d.situation) || cplViolent(d.feeling) || cplViolent(d.request) || cplViolent(blob)) {
+      clearSoftDrafts();
+      return "safety";
+    }
+    return "ok";
+  }
+  var cplSoftSeq = 0;
+  function cplSoftId() {
+    cplSoftSeq += 1;
+    return "s" + cplSoftSeq.toString(36) + Date.now().toString(36);
+  }
+  function sanitizeSoftList(list) {
+    if (!Array.isArray(list)) return [];
+    var out = [];
+    var max = CPL.softMax || 3;
+    for (var i = 0; i < list.length; i++) {
+      var n = list[i];
+      if (!n || typeof n !== "object") continue;
+      var situation = String(n.situation || "").trim().slice(0, 160);
+      var feeling = String(n.feeling || "").trim().slice(0, 40);
+      var request = String(n.request || "").trim().slice(0, 160);
+      if (!situation && !feeling && !request) continue;
+      out.push({
+        id: String(n.id || ("s" + i + "x")),
+        situation: situation,
+        feeling: feeling,
+        request: request,
+        share: n.share === true
+      });
+      if (out.length >= max) break;
+    }
+    return out;
+  }
+  function trySaveCplSoft(meta, situation, feeling, request, share) {
+    if (state.hold || !meta || meta.safety) return "hidden";
+    var side = meta.active === "b" ? "b" : "a";
+    var s0 = String(situation || "").trim();
+    var f0 = String(feeling || "").trim();
+    var r0 = String(request || "").trim();
+    var blob0 = [s0, f0, r0].join(" ");
+    if (isCrisisText(blob0)) {
+      clearSoftDrafts();
+      return "crisis";
+    }
+    if (cplViolent(s0) || cplViolent(f0) || cplViolent(r0) || cplViolent(blob0)) {
+      clearSoftDrafts();
+      return "safety";
+    }
+    var s = s0.slice(0, 160);
+    var f = f0.slice(0, 40);
+    var r = r0.slice(0, 160);
+    if (s.length < 2 || f.length < 2 || r.length < 2) return "short";
+    var rec = loadCplSide(side);
+    if (rec.soft.length >= (CPL.softMax || 3)) return "full";
+    rec.soft.push({ id: cplSoftId(), situation: s, feeling: f, request: r, share: share === true });
+    saveCplSide(side, rec);
+    state.cplSoftBySide[side] = emptySoftDraft();
+    state.cplSoftErr = "";
+    return "ok";
+  }
+  function setCplSoftShare(side, id, share) {
+    var rec = loadCplSide(side);
+    var changed = false;
+    for (var i = 0; i < rec.soft.length; i++) {
+      if (rec.soft[i].id === id) {
+        rec.soft[i].share = share === true;
+        changed = true;
+      }
+    }
+    if (changed) saveCplSide(side, rec);
+    return changed;
+  }
+  function removeCplSoft(side, id) {
+    var rec = loadCplSide(side);
+    var next = [];
+    var removed = false;
+    for (var i = 0; i < rec.soft.length; i++) {
+      if (rec.soft[i].id === id) { removed = true; continue; }
+      next.push(rec.soft[i]);
+    }
+    if (!removed) return false;
+    rec.soft = next;
+    saveCplSide(side, rec);
+    return true;
+  }
+  function cplSoftCard(meta) {
+    if (state.hold || !meta || meta.safety) return "";
+    if (meta.active !== "a" && meta.active !== "b") return "";
+    var side = meta.active === "b" ? "b" : "a";
+    var rec = loadCplSide(side);
+    var draft = softDraftFor(side);
+    var full = rec.soft.length >= (CPL.softMax || 3);
+    var feelings = (CPL.softFeelings || []).map(function (f) {
+      var on = draft.feeling === f ? " on" : "";
+      return '<button type="button" class="chip' + on + '" data-action="cpl-soft-feel" data-feel="' + esc(f) + '">' + esc(f) + "</button>";
+    }).join("");
+    var preview = softSentence(draft.situation, draft.feeling, draft.request) || CPL.softPreviewEmpty;
+    var items = rec.soft.map(function (item) {
+      return '<article class="cpl-soft-item" data-cpl-soft="draft" data-id="' + esc(item.id) + '"><p class="cpl-soft-line">' + esc(softSentence(item.situation, item.feeling, item.request)) + "</p>" +
+        '<label class="check"><input type="checkbox" data-cpl="soft-flag" data-id="' + esc(item.id) + '"' + (item.share ? " checked" : "") + ">" + esc(CPL.softShare) + "</label>" +
+        '<button type="button" class="btn secondary cpl-soft-del" data-action="cpl-soft-del" data-id="' + esc(item.id) + '">' + esc(CPL.softDel) + "</button></article>";
+    }).join("");
+    var form = full
+      ? '<p class="muted">' + esc(CPL.softFull) + "</p>"
+      : '<label class="field">' + esc(CPL.softSituation) + '<textarea id="cpl-soft-situation" class="cpl-soft-input" maxlength="160" data-cpl="soft-situation">' + esc(draft.situation || "") + "</textarea></label>" +
+        '<p class="field">' + esc(CPL.softFeeling) + "</p>" +
+        '<div class="chips" role="group" aria-label="' + esc(CPL.softFeeling) + '">' + feelings + "</div>" +
+        '<label class="field">' + esc(CPL.softFeelingType) + '<input type="text" id="cpl-soft-feeling" maxlength="40" data-cpl="soft-feeling" value="' + esc(draft.feeling || "") + '"></label>' +
+        '<label class="field">' + esc(CPL.softRequest) + '<textarea id="cpl-soft-request" class="cpl-soft-input" maxlength="160" data-cpl="soft-request">' + esc(draft.request || "") + "</textarea></label>" +
+        '<p class="kicker">' + esc(CPL.softPreviewLabel) + "</p>" +
+        '<p class="cpl-soft-preview" id="cpl-soft-preview" data-cpl-soft="preview" aria-live="polite">' + esc(preview) + "</p>" +
+        '<div id="cpl-soft-hints" data-cpl-soft="hints" aria-live="polite">' + softHintsHTML(draft) + "</div>" +
+        '<label class="check"><input type="checkbox" id="cpl-soft-share" data-cpl="soft-share"' + (draft.share ? " checked" : "") + ">" + esc(CPL.softShare) + "</label>" +
+        (state.cplSoftErr ? '<p class="err">' + esc(state.cplSoftErr) + "</p>" : "") +
+        '<button type="button" class="btn block" data-action="cpl-soft-add">' + esc(CPL.softSave) + "</button>";
+    var list = items
+      ? "<h3>" + esc(CPL.softListTitle) + "</h3>" + items
+      : '<p class="muted">' + esc(CPL.softEmpty) + "</p>";
+    return '<section class="card cpl-soft" data-cpl-soft="log"><p class="kicker">' + esc(fill(CPL.privateTag, { name: nameOf(meta, side) })) + "</p>" +
+      "<h2>" + esc(CPL.softTitle) + "</h2>" +
+      "<p>" + esc(CPL.softLesson) + "</p>" +
+      '<p class="muted">' + esc(CPL.softPrivateHint) + "</p>" +
+      form + list + "</section>";
+  }
+  function cplSharedSoft() {
+    var out = [];
+    ["a", "b"].forEach(function (w) {
+      var rec = loadCplSide(w);
+      for (var i = 0; i < rec.soft.length; i++) {
+        var draft = rec.soft[i];
+        if (draft && draft.share === true && (draft.situation || draft.feeling || draft.request)) {
+          out.push({ who: w, id: draft.id, sentence: softSentence(draft.situation, draft.feeling, draft.request) });
+        }
+      }
+    });
+    return out;
+  }
+  function cplJointSoftCard(meta) {
+    if (state.hold || !meta || meta.safety) return "";
+    var drafts = cplSharedSoft();
+    var body = !drafts.length
+      ? "<p>" + esc(CPL.softJointEmpty) + "</p>"
+      : drafts.map(function (draft) {
+        return '<article class="cpl-soft-item"><p class="meta">' + esc(fill(CPL.softBy, { name: nameOf(meta, draft.who) })) + "</p><p class=\"cpl-soft-line\">" + esc(draft.sentence) + "</p></article>";
+      }).join("");
+    return '<section class="card cpl-soft-joint" data-cpl-soft="joint"><h2>' + esc(CPL.softJointTitle) + "</h2>" +
+      "<p>" + esc(CPL.softLesson) + "</p>" +
+      "<p>" + esc(CPL.softJointHow) + "</p>" + body + "</section>";
+  }
   function viewCplSetup(meta) {
     return '<section class="card"><p class="kicker">' + esc(CPL.kicker) + "</p><h1>" + esc(CPL.tile) + "</h1>" +
       "<p>" + esc(CPL.disc) + "</p>" +
@@ -1487,14 +1796,14 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
       (state.cplErr ? '<p class="err">' + esc(state.cplErr) + "</p>" : "") +
       '<div class="stack">' +
       (i > 0 ? '<button type="button" class="btn secondary block" data-action="cpl-prev">' + esc(CPL.back) + "</button>" : '<button type="button" class="btn secondary block" data-action="cpl-to-who">' + esc(CPL.backWho) + "</button>") +
-      '<button type="button" class="btn block" data-action="cpl-next">' + esc(i === 7 ? CPL.finishMine : CPL.next) + "</button></div></section>" + cplNiceCard(meta);
+      '<button type="button" class="btn block" data-action="cpl-next">' + esc(i === 7 ? CPL.finishMine : CPL.next) + "</button></div></section>" + cplNiceCard(meta) + cplSoftCard(meta);
   }
   function viewCplWait(meta) {
     var other = otherOf(meta.active);
     return whoBanner(meta) + '<section class="card"><h1>' + esc(CPL.waitTitle) + "</h1>" +
       "<p>" + esc(fill(CPL.waitBody, { name: nameOf(meta, other) })) + "</p>" +
       '<button type="button" class="btn block" data-action="cpl-switch">' + esc(fill(CPL.theirTurn, { name: nameOf(meta, other) })) + "</button>" +
-      '<button type="button" class="btn secondary block" data-action="cpl-review">' + esc(CPL.reviewMine) + "</button></section>" + cplNiceCard(meta);
+      '<button type="button" class="btn secondary block" data-action="cpl-review">' + esc(CPL.reviewMine) + "</button></section>" + cplNiceCard(meta) + cplSoftCard(meta);
   }
   function viewCplReview(meta) {
     var side = meta.active === "b" ? "b" : "a";
@@ -1504,7 +1813,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
     }).join("");
     return whoBanner(meta) + '<section class="card"><p class="kicker">' + esc(fill(CPL.privateTag, { name: nameOf(meta, side) })) + "</p>" +
       "<h1>" + esc(CPL.reviewTitle) + "</h1><p>" + esc(CPL.reviewNote) + "</p>" + rows +
-      '<button type="button" class="btn secondary block" data-action="cpl-to-who">' + esc(CPL.backWho) + "</button></section>" + cplNiceCard(meta);
+      '<button type="button" class="btn secondary block" data-action="cpl-to-who">' + esc(CPL.backWho) + "</button></section>" + cplNiceCard(meta) + cplSoftCard(meta);
   }
   function slClockLabel() {
     if (slTurn.done) return CPL.slDone;
@@ -1640,7 +1949,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
       "<p>" + esc(fill(CPL.planProgress, { done: done, total: 7, start: plan.startDate })) + "</p>" +
       '<div class="progress" aria-hidden="true"><span style="width:' + pct + '%"></span></div>' +
       cplNiceCountsHTML(meta) +
-      "</section>" + cplNiceCard(meta) +
+      "</section>" + cplNiceCard(meta) + cplSoftCard(meta) +
       '<section class="card"><button type="button" class="btn secondary block cpl-reopen" data-action="cpl-reopen-sum">' + esc(CPL.reopenSum) + "</button>" +
       list + cplResetBlock() + "</section>";
   }
@@ -1659,13 +1968,13 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
     if (idx > todayIx) {
       return head + "<p>" + esc(CPL.lockedBody) + "</p>" +
         '<button type="button" class="btn secondary block" data-action="cpl-back-plan">' + esc(CPL.backPlan) + "</button></section>" +
-        (def.mode === "joint" ? "" : cplNiceCard(meta));
+        (def.mode === "joint" ? "" : cplNiceCard(meta) + cplSoftCard(meta));
     }
     if (def.mode === "individual" && meta.active !== def.who) {
       return head + "<p>" + esc(fill(CPL.wrongPartner, { name: nameOf(meta, def.who) })) + "</p>" +
         '<button type="button" class="btn block" data-action="cpl-switch">' + esc(CPL.switchBtn) + "</button>" +
         '<button type="button" class="btn secondary block" data-action="cpl-back-plan">' + esc(CPL.backPlan) + "</button></section>" +
-        cplNiceCard(meta);
+        cplNiceCard(meta) + cplSoftCard(meta);
     }
     var note = "";
     if (def.mode === "individual") note = (loadCplSide(def.who).notes || {})[def.id] || "";
@@ -1685,8 +1994,8 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
       both = '<label class="check"><input type="checkbox" data-cpl="both" data-day="' + esc(def.id) + '"' + (day.bothHere ? " checked" : "") + ">" + esc(CPL.bothHere) + "</label>";
     }
     var slHTML = def.mode === "joint" ? "</section>" + cplSlCard(meta) + '<section class="card">' : "";
-    var niceJoint = (def.mode === "joint" && day.bothHere) ? "</section>" + cplJointNiceCard(meta) + '<section class="card">' : "";
-    var nicePrivate = def.mode === "joint" ? "" : cplNiceCard(meta);
+    var niceJoint = (def.mode === "joint" && day.bothHere) ? "</section>" + cplJointNiceCard(meta) + cplJointSoftCard(meta) + '<section class="card">' : "";
+    var nicePrivate = def.mode === "joint" ? "" : cplNiceCard(meta) + cplSoftCard(meta);
     return head + sumHTML +
       slHTML +
       "<h2>" + esc(CPL.lessonH) + "</h2><p>" + esc(def.lesson) + "</p>" +
@@ -1808,6 +2117,39 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
         }
       }
       if (changed) saveCplSide(sideN, recN);
+      return;
+    }
+    if (kind === "soft-situation" || kind === "soft-feeling" || kind === "soft-request") {
+      if (state.hold || meta.safety) return;
+      var softSide = meta.active === "b" ? "b" : "a";
+      var softKey = kind === "soft-situation" ? "situation" : (kind === "soft-feeling" ? "feeling" : "request");
+      var softLim = softKey === "feeling" ? 40 : 160;
+      var softVal = String(el.value || "").slice(0, softLim);
+      if (isCrisisText(softVal)) {
+        clearSoftDrafts();
+        el.value = "";
+        triggerCrisis("text");
+        return;
+      }
+      if (cplViolent(softVal)) {
+        clearSoftDrafts();
+        el.value = "";
+        enterSafety(meta);
+        return;
+      }
+      softDraftFor(softSide)[softKey] = softVal;
+      state.cplSoftErr = "";
+      syncSoftPreview(softSide);
+      return;
+    }
+    if (kind === "soft-share") {
+      if (state.hold || meta.safety) return;
+      softDraftFor(meta.active === "b" ? "b" : "a").share = !!el.checked;
+      return;
+    }
+    if (kind === "soft-flag") {
+      if (state.hold || meta.safety) return;
+      setCplSoftShare(meta.active === "b" ? "b" : "a", String(el.dataset.id || ""), !!el.checked);
       return;
     }
     if (kind === "both") {
@@ -1960,6 +2302,50 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
       if (niceResult === "short") { state.cplNiceDraft = String(niceText || "").slice(0, 180); state.cplNiceErr = CPL.niceNeed; render(); return; }
       if (niceResult === "full") { state.cplNiceErr = CPL.niceFull; render(); return; }
       if (niceResult === "hidden") return;
+      render(); return;
+    }
+    if (action === "cpl-soft-feel") {
+      if (state.hold || meta.safety) { render(); return; }
+      var feelPick = String(t.dataset.feel || "").slice(0, 40);
+      if (isCrisisText(feelPick)) { clearSoftDrafts(); triggerCrisis("text"); return; }
+      if (cplViolent(feelPick)) { clearSoftDrafts(); enterSafety(meta); return; }
+      softDraftFor(meta.active === "b" ? "b" : "a").feeling = feelPick;
+      state.cplSoftErr = "";
+      render(); return;
+    }
+    if (action === "cpl-soft-del") {
+      if (state.hold || meta.safety) { render(); return; }
+      removeCplSoft(meta.active === "b" ? "b" : "a", String(t.dataset.id || ""));
+      render(); return;
+    }
+    if (action === "cpl-soft-add") {
+      if (state.hold || meta.safety) { render(); return; }
+      var softSideAdd = meta.active === "b" ? "b" : "a";
+      var softGuardAdd = readSoftInputs(softSideAdd);
+      if (softGuardAdd === "crisis") { triggerCrisis("text"); return; }
+      if (softGuardAdd === "safety") { enterSafety(meta); return; }
+      var softD = softDraftFor(softSideAdd);
+      var softSit = readCplBox("cpl-soft-situation");
+      var softFeel = readCplBox("cpl-soft-feeling");
+      var softReq = readCplBox("cpl-soft-request");
+      var softShareBox = (typeof document !== "undefined") ? document.getElementById("cpl-soft-share") : null;
+      var sitSave = softSit != null ? softSit : softD.situation;
+      var feelSave = softFeel != null ? softFeel : softD.feeling;
+      var reqSave = softReq != null ? softReq : softD.request;
+      var shareSave = softShareBox ? !!softShareBox.checked : softD.share === true;
+      var softResult = trySaveCplSoft(meta, sitSave, feelSave, reqSave, shareSave);
+      if (softResult === "crisis") { triggerCrisis("text"); return; }
+      if (softResult === "safety") { enterSafety(meta); return; }
+      if (softResult === "short") {
+        softD.situation = String(sitSave || "").slice(0, 160);
+        softD.feeling = String(feelSave || "").slice(0, 40);
+        softD.request = String(reqSave || "").slice(0, 160);
+        softD.share = shareSave;
+        state.cplSoftErr = CPL.softNeed;
+        render(); return;
+      }
+      if (softResult === "full") { state.cplSoftErr = CPL.softFull; render(); return; }
+      if (softResult === "hidden") return;
       render(); return;
     }
     if (action === "cpl-done") {
@@ -2199,12 +2585,14 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
     eq(safeHtml.indexOf(">100<") !== -1 && safeHtml.indexOf(">1201<") !== -1, "safety numbers");
     eq(safeHtml.indexOf(CPL.hitSample) === -1, "hit not rendered");
     eq(safeHtml.indexOf('data-cpl-nice="log"') === -1 && safeHtml.indexOf(CPL.niceTitle) === -1, "log hidden on safety");
+    eq(safeHtml.indexOf('data-cpl-soft="log"') === -1 && safeHtml.indexOf(CPL.softTitle) === -1, "soft hidden on safety");
     cplWipe();
     saveCplMeta({ aName: "Lina", bName: "Omar", active: "a", screen: "summary", safety: false });
     var badNice = cplBlank();
     badNice.done = true;
     badNice.answers = ["money", "loud", "بقرب", "space", "x", "cooking", "بقرب", "text"];
     badNice.nice = [{ id: "bad", text: CPL.hitSample, date: todayNice, share: true }];
+    badNice.soft = [{ id: "bads", situation: CPL.hitSample, feeling: "زعلان", request: "تبعث رسالة", share: true }];
     saveCplSide("a", badNice);
     var goodNice = cplBlank();
     goodNice.done = true;
@@ -2214,12 +2602,15 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
     eq(finishBothIfReady(metaScrub) === false, "scrub stops");
     eq(loadCplMeta().safety === true && loadCplMeta().screen === "safety", "scrub safety");
     eq(JSON.stringify(loadCplSide("a").nice).indexOf(CPL.hitSample) === -1, "scrub removed");
+    eq(JSON.stringify(loadCplSide("a").soft).indexOf(CPL.hitSample) === -1, "scrub removed soft");
     eq(viewCouples().indexOf(">100<") !== -1 && viewCouples().indexOf(">1201<") !== -1, "scrub shows card");
     eq(viewCouples().indexOf(CPL.hitSample) === -1 && viewCouples().indexOf(CPL.niceTitle) === -1, "scrub hides log");
+    eq(viewCouples().indexOf(CPL.softTitle) === -1 && viewCouples().indexOf('data-cpl-soft="log"') === -1, "scrub hides soft");
     cplWipe();
     saveCplMeta({ aName: "Lina", bName: "Omar", active: "a", screen: "plan", safety: false });
     var holdRec = cplBlank();
     holdRec.nice = [{ id: "h1", text: secretShared, date: todayNice, share: true }];
+    holdRec.soft = [{ id: "hs", situation: "HOLDSOFT99", feeling: "زعلان", request: "تبعث رسالة", share: true }];
     saveCplSide("a", holdRec);
     saveJSON(K_CPL_PLAN, makeCplPlan());
     state.hold = true;
@@ -2227,7 +2618,202 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
     var held = viewHTML();
     eq(held.indexOf(C.ui.holdTitle) !== -1, "hold screen");
     eq(held.indexOf(CPL.niceTitle) === -1 && held.indexOf(secretShared) === -1 && held.indexOf("data-cpl-nice") === -1, "hold hides nice");
+    eq(held.indexOf(CPL.softTitle) === -1 && held.indexOf("HOLDSOFT99") === -1 && held.indexOf("data-cpl-soft") === -1, "hold hides soft");
     eq(cplNiceCard(loadCplMeta()) === "" && cplJointNiceCard(loadCplMeta()) === "" && cplNiceCountsHTML(loadCplMeta()) === "", "helpers hide on hold");
+    eq(cplSoftCard(loadCplMeta()) === "" && cplJointSoftCard(loadCplMeta()) === "", "soft helpers hide on hold");
+    state.hold = false;
+    state.crisis = null;
+    cplWipe();
+    var softCopy = CPL.softTitle + CPL.softLesson + CPL.softSituation + CPL.softFeeling + CPL.softFeelingType + CPL.softRequest + CPL.softPreviewLabel + CPL.softPreviewEmpty + CPL.softShare + CPL.softSave + CPL.softFull + CPL.softNeed + CPL.softPrivateHint + CPL.softListTitle + CPL.softEmpty + CPL.softDel + CPL.softHintBlame + CPL.softHintNegative + CPL.softJointTitle + CPL.softJointHow + CPL.softJointEmpty + CPL.softBy + (CPL.softFeelings || []).join("");
+    eq(softCopy.indexOf("هلق") === -1, "soft no halq");
+    eq(CPL.softPreviewLabel.indexOf("هسّة") !== -1 && CPL.softJointEmpty.indexOf("هسّة") !== -1, "soft hessa");
+    eq(CPL.softLesson.indexOf("%") === -1 && CPL.softLesson.indexOf("أبحاث") === -1 && CPL.softLesson.indexOf("http") === -1, "lesson plain");
+    eq(CPL.softLesson.indexOf("موقف") !== -1 && CPL.softLesson.indexOf("طلب") !== -1, "lesson why");
+    eq(CPL.softLesson.indexOf("تشخيص") !== -1 && CPL.softLesson.indexOf("أدوية") !== -1, "not clinical");
+    eq(CPL.softJointHow.indexOf("المتكلم") !== -1 && CPL.softJointHow.indexOf("المستمع") !== -1 && CPL.softJointHow.indexOf("سمعتك") !== -1, "joint paraphrase");
+    eq(CPL.softFeelings.length >= 4, "feelings list");
+    eq(softBlameHit("إنت دايمًا بتتأخر") === true, "blame always");
+    eq(softBlameHit("عمرك ما بتغسل الصحون") === true, "blame never");
+    eq(softBlameHit("إنت كسول") === true, "blame insult");
+    eq(softBlameHit("ولا مرة سألت عني") === true, "blame never phrase");
+    eq(softBlameHit("تأخر العشا امبارح") === false, "specific situation");
+    eq(softBlameHit("ابدأ الحكي بهدوء") === false, "start is not never");
+    eq(softNegativeHit("بطّل تصرخ") === true, "neg stop");
+    eq(softNegativeHit("لا تقاطعني") === true, "neg dont");
+    eq(softNegativeHit("ما تصرخ علي") === true, "neg ma");
+    eq(softNegativeHit("ابعثلي رسالة قبل ما تتأخر") === false, "positive request");
+    eq(softNegativeHit("ابدأ الحكي بهدوء") === false, "positive start");
+    var previewLine = softSentence("تأخر العشا امبارح", "زعلان", "تبعث رسالة قبل ما تتأخر");
+    eq(previewLine.indexOf("لما تأخر العشا امبارح") !== -1, "preview when");
+    eq(previewLine.indexOf("حسيت إني زعلان") !== -1, "preview feel");
+    eq(previewLine.indexOf("واللي بيساعدني: تبعث رسالة قبل ما تتأخر") !== -1, "preview ask");
+    eq(softSentence("", " ", "") === "", "preview empty");
+    saveCplMeta({ aName: "Lina", bName: "Omar", active: "a", screen: "plan", safety: false });
+    saveJSON(K_CPL_PLAN, makeCplPlan());
+    state.cplSoftBySide.a = { situation: "إنت دايمًا بتتأخر", feeling: "زعلان", request: "تبعث رسالة", share: false };
+    state.cplSoftBySide.b = emptySoftDraft();
+    var hintCard = cplSoftCard(loadCplMeta());
+    eq(hintCard.indexOf(CPL.softHintBlame) !== -1, "blame hint shown");
+    eq(hintCard.indexOf(CPL.softHintNegative) === -1, "no neg hint on positive ask");
+    eq(hintCard.indexOf(CPL.softSave) !== -1 && hintCard.indexOf('data-action="cpl-soft-add"') !== -1, "hint does not block");
+    eq(hintCard.indexOf("لما إنت دايمًا بتتأخر") !== -1, "live preview");
+    eq(hintCard.indexOf('data-feel="زعلان"') !== -1, "feeling chip");
+    eq(/id="cpl-soft-share"[^>]*checked/.test(hintCard) === false, "soft share off");
+    eq(hintCard.indexOf(CPL.softLesson) !== -1, "lesson on card");
+    state.cplSoftBySide.a = { situation: "تأخر العشا امبارح", feeling: "زعلان", request: "بطّل تصرخ", share: false };
+    var negCard = cplSoftCard(loadCplMeta());
+    eq(negCard.indexOf(CPL.softHintNegative) !== -1, "neg hint shown");
+    eq(negCard.indexOf(CPL.softHintBlame) === -1, "clean situation no blame");
+    eq(negCard.indexOf(CPL.softSave) !== -1, "neg hint does not block");
+    eq(trySaveCplSoft(loadCplMeta(), "إنت دايمًا بتتأخر", "زعلان", "بطّل تصرخ", false) === "ok", "hints do not block save");
+    eq(loadCplSide("a").soft.length === 1 && loadCplSide("a").soft[0].share === false, "blaming draft saved private");
+    cplWipe();
+    saveCplMeta({ aName: "Lina", bName: "Omar", active: "a", screen: "plan", safety: false });
+    var metaSoftCap = loadCplMeta();
+    eq(trySaveCplSoft(metaSoftCap, "موقف أول كاف", "زعلان", "تبعث رسالة", false) === "ok", "soft1");
+    eq(trySaveCplSoft(metaSoftCap, "موقف ثاني كاف", "تعبان", "نقعد شوي", false) === "ok", "soft2");
+    eq(trySaveCplSoft(metaSoftCap, "موقف ثالث كاف", "مهموم", "تحكي بهدوء", true) === "ok", "soft3");
+    eq(trySaveCplSoft(metaSoftCap, "موقف رابع كاف", "خجلان", "تسمع لآخر", false) === "full", "soft4");
+    var capped = loadCplSide("a").soft;
+    eq(capped.length === 3, "soft cap");
+    eq(capped[0].share === false && capped[1].share === false && capped[2].share === true, "soft share explicit");
+    var fullCard = cplSoftCard(loadCplMeta());
+    eq(fullCard.indexOf(CPL.softFull) !== -1, "full message");
+    eq(fullCard.indexOf('data-action="cpl-soft-add"') === -1, "no add when full");
+    var dropId = capped[0].id;
+    eq(removeCplSoft("a", dropId) === true, "delete own draft");
+    eq(removeCplSoft("b", dropId) === false, "delete stays on own record");
+    eq(loadCplSide("a").soft.length === 2, "after delete");
+    eq(cplSoftCard(loadCplMeta()).indexOf('data-action="cpl-soft-add"') !== -1, "form returns");
+    cplWipe();
+    var softUnshared = "SOFTUNSHARED77secret";
+    var softShared = "SOFTSHARED77visible";
+    var softOther = "SOFTOTHER88secret";
+    var softBShared = "SOFTBSHARED77visible";
+    saveCplMeta({ aName: "Lina", bName: "Omar", active: "a", screen: "plan", safety: false });
+    saveJSON(K_CPL_PLAN, makeCplPlan());
+    var aSoft = cplBlank();
+    aSoft.done = true;
+    aSoft.answers = ["money", "loud", "بقرب", "space", "x", "cooking", "بقرب", "text"];
+    aSoft.soft = [
+      { id: "su", situation: softUnshared, feeling: "زعلان", request: "تبعث رسالة", share: false },
+      { id: "ss", situation: softShared, feeling: "متدايق", request: "نقعد عشر دقايق", share: true }
+    ];
+    saveCplSide("a", aSoft);
+    var bSoft = cplBlank();
+    bSoft.done = true;
+    bSoft.answers = ["money", "quiet", "بسكت", "time", "y", "patience", "بسكت", "ask"];
+    bSoft.soft = [{ id: "so", situation: softOther, feeling: "تعبان", request: "تحكي بهدوء", share: false }];
+    saveCplSide("b", bSoft);
+    state.cplSoftBySide.a = { situation: "UNSAVEDSOFTA99", feeling: "مهموم", request: "تسمع شوي", share: false };
+    state.cplSoftBySide.b = emptySoftDraft();
+    eq(String(localStorage.getItem(K_CPL_A) || "").indexOf(softUnshared) !== -1, "soft stored on a");
+    eq(String(localStorage.getItem(K_CPL_B) || "").indexOf(softUnshared) === -1, "soft not stored on b");
+    eq(String(localStorage.getItem(K_CPL_B) || "").indexOf(softShared) === -1, "shared soft not on b record");
+    var ownSoftPlan = viewCplPlan(loadCplMeta());
+    eq(ownSoftPlan.indexOf(softUnshared) !== -1 && ownSoftPlan.indexOf(softShared) !== -1, "own drafts on own plan");
+    eq(ownSoftPlan.indexOf("UNSAVEDSOFTA99") !== -1, "unsaved draft on own plan");
+    eq(ownSoftPlan.indexOf(softOther) === -1, "other draft off own plan");
+    eq(ownSoftPlan.indexOf('data-id="su" checked') === -1, "unshared soft unchecked");
+    eq(ownSoftPlan.indexOf('data-id="ss" checked') !== -1, "marked soft checked");
+    var metaSoftB = loadCplMeta();
+    metaSoftB.active = "b";
+    var otherSoftPlan = viewCplPlan(metaSoftB);
+    eq(otherSoftPlan.indexOf(softUnshared) === -1, "unshared hidden from other plan");
+    eq(otherSoftPlan.indexOf(softShared) === -1, "marked hidden from other plan");
+    eq(otherSoftPlan.indexOf("UNSAVEDSOFTA99") === -1, "unsaved hidden from other plan");
+    eq(otherSoftPlan.indexOf(softOther) !== -1, "own draft on other plan");
+    var otherSoftAsk = viewCplAsk(metaSoftB);
+    eq(otherSoftAsk.indexOf(softUnshared) === -1 && otherSoftAsk.indexOf(softShared) === -1 && otherSoftAsk.indexOf("UNSAVEDSOFTA99") === -1, "hidden from other ask");
+    eq(otherSoftAsk.indexOf(softOther) !== -1, "ask shows own soft");
+    var otherSoftRev = viewCplReview(metaSoftB);
+    eq(otherSoftRev.indexOf(softUnshared) === -1 && otherSoftRev.indexOf(softShared) === -1 && otherSoftRev.indexOf("UNSAVEDSOFTA99") === -1, "hidden from other review");
+    eq(otherSoftRev.indexOf(softOther) !== -1, "review shows own soft");
+    var softSum = buildCoupleSummary(loadCplSide("a"), loadCplSide("b"), "Lina", "Omar");
+    var softSumBlob = JSON.stringify(softSum);
+    eq(softSumBlob.indexOf(softUnshared) === -1 && softSumBlob.indexOf(softShared) === -1 && softSumBlob.indexOf(softOther) === -1 && softSumBlob.indexOf("UNSAVEDSOFTA99") === -1, "summary object no drafts");
+    saveJSON(K_CPL_SUM, softSum);
+    var softSumView = viewCplSummary(metaSoftB);
+    eq(softSumView.indexOf(softUnshared) === -1 && softSumView.indexOf(softShared) === -1 && softSumView.indexOf(softOther) === -1 && softSumView.indexOf("UNSAVEDSOFTA99") === -1, "summary view no drafts");
+    eq(softSumView.indexOf('data-cpl-soft="log"') === -1 && softSumView.indexOf('data-cpl-soft="joint"') === -1, "no soft on summary");
+    var softPlan = makeCplPlan();
+    softPlan.startDate = isoAddDays(jerusalemToday(), -3);
+    saveJSON(K_CPL_PLAN, softPlan);
+    var softJoint = loadCplMeta();
+    softJoint.screen = "session";
+    softJoint.openDay = "c4";
+    softJoint.active = "a";
+    softJoint.safety = false;
+    var softClosed = viewCplSession(softJoint);
+    eq(softClosed.indexOf('data-cpl-soft="joint"') === -1, "no soft joint before both");
+    eq(softClosed.indexOf(softShared) === -1 && softClosed.indexOf(softUnshared) === -1 && softClosed.indexOf(softOther) === -1, "no drafts before both");
+    eq(softClosed.indexOf('data-cpl-soft="log"') === -1, "no private builder on joint");
+    for (var sd = 0; sd < softPlan.days.length; sd++) if (softPlan.days[sd].id === "c4") softPlan.days[sd].bothHere = true;
+    saveJSON(K_CPL_PLAN, softPlan);
+    var softOpen = viewCplSession(softJoint);
+    eq(softOpen.indexOf('data-cpl-soft="joint"') !== -1, "soft joint after both");
+    eq(softOpen.indexOf(softShared) !== -1, "marked draft in joint");
+    eq(softOpen.indexOf(softUnshared) === -1 && softOpen.indexOf(softOther) === -1 && softOpen.indexOf("UNSAVEDSOFTA99") === -1, "unshared not in joint");
+    eq(softOpen.indexOf(CPL.softJointHow) !== -1 && softOpen.indexOf(CPL.softLesson) !== -1, "joint how");
+    eq(softOpen.indexOf('data-cpl-soft="log"') === -1, "builder stays off joint");
+    bSoft = loadCplSide("b");
+    bSoft.soft.push({ id: "sb", situation: softBShared, feeling: "خجلان", request: "تمسك إيدي", share: true });
+    saveCplSide("b", bSoft);
+    var softBoth = viewCplSession(softJoint);
+    eq(softBoth.indexOf(softBShared) !== -1, "b marked in joint");
+    eq(softBoth.indexOf(softOther) === -1 && softBoth.indexOf(softUnshared) === -1, "unshared still hidden in joint");
+    aSoft = loadCplSide("a");
+    aSoft.soft.forEach(function (n) { n.share = false; });
+    saveCplSide("a", aSoft);
+    bSoft = loadCplSide("b");
+    bSoft.soft.forEach(function (n) { n.share = false; });
+    saveCplSide("b", bSoft);
+    var softJointEmpty = viewCplSession(softJoint);
+    eq(softJointEmpty.indexOf(CPL.softJointEmpty) !== -1, "soft gentle empty");
+    eq(softJointEmpty.indexOf(softShared) === -1 && softJointEmpty.indexOf(softBShared) === -1 && softJointEmpty.indexOf(softUnshared) === -1, "unmarked hidden in joint");
+    softJoint.openDay = "c1";
+    softJoint.active = "a";
+    var softAlone = viewCplSession(softJoint);
+    eq(softAlone.indexOf('data-cpl-soft="log"') !== -1, "builder on individual day");
+    eq(softAlone.indexOf(softUnshared) !== -1, "own draft on individual day");
+    eq(softAlone.indexOf(softOther) === -1 && softAlone.indexOf('data-cpl-soft="joint"') === -1, "no other and no joint card alone");
+    cplWipe();
+    saveCplMeta({ aName: "Lina", bName: "Omar", active: "a", screen: "plan", safety: false });
+    saveJSON(K_CPL_PLAN, makeCplPlan());
+    var metaSoftSafe = loadCplMeta();
+    eq(trySaveCplSoft(metaSoftSafe, CPL.hitSample, "زعلان", "تبعث رسالة", true) === "safety", "situation safety");
+    eq(JSON.stringify(loadCplSide("a").soft).indexOf(CPL.hitSample) === -1, "violent situation not stored");
+    cplWipe();
+    saveCplMeta({ aName: "Lina", bName: "Omar", active: "a", screen: "plan", safety: false });
+    metaSoftSafe = loadCplMeta();
+    eq(trySaveCplSoft(metaSoftSafe, "تأخر العشا", CPL.hitSample, "تبعث رسالة", false) === "safety", "feeling safety");
+    eq(JSON.stringify(loadCplSide("a").soft).indexOf(CPL.hitSample) === -1, "violent feeling not stored");
+    cplWipe();
+    saveCplMeta({ aName: "Lina", bName: "Omar", active: "a", screen: "plan", safety: false });
+    metaSoftSafe = loadCplMeta();
+    eq(trySaveCplSoft(metaSoftSafe, "تأخر العشا", "زعلان", CPL.hitSample, false) === "safety", "request safety");
+    eq(JSON.stringify(loadCplSide("a").soft).indexOf(CPL.hitSample) === -1, "violent request not stored");
+    enterSafety(metaSoftSafe);
+    state.view = "couples";
+    state.hold = false;
+    var softSafeHtml = viewCouples();
+    eq(softSafeHtml.indexOf(">100<") !== -1 && softSafeHtml.indexOf(">1201<") !== -1, "soft safety numbers");
+    eq(softSafeHtml.indexOf(CPL.hitSample) === -1, "soft hit not rendered");
+    eq(softSafeHtml.indexOf(CPL.softTitle) === -1 && softSafeHtml.indexOf('data-cpl-soft="log"') === -1, "builder hidden on safety");
+    cplWipe();
+    saveCplMeta({ aName: "Lina", bName: "Omar", active: "a", screen: "plan", safety: false });
+    saveJSON(K_CPL_PLAN, makeCplPlan());
+    var metaSoftCrisis = loadCplMeta();
+    eq(trySaveCplSoft(metaSoftCrisis, "بدي اموت", "زعلان", "تبعث رسالة", false) === "crisis", "situation crisis");
+    eq(JSON.stringify(loadCplSide("a").soft).indexOf("بدي اموت") === -1, "crisis situation not stored");
+    cplWipe();
+    saveCplMeta({ aName: "Lina", bName: "Omar", active: "a", screen: "plan", safety: false });
+    metaSoftCrisis = loadCplMeta();
+    eq(trySaveCplSoft(metaSoftCrisis, "تأخر العشا", "زعلان", "بدي اموت", false) === "crisis", "request crisis");
+    eq(JSON.stringify(loadCplSide("a").soft).indexOf("بدي اموت") === -1, "crisis request not stored");
+    state.hold = true;
+    eq(trySaveCplSoft(loadCplMeta(), "موقف لطيف كاف", "زعلان", "تبعث رسالة", false) === "hidden", "no save on hold");
+    eq(cplSoftCard(loadCplMeta()) === "", "card hidden on hold");
     state.hold = false;
     state.crisis = null;
     cplWipe();
