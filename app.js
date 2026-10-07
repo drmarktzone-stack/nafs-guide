@@ -270,6 +270,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
   var K_CPL_B = C.prefix + "_cpl_b";
   var K_CPL_SUM = C.prefix + "_cpl_sum";
   var K_CPL_PLAN = C.prefix + "_cpl_plan";
+  var K_TO_CLOCK = C.prefix + "_cpl_to_clock";
   var CPL = {
   "nav": "الزوجين",
   "tile": "دليل للزوجين",
@@ -310,7 +311,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
   "summaryOnly": "الصورة المشتركة بس. الكلام الخاص ما بيننسخ لهون.",
   "startWeek": "ابدأ خطة السبع أيام للزوجين",
   "planTitle": "سبع أيام",
-  "planIntro": "أول تلات أيام فردية. الدليل ببدّل مين الجلسة إله: الشريك الأول، بعدين الثاني، بعدين الأول. من اليوم الرابع الجلسات مشتركة، والاثنين يكونوا موجودين، وفيها تمرين دور المتكلم والمستمع بمؤقت. اليوم اللي بعده بيضل مقفول ليومه.",
+  "planIntro": "أول تلات أيام فردية. الدليل ببدّل مين الجلسة إله: الشريك الأول، بعدين الثاني، بعدين الأول. بهالأيام كل واحد يجهّز خطة وقفة ورجوع خاصة فيه. من اليوم الرابع الجلسات مشتركة، والاثنين يكونوا موجودين، وفيها تمرين دور المتكلم والمستمع بمؤقت، وزر وقفة إذا الحكي علا. اليوم اللي بعده بيضل مقفول ليومه.",
   "planProgress": "خلص {done} من {total} جلسات. بلشت {start}.",
   "dayLabel": "يوم {n}",
   "openDay": "افتح الجلسة",
@@ -386,6 +387,63 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
   "softBy": "{name}",
   "softMax": 3,
   "softFeelings": ["زعلان", "متدايق", "تعبان", "مهموم", "خجلان", "مستعجل"],
+  "toTitle": "خطة وقفة ورجوع",
+  "toLesson": "الفكرة من علاج سلوكي للزوجين، ومن اللي منعرفه عن غرق الجسم: لما الغضب يعلى، القلب بيضل سريع والحكي بيطلع أقسى. استراحة عشرين دقيقة على الأقل بتعطي الجسم وقت يهدى. الوقفة استراحة بوعد رجوع، مش طلعة وما ترجع، ومش سكوت عقاب، ومش عقاب. هاد تمرين بدليل ذاتي، مش معالج مرخّص، وما في تشخيص ولا أدوية.",
+  "toWhy": "عشرين دقيقة على الأقل عشان الجسم يهدى. أقل من هيك كتير بيضل القلب عالي والحكي بيرجع أقسى.",
+  "toBody": "علامات بالجسم لما تغرق",
+  "toThoughts": "أفكار بتيجي لما تغرق",
+  "toVoice": "شو بصير بصوتك أو كلامك",
+  "toPhrase": "جملة وقفة محايدة",
+  "toPhraseHint": "بدي وقفة، وبرجع بعد عشرين دقيقة",
+  "toActivities": "اختَر من ٢ لـ ٤ إشياء بتهدّيك",
+  "toCustom": "أو اكتب إشي من عندك يهدّي الجسم",
+  "toRuminate": "الوقفة مش عشان تعيد الخناقة براسك أو تجهّز رد. اختَر إشي يهدّي الجسم: تنفّس، مشي، موسيقى، أو دش.",
+  "toRuminateHint": "إذا النشاط فيه إعادة الخناقة أو تحضير رد، جرّب إشي يهدّي الجسم: تنفّس، مشي، موسيقى، أو دش.",
+  "toReturn": "بتعهّد أرجع بعد الوقفة. هاي مش طلعة، ومش سكوت عقاب، ومش أمشي وما أرجع.",
+  "toShare": "شارك جملة الوقفة ووعد الرجوع بالجلسة المشتركة",
+  "toSave": "احفظ خطتي",
+  "toPrivateHint": "العلامات وقائمة التهدئة بتضل عندك إنت، وما بتنعرض للشريك. جملة الوقفة ووعد الرجوع بتنعرض بالجلسة المشتركة بس إذا علّمت المشاركة.",
+  "toNeed": "عشان الخطة تتحفظ: جاوب «لا» على سؤال الخوف، اكتب علامة وحدة على الأقل، وجملة الوقفة، واختار من ٢ لـ ٤ إشياء تهدئة، وعلّم وعد الرجوع.",
+  "toSavedNote": "الخطة محفوظة عندك إنت.",
+  "toFearQ": "في خوف من الشريك، أو تهديد، أو ضرب؟",
+  "toFearNo": "لا",
+  "toFearYes": "أيوه، في خوف أو تهديد أو ضرب",
+  "toReady": "جاهزة",
+  "toEmpty": "لسه ناقصة",
+  "toStatusTitle": "حالة خطة الوقفة",
+  "toStatusHint": "الحالة بس. العلامات وقائمة التهدئة بتضل عند صاحبها.",
+  "toActs": [
+    { "id": "breath", "label": "تنفّس بطيء" },
+    { "id": "walk", "label": "مشي" },
+    { "id": "music", "label": "موسيقى" },
+    { "id": "shower", "label": "دش" }
+  ],
+  "toPause": "وقفة",
+  "toPauseBody": "إذا الحكي علا والجسم غرق، اضغط وقفة. العدّاد عشرين دقيقة، وفيك تمدّده لثلاثين. خلال الوقفة بتشوف قائمتك إنت بس.",
+  "toCoolTitle": "وقفة هسّة",
+  "toCoolNote": "هاي وقفة بوعد رجوع، مش طلعة ومش عقاب. اعمل إشي يهدّي جسمك، ولا تعيد الخناقة براسك.",
+  "toExtend": "مدّدها لـ ٣٠ دقيقة",
+  "toExtended": "الوقفة صارت ٣٠ دقيقة.",
+  "toTick": "باقي {m}:{s}",
+  "toMineList": "قائمتك إنت للتهدئة",
+  "toNoList": "لسه ما في عندك قائمة. تنفّس بطيء أو مشي قصير بكفّي لهالوقفة.",
+  "toSharedTitle": "جملة الوقفة ووعد الرجوع",
+  "toSharedEmpty": "ما في جملة وقفة مشاركة هسّة. كل واحد يقدر يعلّمها بخطته الخاصة.",
+  "toSharedPhrase": "{name}: {phrase}",
+  "toSharedReturn": "{name} وعد يرجع بعد الوقفة.",
+  "toRepairTitle": "رجوع وإصلاح",
+  "toRepairBody": "خلص وقت الوقفة. قبل ما نرجع للحكي، اختَر جملة إصلاح أو اكتب وحدة: مسؤولية عن جزء، أو طلب نبلّش بهدوء. بعدين كمّلوا بدور المتكلم والمستمع.",
+  "toRepairWrite": "أو اكتب جملة إصلاح",
+  "toRepairGo": "ارجع لدور المتكلم والمستمع",
+  "toRepairNeed": "اختَر جملة أو اكتب وحدة قبل الرجوع.",
+  "toRepairs": [
+    "أنا مسؤول عن جزء من اللي صار.",
+    "ممكن نبلّش الحكي من أول بهدوء؟",
+    "النبرة طلعت أقسى من قصدي، خلّينا نرجع لطلب واحد."
+  ],
+  "toSaid": "جملة الإصلاح: {phrase}",
+  "toSafetyLine": "الوقفة مش حل للعنف. إذا في خوف أو تهديد أو ضرب، الجلسات المشتركة مش مناسبة. اطلع واتصل بالأرقام.",
+  "toDoneTick": "خلص وقت الوقفة. وقت الرجوع.",
   "resetAsk": "امسح أجوبة الزوجين عن هاد الجهاز",
   "resetYes": "أيوه، امسحها",
   "resetNo": "خلّيها",
@@ -533,10 +591,12 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
   function loadProgram() { return loadJSON(K_PROGRAM, null); }
   function saveProgram(p) { saveJSON(K_PROGRAM, p); }
 
-  var state = { view: "home", dayId: null, crisis: null, hold: false, guideText: "", guide: null, pad: "", pst: {}, check: null, result: null, formError: "", confirmClear: false, cplErr: "", cplReset: false, cplNiceDraft: "", cplNiceShare: false, cplNiceErr: "", cplSoftErr: "", cplSoftBySide: { a: { situation: "", feeling: "", request: "", share: false }, b: { situation: "", feeling: "", request: "", share: false } } };
+  var state = { view: "home", dayId: null, crisis: null, hold: false, guideText: "", guide: null, pad: "", pst: {}, check: null, result: null, formError: "", confirmClear: false, cplErr: "", cplReset: false, cplNiceDraft: "", cplNiceShare: false, cplNiceErr: "", cplSoftErr: "", cplSoftBySide: { a: { situation: "", feeling: "", request: "", share: false }, b: { situation: "", feeling: "", request: "", share: false } }, cplToErr: "", cplToBySide: { a: null, b: null } };
   var breath = { running: false, timer: null, mode: "468", phaseIdx: 0, left: 4, cycle: 0, totalCycles: 5, dayId: null, finishedMsg: "" };
   var slClock = null;
   var slTurn = { left: 180, running: false, done: false };
+  var toClock = null;
+  var toTurn = { phase: "idle", endsAt: 0, extended: false, running: false, repairPick: "", repairText: "", said: "" };
 
   function breathModes() {
     return {
@@ -883,11 +943,22 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
     var breathingHere = state.view === "breathe" || (state.view === "day" && state.dayId === "t1");
     if (!breathingHere) stopBreath(false);
     if (!slSessionOpen()) stopSl(true);
+    if (state.hold || state.crisis) stopTo(true);
+    else if (toTurn.phase === "cool" && toLeftSec() <= 0) {
+      toTurn.phase = "repair";
+      toTurn.running = false;
+      saveToTurn();
+      clearToClock();
+    }
     var app = document.getElementById("app");
     if (!app) return;
     app.innerHTML = shell(viewHTML());
     renderCrisis();
     if (breath.running) syncBreathDom();
+    if (!state.hold && !state.crisis && toSessionOpen() && toTurn.phase === "cool") {
+      ensureToClock();
+      syncToDom();
+    } else clearToClock();
   }
   function readRoute() {
     var h = (location.hash || "#home").replace("#", "");
@@ -1112,7 +1183,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
   }
 
   function cplBlank() {
-    return { answers: ["", "", "", "", "", "", "", ""], done: false, doneAt: null, qi: 0, notes: {}, nice: [], soft: [] };
+    return { answers: ["", "", "", "", "", "", "", ""], done: false, doneAt: null, qi: 0, notes: {}, nice: [], soft: [], timeout: emptyTimeout() };
   }
   var cplNiceSeq = 0;
   function cplNiceId() {
@@ -1216,12 +1287,14 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
       rec = cplBlank();
       if (raw && Array.isArray(raw.nice)) rec.nice = sanitizeNiceList(raw.nice);
       if (raw && Array.isArray(raw.soft)) rec.soft = sanitizeSoftList(raw.soft);
+      if (raw && raw.timeout) rec.timeout = sanitizeTimeout(raw.timeout);
     } else {
       rec = raw;
       if (!rec.notes || typeof rec.notes !== "object") rec.notes = {};
       if (typeof rec.qi !== "number") rec.qi = 0;
       rec.nice = sanitizeNiceList(rec.nice);
       rec.soft = sanitizeSoftList(rec.soft);
+      rec.timeout = sanitizeTimeout(rec.timeout);
     }
     return rec;
   }
@@ -1281,7 +1354,10 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
     state.cplNiceDraft = "";
     state.cplNiceShare = false;
     state.cplNiceErr = "";
+    state.cplToErr = "";
     clearSoftDrafts();
+    clearToDrafts();
+    stopTo(true);
   }
   function scrubSide(which) {
     var rec = loadCplSide(which);
@@ -1313,6 +1389,10 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
       keptSoft.push(draft);
     });
     rec.soft = keptSoft;
+    var toBlobNow = timeoutBlob(rec.timeout);
+    if (rec.timeout && rec.timeout.fear === "yes") { hitV = true; rec.timeout = emptyTimeout(); }
+    else if (isCrisisText(toBlobNow)) { hitC = true; rec.timeout = emptyTimeout(); }
+    else if (cplViolent(toBlobNow)) { hitV = true; rec.timeout = emptyTimeout(); }
     saveCplSide(which, rec);
     return { hitV: hitV, hitC: hitC };
   }
@@ -1325,7 +1405,10 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
     state.cplNiceDraft = "";
     state.cplNiceShare = false;
     state.cplNiceErr = "";
+    state.cplToErr = "";
     clearSoftDrafts();
+    clearToDrafts();
+    stopTo(true);
     render();
   }
   function screenFor(meta, who) {
@@ -1419,6 +1502,12 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
     var softGuard = readSoftInputs(side);
     if (softGuard === "crisis") { triggerCrisis("text"); return "stop"; }
     if (softGuard === "safety") { enterSafety(meta); return "stop"; }
+    var toGuard = readToInputs(side);
+    if (toGuard === "crisis") { triggerCrisis("text"); return "stop"; }
+    if (toGuard === "safety") { enterSafety(meta); return "stop"; }
+    var repairGuard = readRepairInput();
+    if (repairGuard === "crisis") { triggerCrisis("text"); return "stop"; }
+    if (repairGuard === "safety") { enterSafety(meta); return "stop"; }
     return "ok";
   }
   function cplNiceCard(meta) {
@@ -1757,6 +1846,436 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
       "<p>" + esc(CPL.softLesson) + "</p>" +
       "<p>" + esc(CPL.softJointHow) + "</p>" + body + "</section>";
   }
+  var TO_RUMINATE = ["اعيد الخناقه", "بعيد الخناقه", "بفكر بالرد", "بفكر شو ارد", "بحضر الرد", "بحضر رد", "بحضر حجه", "براجع الخناقه", "بلف بالخناقه", "اجهز الرد", "اجهز رد", "بركب الرد", "اعيد الكلام", "بجهز الرد", "rehearse", "rumination"];
+  function emptyTimeout() {
+    return { body: "", thoughts: "", voice: "", phrase: "", acts: [], custom: "", back: false, share: false, fear: "", saved: false };
+  }
+  function sanitizeTimeout(raw) {
+    var base = emptyTimeout();
+    if (!raw || typeof raw !== "object") return base;
+    base.body = String(raw.body || "").trim().slice(0, 180);
+    base.thoughts = String(raw.thoughts || "").trim().slice(0, 180);
+    base.voice = String(raw.voice || "").trim().slice(0, 180);
+    base.phrase = String(raw.phrase || "").trim().slice(0, 120);
+    var allowed = {};
+    (CPL.toActs || []).forEach(function (a) { allowed[a.id] = 1; });
+    var src = Array.isArray(raw.acts) ? raw.acts : [];
+    var acts = [];
+    for (var i = 0; i < src.length; i++) {
+      var id = String(src[i] || "");
+      if (allowed[id] && acts.indexOf(id) === -1) acts.push(id);
+    }
+    base.acts = acts.slice(0, 4);
+    base.custom = String(raw.custom || "").trim().slice(0, 80);
+    base.back = raw.back === true;
+    base.share = raw.share === true;
+    base.fear = raw.fear === "no" || raw.fear === "yes" ? raw.fear : "";
+    base.saved = raw.saved === true && base.fear !== "yes";
+    return base;
+  }
+  function timeoutBlob(p) {
+    if (!p) return "";
+    return [p.body || "", p.thoughts || "", p.voice || "", p.phrase || "", p.custom || ""].join("\n");
+  }
+  function toActLabel(id) {
+    var list = CPL.toActs || [];
+    for (var i = 0; i < list.length; i++) if (list[i].id === id) return list[i].label;
+    return "";
+  }
+  function toHasSign(p) {
+    if (!p) return false;
+    return String(p.body || "").trim().length >= 2 || String(p.thoughts || "").trim().length >= 2 || String(p.voice || "").trim().length >= 2;
+  }
+  function toActCount(p) {
+    var n = p && Array.isArray(p.acts) ? p.acts.length : 0;
+    if (p && String(p.custom || "").trim().length >= 2) n += 1;
+    return n;
+  }
+  function toPlanReady(p) {
+    if (!p || p.saved !== true || p.fear !== "no") return false;
+    if (!toHasSign(p)) return false;
+    if (String(p.phrase || "").trim().length < 2) return false;
+    var c = toActCount(p);
+    if (c < 2 || c > 4) return false;
+    if (p.back !== true) return false;
+    return true;
+  }
+  function toRuminateHit(raw) {
+    var t = norm(raw);
+    if (!t) return false;
+    for (var i = 0; i < TO_RUMINATE.length; i++) {
+      var p = norm(TO_RUMINATE[i]);
+      if (p && t.indexOf(p) !== -1) return true;
+    }
+    return false;
+  }
+  function clearToDrafts() {
+    state.cplToBySide = { a: null, b: null };
+    state.cplToErr = "";
+  }
+  function clearToDraft(side) {
+    var w = side === "b" ? "b" : "a";
+    if (!state.cplToBySide) state.cplToBySide = { a: null, b: null };
+    state.cplToBySide[w] = emptyTimeout();
+  }
+  function dropTimeout(side) {
+    var w = side === "b" ? "b" : "a";
+    var rec = loadCplSide(w);
+    rec.timeout = emptyTimeout();
+    saveCplSide(w, rec);
+    clearToDraft(w);
+  }
+  function ensureToDraft(side) {
+    var w = side === "b" ? "b" : "a";
+    if (!state.cplToBySide) state.cplToBySide = { a: null, b: null };
+    if (!state.cplToBySide[w]) state.cplToBySide[w] = sanitizeTimeout(loadCplSide(w).timeout);
+    return state.cplToBySide[w];
+  }
+  function readToActsFromDom() {
+    if (typeof document === "undefined") return null;
+    var boxes = document.querySelectorAll("[data-cpl='to-act']");
+    if (!boxes || !boxes.length) return null;
+    var allowed = {};
+    (CPL.toActs || []).forEach(function (a) { allowed[a.id] = 1; });
+    var acts = [];
+    for (var i = 0; i < boxes.length; i++) {
+      if (!boxes[i].checked) continue;
+      var id = String(boxes[i].getAttribute("data-act") || "");
+      if (allowed[id] && acts.indexOf(id) === -1) acts.push(id);
+    }
+    return acts;
+  }
+  function readToInputs(side) {
+    var body = readCplBox("cpl-to-body");
+    var thoughts = readCplBox("cpl-to-thoughts");
+    var voice = readCplBox("cpl-to-voice");
+    var phrase = readCplBox("cpl-to-phrase");
+    var custom = readCplBox("cpl-to-custom");
+    if (body == null && thoughts == null && voice == null && phrase == null && custom == null) return "absent";
+    var d = ensureToDraft(side);
+    if (body != null) d.body = String(body).slice(0, 180);
+    if (thoughts != null) d.thoughts = String(thoughts).slice(0, 180);
+    if (voice != null) d.voice = String(voice).slice(0, 180);
+    if (phrase != null) d.phrase = String(phrase).slice(0, 120);
+    if (custom != null) d.custom = String(custom).slice(0, 80);
+    var acts = readToActsFromDom();
+    if (acts) d.acts = acts;
+    if (typeof document !== "undefined") {
+      var backBox = document.getElementById("cpl-to-back");
+      if (backBox) d.back = !!backBox.checked;
+      var shareBox = document.getElementById("cpl-to-share");
+      if (shareBox) d.share = !!shareBox.checked;
+      var fear = document.querySelector("[data-cpl='to-fear']:checked");
+      if (fear) d.fear = fear.value === "yes" ? "yes" : "no";
+    }
+    var blob = timeoutBlob(d);
+    if (isCrisisText(blob)) { dropTimeout(side); return "crisis"; }
+    if (d.fear === "yes" || cplViolent(blob)) { dropTimeout(side); return "safety"; }
+    return "ok";
+  }
+  function trySaveCplTimeout(meta, draft) {
+    if (state.hold || !meta || meta.safety) return "hidden";
+    var side = meta.active === "b" ? "b" : "a";
+    var d = sanitizeTimeout(draft || {});
+    var blob = timeoutBlob(d);
+    if (isCrisisText(blob)) { dropTimeout(side); return "crisis"; }
+    if (d.fear === "yes" || cplViolent(blob)) { dropTimeout(side); return "safety"; }
+    var count = toActCount(d);
+    var ok = d.fear === "no" && toHasSign(d) && String(d.phrase).trim().length >= 2 && d.back === true && count >= 2 && count <= 4;
+    if (!ok) return "short";
+    d.saved = true;
+    var rec = loadCplSide(side);
+    rec.timeout = d;
+    saveCplSide(side, rec);
+    if (!state.cplToBySide) state.cplToBySide = { a: null, b: null };
+    state.cplToBySide[side] = sanitizeTimeout(d);
+    state.cplToErr = "";
+    return "ok";
+  }
+  function toLeftSec() {
+    if (toTurn.phase !== "cool") return 0;
+    var s = Math.ceil((Number(toTurn.endsAt) - Date.now()) / 1000);
+    if (s < 0) s = 0;
+    if (s > 30 * 60) s = 30 * 60;
+    return s;
+  }
+  function toClockLabel() {
+    if (toTurn.phase === "repair") return CPL.toDoneTick;
+    var left = toLeftSec();
+    var m = Math.floor(left / 60);
+    var sec = left % 60;
+    return fill(CPL.toTick, { m: String(m), s: sec < 10 ? "0" + sec : String(sec) });
+  }
+  function saveToTurn() {
+    try {
+      var hasSaid = String(toTurn.said || "").trim().length >= 2;
+      if (toTurn.phase === "idle" && !hasSaid) {
+        sessionStorage.removeItem(K_TO_CLOCK);
+        return;
+      }
+      sessionStorage.setItem(K_TO_CLOCK, JSON.stringify({
+        phase: toTurn.phase,
+        endsAt: toTurn.endsAt,
+        extended: toTurn.extended === true,
+        repairPick: String(toTurn.repairPick || "").slice(0, 8),
+        repairText: String(toTurn.repairText || "").slice(0, 160),
+        said: String(toTurn.said || "").slice(0, 160)
+      }));
+    } catch (e) {}
+  }
+  function loadToClock() {
+    try {
+      var raw = sessionStorage.getItem(K_TO_CLOCK);
+      if (!raw) return;
+      var o = JSON.parse(raw);
+      if (!o || (o.phase !== "cool" && o.phase !== "repair" && o.phase !== "idle")) return;
+      if (o.phase === "idle" && !String(o.said || "").trim()) return;
+      toTurn.phase = o.phase;
+      toTurn.endsAt = Number(o.endsAt) || 0;
+      toTurn.extended = o.extended === true;
+      toTurn.repairPick = String(o.repairPick || "").slice(0, 8);
+      toTurn.repairText = String(o.repairText || "").slice(0, 160);
+      toTurn.said = String(o.said || "").slice(0, 160);
+      toTurn.running = o.phase === "cool";
+      if (o.phase === "cool" && toLeftSec() <= 0) {
+        toTurn.phase = "repair";
+        toTurn.running = false;
+        saveToTurn();
+      }
+    } catch (e) {}
+  }
+  function clearToClock() {
+    if (toClock) clearInterval(toClock);
+    toClock = null;
+  }
+  function stopTo(reset) {
+    clearToClock();
+    if (!reset) return;
+    toTurn.phase = "idle";
+    toTurn.endsAt = 0;
+    toTurn.extended = false;
+    toTurn.running = false;
+    toTurn.repairPick = "";
+    toTurn.repairText = "";
+    toTurn.said = "";
+    saveToTurn();
+  }
+  function ensureToClock() {
+    if (toClock || typeof document === "undefined") return;
+    toClock = setInterval(onToTick, 1000);
+  }
+  function onToTick() {
+    if (toTurn.phase !== "cool") { clearToClock(); return; }
+    if (toLeftSec() <= 0) {
+      toTurn.phase = "repair";
+      toTurn.running = false;
+      saveToTurn();
+      clearToClock();
+      if (toSessionOpen()) render();
+      return;
+    }
+    syncToDom();
+  }
+  function toSessionOpen() {
+    if (state.crisis || state.hold || state.view !== "couples") return false;
+    var meta = loadCplMeta();
+    if (!meta || meta.safety || meta.screen !== "session") return false;
+    var plan = loadCplPlan();
+    var found = cplDayDef(meta.openDay);
+    if (!plan || !found || found.def.mode !== "joint") return false;
+    if (found.index > todayIndex(plan, jerusalemToday())) return false;
+    return true;
+  }
+  function syncToDom() {
+    if (typeof document === "undefined") return;
+    var el = document.getElementById("cpl-to-tick");
+    if (!el) return;
+    el.textContent = toClockLabel();
+    var card = el.closest ? el.closest(".cpl-to") : null;
+    if (card && card.classList) {
+      card.classList.toggle("is-cool", toTurn.phase === "cool");
+      card.classList.toggle("is-repair", toTurn.phase === "repair");
+    }
+  }
+  function startToPause() {
+    if (!toSessionOpen()) return false;
+    stopSl(true);
+    toTurn.phase = "cool";
+    toTurn.endsAt = Date.now() + 20 * 60 * 1000;
+    toTurn.extended = false;
+    toTurn.running = true;
+    toTurn.repairPick = "";
+    toTurn.repairText = "";
+    toTurn.said = "";
+    saveToTurn();
+    render();
+    return true;
+  }
+  function extendToPause() {
+    if (toTurn.phase !== "cool" || toTurn.extended || !toSessionOpen()) return false;
+    toTurn.endsAt = Date.now() + 30 * 60 * 1000;
+    toTurn.extended = true;
+    saveToTurn();
+    render();
+    return true;
+  }
+  function chosenRepair() {
+    var typed = String(toTurn.repairText || "").trim();
+    if (typed.length >= 2) return typed.slice(0, 160);
+    var list = CPL.toRepairs || [];
+    var idx = parseInt(toTurn.repairPick, 10);
+    if (!isNaN(idx) && list[idx]) return list[idx];
+    return "";
+  }
+  function readRepairInput() {
+    var typed = readCplBox("cpl-to-repair-text");
+    if (typed == null) return "absent";
+    var val = String(typed).slice(0, 160);
+    if (isCrisisText(val)) { toTurn.repairText = ""; return "crisis"; }
+    if (cplViolent(val)) { toTurn.repairText = ""; return "safety"; }
+    toTurn.repairText = val;
+    return "ok";
+  }
+  function finishRepair() {
+    var guard = readRepairInput();
+    if (guard === "crisis") return "crisis";
+    if (guard === "safety") return "safety";
+    var phrase = chosenRepair();
+    if (!phrase || String(phrase).trim().length < 2) return "need";
+    if (isCrisisText(phrase)) { toTurn.repairText = ""; toTurn.repairPick = ""; return "crisis"; }
+    if (cplViolent(phrase)) { toTurn.repairText = ""; toTurn.repairPick = ""; return "safety"; }
+    toTurn.said = String(phrase).slice(0, 160);
+    toTurn.phase = "idle";
+    toTurn.running = false;
+    toTurn.repairPick = "";
+    toTurn.repairText = "";
+    toTurn.endsAt = 0;
+    toTurn.extended = false;
+    saveToTurn();
+    startSl();
+    return "ok";
+  }
+  function cplOwnCalmHTML(side) {
+    var plan = sanitizeTimeout(loadCplSide(side).timeout);
+    if (!plan.saved) return '<p data-cpl-timeout="calm">' + esc(CPL.toNoList) + "</p>";
+    var bits = [];
+    (plan.acts || []).forEach(function (id) {
+      var label = toActLabel(id);
+      if (label) bits.push(label);
+    });
+    if (String(plan.custom || "").trim()) bits.push(String(plan.custom).trim());
+    if (!bits.length) return '<p data-cpl-timeout="calm">' + esc(CPL.toNoList) + "</p>";
+    return '<div data-cpl-timeout="calm"><h3>' + esc(CPL.toMineList) + '</h3><ul class="cpl-to-calm">' +
+      bits.map(function (b) { return "<li>" + esc(b) + "</li>"; }).join("") + "</ul></div>";
+  }
+  function cplSharedTimeoutHTML(meta) {
+    var rows = [];
+    ["a", "b"].forEach(function (w) {
+      var p = sanitizeTimeout(loadCplSide(w).timeout);
+      if (p.share !== true) return;
+      var phrase = String(p.phrase || "").trim();
+      if (phrase.length >= 2) {
+        rows.push('<p data-cpl-timeout="shared-phrase" data-who="' + w + '">' + esc(fill(CPL.toSharedPhrase, { name: nameOf(meta, w), phrase: phrase })) + "</p>");
+      }
+      if (p.back === true) {
+        rows.push('<p data-cpl-timeout="shared-return" data-who="' + w + '">' + esc(fill(CPL.toSharedReturn, { name: nameOf(meta, w) })) + "</p>");
+      }
+    });
+    var inner = rows.length
+      ? "<h3>" + esc(CPL.toSharedTitle) + "</h3>" + rows.join("")
+      : "<p>" + esc(CPL.toSharedEmpty) + "</p>";
+    return '<div data-cpl-timeout="shared">' + inner + "</div>";
+  }
+  function cplToStatusHTML(meta) {
+    if (state.hold || !meta || meta.safety) return "";
+    function label(which) { return toPlanReady(loadCplSide(which).timeout) ? CPL.toReady : CPL.toEmpty; }
+    return '<div class="cpl-to-status" data-cpl-timeout="status" role="group" aria-label="' + esc(CPL.toStatusTitle) + '">' +
+      "<h2>" + esc(CPL.toStatusTitle) + "</h2>" +
+      '<div class="cpl-to-status-row"><span>' + esc(nameOf(meta, "a")) + '</span><b data-to-status="a">' + esc(label("a")) + "</b></div>" +
+      '<div class="cpl-to-status-row"><span>' + esc(nameOf(meta, "b")) + '</span><b data-to-status="b">' + esc(label("b")) + "</b></div>" +
+      '<p class="muted">' + esc(CPL.toStatusHint) + "</p></div>";
+  }
+  function syncToHint(side) {
+    if (typeof document === "undefined") return;
+    var el = document.getElementById("cpl-to-hint");
+    if (!el) return;
+    var d = ensureToDraft(side);
+    el.innerHTML = toRuminateHit(d.custom)
+      ? '<p class="warnbox" data-cpl-timeout="hint">' + esc(CPL.toRuminateHint) + "</p>"
+      : "";
+  }
+  function cplToCard(meta) {
+    if (state.hold || !meta || meta.safety) return "";
+    if (meta.active !== "a" && meta.active !== "b") return "";
+    var side = meta.active === "b" ? "b" : "a";
+    var d = ensureToDraft(side);
+    var boxes = (CPL.toActs || []).map(function (a) {
+      var on = d.acts && d.acts.indexOf(a.id) !== -1;
+      return '<label class="check"><input type="checkbox" data-cpl="to-act" data-act="' + esc(a.id) + '"' + (on ? " checked" : "") + ">" + esc(a.label) + "</label>";
+    }).join("");
+    var hint = toRuminateHit(d.custom) ? '<p class="warnbox" data-cpl-timeout="hint">' + esc(CPL.toRuminateHint) + "</p>" : "";
+    var ready = toPlanReady(loadCplSide(side).timeout);
+    return '<section class="card cpl-to-plan" data-cpl-timeout="plan"><p class="kicker">' + esc(fill(CPL.privateTag, { name: nameOf(meta, side) })) + "</p>" +
+      "<h2>" + esc(CPL.toTitle) + "</h2>" +
+      "<p>" + esc(CPL.toLesson) + "</p>" +
+      "<p>" + esc(CPL.toWhy) + "</p>" +
+      '<fieldset class="cpl-to-fear"><legend>' + esc(CPL.toFearQ) + "</legend>" +
+      '<label class="check"><input type="radio" name="cpl-to-fear" data-cpl="to-fear" value="no"' + (d.fear === "no" ? " checked" : "") + ">" + esc(CPL.toFearNo) + "</label>" +
+      '<label class="check"><input type="radio" name="cpl-to-fear" data-cpl="to-fear" value="yes"' + (d.fear === "yes" ? " checked" : "") + ">" + esc(CPL.toFearYes) + "</label></fieldset>" +
+      '<label class="field">' + esc(CPL.toBody) + '<textarea id="cpl-to-body" maxlength="180" data-cpl="to-body">' + esc(d.body || "") + "</textarea></label>" +
+      '<label class="field">' + esc(CPL.toThoughts) + '<textarea id="cpl-to-thoughts" maxlength="180" data-cpl="to-thoughts">' + esc(d.thoughts || "") + "</textarea></label>" +
+      '<label class="field">' + esc(CPL.toVoice) + '<textarea id="cpl-to-voice" maxlength="180" data-cpl="to-voice">' + esc(d.voice || "") + "</textarea></label>" +
+      '<label class="field">' + esc(CPL.toPhrase) + '<input type="text" id="cpl-to-phrase" maxlength="120" data-cpl="to-phrase" placeholder="' + esc(CPL.toPhraseHint) + '" value="' + esc(d.phrase || "") + '"></label>' +
+      "<p><strong>" + esc(CPL.toActivities) + "</strong></p>" +
+      '<div class="cpl-to-acts">' + boxes + "</div>" +
+      '<label class="field">' + esc(CPL.toCustom) + '<input type="text" id="cpl-to-custom" maxlength="80" data-cpl="to-custom" value="' + esc(d.custom || "") + '"></label>' +
+      '<p class="muted">' + esc(CPL.toRuminate) + "</p>" +
+      '<div id="cpl-to-hint">' + hint + "</div>" +
+      '<label class="check"><input type="checkbox" id="cpl-to-back" data-cpl="to-back"' + (d.back ? " checked" : "") + ">" + esc(CPL.toReturn) + "</label>" +
+      '<label class="check"><input type="checkbox" id="cpl-to-share" data-cpl="to-share"' + (d.share ? " checked" : "") + ">" + esc(CPL.toShare) + "</label>" +
+      '<p class="muted">' + esc(CPL.toPrivateHint) + "</p>" +
+      (ready ? '<p class="okbox" data-cpl-timeout="saved">' + esc(CPL.toSavedNote) + "</p>" : "") +
+      (state.cplToErr ? '<p class="err">' + esc(state.cplToErr) + "</p>" : "") +
+      '<button type="button" class="btn block" data-action="cpl-to-save">' + esc(CPL.toSave) + "</button></section>";
+  }
+  function cplToPauseCard(meta) {
+    if (state.hold || !meta || meta.safety) return "";
+    var side = meta.active === "b" ? "b" : "a";
+    var phase = toTurn.phase;
+    var cls = "card cpl-to" + (phase === "cool" ? " is-cool" : "") + (phase === "repair" ? " is-repair" : "");
+    var main = "";
+    if (phase === "cool") {
+      main = "<h2>" + esc(CPL.toCoolTitle) + "</h2>" +
+        "<p>" + esc(CPL.toCoolNote) + "</p>" +
+        '<p class="cpl-to-tick" id="cpl-to-tick" role="timer" aria-live="polite">' + esc(toClockLabel()) + "</p>" +
+        (toTurn.extended
+          ? '<p class="muted">' + esc(CPL.toExtended) + "</p>"
+          : '<button type="button" class="btn secondary block" data-action="cpl-to-extend">' + esc(CPL.toExtend) + "</button>") +
+        cplOwnCalmHTML(side);
+    } else if (phase === "repair") {
+      var repairs = (CPL.toRepairs || []).map(function (phrase, i) {
+        var on = String(toTurn.repairPick) === String(i) ? " on" : "";
+        return '<button type="button" class="chip' + on + '" data-action="cpl-to-repair" data-repair="' + i + '">' + esc(phrase) + "</button>";
+      }).join("");
+      main = "<h2>" + esc(CPL.toRepairTitle) + "</h2>" +
+        "<p>" + esc(CPL.toRepairBody) + "</p>" +
+        '<div class="chips" role="group" aria-label="' + esc(CPL.toRepairTitle) + '">' + repairs + "</div>" +
+        '<label class="field">' + esc(CPL.toRepairWrite) + '<textarea id="cpl-to-repair-text" maxlength="160" data-cpl="to-repair">' + esc(toTurn.repairText || "") + "</textarea></label>" +
+        (state.cplToErr ? '<p class="err">' + esc(state.cplToErr) + "</p>" : "") +
+        '<button type="button" class="btn block" data-action="cpl-to-return">' + esc(CPL.toRepairGo) + "</button>";
+    } else {
+      var said = String(toTurn.said || "").trim();
+      main = "<h2>" + esc(CPL.toPause) + "</h2>" +
+        "<p>" + esc(CPL.toPauseBody) + "</p>" +
+        "<p>" + esc(CPL.toWhy) + "</p>" +
+        (said ? '<p class="cpl-to-said" data-cpl-timeout="said">' + esc(fill(CPL.toSaid, { phrase: said })) + "</p>" : "") +
+        '<button type="button" class="btn block cpl-to-pause" data-action="cpl-to-start">' + esc(CPL.toPause) + "</button>";
+    }
+    return '<section class="' + cls + '" data-cpl-timeout="pause">' + main + cplSharedTimeoutHTML(meta) + "</section>";
+  }
+  function cplSideCards(meta) {
+    return cplNiceCard(meta) + cplSoftCard(meta) + cplToCard(meta);
+  }
   function viewCplSetup(meta) {
     return '<section class="card"><p class="kicker">' + esc(CPL.kicker) + "</p><h1>" + esc(CPL.tile) + "</h1>" +
       "<p>" + esc(CPL.disc) + "</p>" +
@@ -1796,14 +2315,14 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
       (state.cplErr ? '<p class="err">' + esc(state.cplErr) + "</p>" : "") +
       '<div class="stack">' +
       (i > 0 ? '<button type="button" class="btn secondary block" data-action="cpl-prev">' + esc(CPL.back) + "</button>" : '<button type="button" class="btn secondary block" data-action="cpl-to-who">' + esc(CPL.backWho) + "</button>") +
-      '<button type="button" class="btn block" data-action="cpl-next">' + esc(i === 7 ? CPL.finishMine : CPL.next) + "</button></div></section>" + cplNiceCard(meta) + cplSoftCard(meta);
+      '<button type="button" class="btn block" data-action="cpl-next">' + esc(i === 7 ? CPL.finishMine : CPL.next) + "</button></div></section>" + cplSideCards(meta);
   }
   function viewCplWait(meta) {
     var other = otherOf(meta.active);
     return whoBanner(meta) + '<section class="card"><h1>' + esc(CPL.waitTitle) + "</h1>" +
       "<p>" + esc(fill(CPL.waitBody, { name: nameOf(meta, other) })) + "</p>" +
       '<button type="button" class="btn block" data-action="cpl-switch">' + esc(fill(CPL.theirTurn, { name: nameOf(meta, other) })) + "</button>" +
-      '<button type="button" class="btn secondary block" data-action="cpl-review">' + esc(CPL.reviewMine) + "</button></section>" + cplNiceCard(meta) + cplSoftCard(meta);
+      '<button type="button" class="btn secondary block" data-action="cpl-review">' + esc(CPL.reviewMine) + "</button></section>" + cplSideCards(meta);
   }
   function viewCplReview(meta) {
     var side = meta.active === "b" ? "b" : "a";
@@ -1813,7 +2332,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
     }).join("");
     return whoBanner(meta) + '<section class="card"><p class="kicker">' + esc(fill(CPL.privateTag, { name: nameOf(meta, side) })) + "</p>" +
       "<h1>" + esc(CPL.reviewTitle) + "</h1><p>" + esc(CPL.reviewNote) + "</p>" + rows +
-      '<button type="button" class="btn secondary block" data-action="cpl-to-who">' + esc(CPL.backWho) + "</button></section>" + cplNiceCard(meta) + cplSoftCard(meta);
+      '<button type="button" class="btn secondary block" data-action="cpl-to-who">' + esc(CPL.backWho) + "</button></section>" + cplSideCards(meta);
   }
   function slClockLabel() {
     if (slTurn.done) return CPL.slDone;
@@ -1880,6 +2399,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
     slTurn.done = false;
     render();
     if (!slSessionOpen()) { stopSl(true); return; }
+    if (typeof document === "undefined") return;
     slClock = setInterval(onSlTick, 1000);
     syncSlDom();
   }
@@ -1949,7 +2469,8 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
       "<p>" + esc(fill(CPL.planProgress, { done: done, total: 7, start: plan.startDate })) + "</p>" +
       '<div class="progress" aria-hidden="true"><span style="width:' + pct + '%"></span></div>' +
       cplNiceCountsHTML(meta) +
-      "</section>" + cplNiceCard(meta) + cplSoftCard(meta) +
+      cplToStatusHTML(meta) +
+      "</section>" + cplSideCards(meta) +
       '<section class="card"><button type="button" class="btn secondary block cpl-reopen" data-action="cpl-reopen-sum">' + esc(CPL.reopenSum) + "</button>" +
       list + cplResetBlock() + "</section>";
   }
@@ -1968,13 +2489,13 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
     if (idx > todayIx) {
       return head + "<p>" + esc(CPL.lockedBody) + "</p>" +
         '<button type="button" class="btn secondary block" data-action="cpl-back-plan">' + esc(CPL.backPlan) + "</button></section>" +
-        (def.mode === "joint" ? "" : cplNiceCard(meta) + cplSoftCard(meta));
+        (def.mode === "joint" ? "" : cplSideCards(meta));
     }
     if (def.mode === "individual" && meta.active !== def.who) {
       return head + "<p>" + esc(fill(CPL.wrongPartner, { name: nameOf(meta, def.who) })) + "</p>" +
         '<button type="button" class="btn block" data-action="cpl-switch">' + esc(CPL.switchBtn) + "</button>" +
         '<button type="button" class="btn secondary block" data-action="cpl-back-plan">' + esc(CPL.backPlan) + "</button></section>" +
-        cplNiceCard(meta) + cplSoftCard(meta);
+        cplSideCards(meta);
     }
     var note = "";
     if (def.mode === "individual") note = (loadCplSide(def.who).notes || {})[def.id] || "";
@@ -1993,9 +2514,9 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
     if (def.mode === "joint") {
       both = '<label class="check"><input type="checkbox" data-cpl="both" data-day="' + esc(def.id) + '"' + (day.bothHere ? " checked" : "") + ">" + esc(CPL.bothHere) + "</label>";
     }
-    var slHTML = def.mode === "joint" ? "</section>" + cplSlCard(meta) + '<section class="card">' : "";
+    var slHTML = def.mode === "joint" ? "</section>" + cplSlCard(meta) + cplToPauseCard(meta) + '<section class="card">' : "";
     var niceJoint = (def.mode === "joint" && day.bothHere) ? "</section>" + cplJointNiceCard(meta) + cplJointSoftCard(meta) + '<section class="card">' : "";
-    var nicePrivate = def.mode === "joint" ? "" : cplNiceCard(meta) + cplSoftCard(meta);
+    var nicePrivate = def.mode === "joint" ? "" : cplSideCards(meta);
     return head + sumHTML +
       slHTML +
       "<h2>" + esc(CPL.lessonH) + "</h2><p>" + esc(def.lesson) + "</p>" +
@@ -2011,6 +2532,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
   function viewCplSafety(meta) {
     return '<section class="card cpl-safety"><h1>' + esc(CPL.safetyTitle) + "</h1>" +
       "<p>" + esc(CPL.safetyBody) + "</p>" +
+      "<p><strong>" + esc(CPL.toSafetyLine) + "</strong></p>" +
       "<p><strong>" + esc(CPL.safetyLeave) + "</strong></p>" +
       '<a class="call" href="tel:100"><span>' + esc(CPL.policeLabel) + "</span><b>100</b></a>" +
       '<a class="call" href="tel:1201"><span>' + esc(CPL.eranShort) + "</span><b>1201</b></a>" +
@@ -2152,6 +2674,65 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
       setCplSoftShare(meta.active === "b" ? "b" : "a", String(el.dataset.id || ""), !!el.checked);
       return;
     }
+    if (kind === "to-body" || kind === "to-thoughts" || kind === "to-voice" || kind === "to-phrase" || kind === "to-custom") {
+      if (state.hold || meta.safety) return;
+      var toSide = meta.active === "b" ? "b" : "a";
+      var toKey = kind.slice(3);
+      var toLim = kind === "to-phrase" ? 120 : (kind === "to-custom" ? 80 : 180);
+      var toVal = String(el.value || "").slice(0, toLim);
+      if (isCrisisText(toVal)) {
+        dropTimeout(toSide);
+        el.value = "";
+        triggerCrisis("text");
+        return;
+      }
+      if (cplViolent(toVal)) {
+        dropTimeout(toSide);
+        el.value = "";
+        enterSafety(meta);
+        return;
+      }
+      ensureToDraft(toSide)[toKey] = toVal;
+      state.cplToErr = "";
+      if (kind === "to-custom") syncToHint(toSide);
+      return;
+    }
+    if (kind === "to-act") {
+      if (state.hold || meta.safety) return;
+      var actsNow = readToActsFromDom();
+      if (actsNow) ensureToDraft(meta.active === "b" ? "b" : "a").acts = actsNow;
+      return;
+    }
+    if (kind === "to-back") {
+      if (state.hold || meta.safety) return;
+      ensureToDraft(meta.active === "b" ? "b" : "a").back = !!el.checked;
+      return;
+    }
+    if (kind === "to-share") {
+      if (state.hold || meta.safety) return;
+      ensureToDraft(meta.active === "b" ? "b" : "a").share = !!el.checked;
+      return;
+    }
+    if (kind === "to-fear") {
+      if (state.hold || meta.safety) return;
+      var fearSide = meta.active === "b" ? "b" : "a";
+      if (el.value === "yes") {
+        dropTimeout(fearSide);
+        enterSafety(meta);
+        return;
+      }
+      ensureToDraft(fearSide).fear = "no";
+      return;
+    }
+    if (kind === "to-repair") {
+      if (state.hold || meta.safety) return;
+      var repVal = String(el.value || "").slice(0, 160);
+      if (isCrisisText(repVal)) { toTurn.repairText = ""; el.value = ""; triggerCrisis("text"); return; }
+      if (cplViolent(repVal)) { toTurn.repairText = ""; el.value = ""; enterSafety(meta); return; }
+      toTurn.repairText = repVal;
+      saveToTurn();
+      return;
+    }
     if (kind === "both") {
       var plan2 = loadCplPlan();
       if (!plan2) return;
@@ -2164,6 +2745,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
     var meta = loadCplMeta();
     state.cplErr = "";
     state.cplNiceErr = "";
+    state.cplToErr = "";
     if (action === "cpl-reset-ask") { state.cplReset = true; render(); return; }
     if (action === "cpl-reset-no") { state.cplReset = false; render(); return; }
     if (action === "cpl-reset-yes") { cplWipe(); render(); return; }
@@ -2348,6 +2930,48 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
       if (softResult === "hidden") return;
       render(); return;
     }
+    if (action === "cpl-to-save") {
+      if (state.hold || meta.safety) { render(); return; }
+      var toSaveSide = meta.active === "b" ? "b" : "a";
+      var toSaveGuard = readToInputs(toSaveSide);
+      if (toSaveGuard === "crisis") { triggerCrisis("text"); return; }
+      if (toSaveGuard === "safety") { enterSafety(meta); return; }
+      var toResult = trySaveCplTimeout(meta, ensureToDraft(toSaveSide));
+      if (toResult === "crisis") { triggerCrisis("text"); return; }
+      if (toResult === "safety") { enterSafety(meta); return; }
+      if (toResult === "short") { state.cplToErr = CPL.toNeed; render(); return; }
+      if (toResult === "hidden") return;
+      render(); return;
+    }
+    if (action === "cpl-to-start") {
+      if (applyGuardToCurrent(meta) === "stop") return;
+      flushJointNote(meta);
+      startToPause();
+      return;
+    }
+    if (action === "cpl-to-extend") {
+      extendToPause();
+      return;
+    }
+    if (action === "cpl-to-repair") {
+      if (state.hold || meta.safety || toTurn.phase !== "repair") return;
+      var repIx = String(t.dataset.repair || "");
+      var repList = CPL.toRepairs || [];
+      if (!repList[Number(repIx)]) return;
+      toTurn.repairPick = repIx;
+      state.cplToErr = "";
+      saveToTurn();
+      render();
+      return;
+    }
+    if (action === "cpl-to-return") {
+      if (state.hold || meta.safety || toTurn.phase !== "repair") return;
+      var repResult = finishRepair();
+      if (repResult === "crisis") { triggerCrisis("text"); return; }
+      if (repResult === "safety") { enterSafety(meta); return; }
+      if (repResult === "need") { state.cplToErr = CPL.toRepairNeed; render(); return; }
+      return;
+    }
     if (action === "cpl-done") {
       var plan = loadCplPlan();
       var found = cplDayDef(t.dataset.day);
@@ -2391,6 +3015,10 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
   function selfCheckCouples() {
     var errors = [];
     function eq(c, m) { if (!c) errors.push(m); }
+    stopTo(true);
+    clearToDrafts();
+    state.hold = false;
+    state.crisis = null;
     eq(CPL.questions.length === 8, "questions");
     eq(CPL.days.length === 7, "days");
     eq(CPL.days[0].mode === "individual" && CPL.days[0].who === "a", "d1");
@@ -2816,12 +3444,239 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
     eq(cplSoftCard(loadCplMeta()) === "", "card hidden on hold");
     state.hold = false;
     state.crisis = null;
+    stopTo(true);
+    clearToDrafts();
+    state.view = "couples";
+    var toCopy = [CPL.toTitle, CPL.toLesson, CPL.toWhy, CPL.toBody, CPL.toThoughts, CPL.toVoice, CPL.toPhrase, CPL.toPhraseHint, CPL.toActivities, CPL.toCustom, CPL.toRuminate, CPL.toRuminateHint, CPL.toReturn, CPL.toShare, CPL.toSave, CPL.toPrivateHint, CPL.toNeed, CPL.toSavedNote, CPL.toFearQ, CPL.toFearNo, CPL.toFearYes, CPL.toReady, CPL.toEmpty, CPL.toStatusTitle, CPL.toStatusHint, CPL.toPause, CPL.toPauseBody, CPL.toCoolTitle, CPL.toCoolNote, CPL.toExtend, CPL.toExtended, CPL.toTick, CPL.toMineList, CPL.toNoList, CPL.toSharedTitle, CPL.toSharedEmpty, CPL.toSharedPhrase, CPL.toSharedReturn, CPL.toRepairTitle, CPL.toRepairBody, CPL.toRepairWrite, CPL.toRepairGo, CPL.toRepairNeed, CPL.toSaid, CPL.toSafetyLine, CPL.toDoneTick, (CPL.toRepairs || []).join(""), (CPL.toActs || []).map(function (a) { return a.label; }).join(""), CPL.planIntro].join("\n");
+    eq(toCopy.indexOf("هلق") === -1, "to no halq");
+    eq(CPL.toCoolTitle.indexOf("هسّة") !== -1 && CPL.toSharedEmpty.indexOf("هسّة") !== -1, "to hessa");
+    eq(CPL.toLesson.indexOf("عشرين") !== -1 && CPL.toWhy.indexOf("عشرين") !== -1, "twenty min");
+    eq(CPL.toLesson.indexOf("رجوع") !== -1 && CPL.toReturn.indexOf("عقاب") !== -1 && CPL.toCoolNote.indexOf("عقاب") !== -1, "pause not punishment");
+    eq(CPL.toLesson.indexOf("تشخيص") !== -1 && CPL.toLesson.indexOf("أدوية") !== -1, "to not clinical");
+    eq(CPL.toLesson.indexOf("%") === -1 && CPL.toLesson.indexOf("http") === -1 && CPL.toLesson.indexOf("أبحاث") === -1, "to lesson plain");
+    eq(CPL.toRuminate.indexOf("رد") !== -1, "discourage rumination");
+    eq(CPL.planIntro.indexOf("وقفة") !== -1 && CPL.planIntro.indexOf("مؤقت") !== -1, "plan mentions pause");
+    eq(CPL.toRepairs.length >= 2 && CPL.toActs.length === 4, "repair and acts");
+    eq(CPL.toSafetyLine.indexOf("100") === -1, "safety line points at the card");
+    eq(CPL.toSafetyLine.indexOf("مش حل") !== -1 && CPL.toSafetyLine.indexOf("مش مناسبة") !== -1, "timeout not for violence");
+    eq(toRuminateHit("بعيد الخناقة براسي") === true, "ruminate hit");
+    eq(toRuminateHit("موسيقى هادية") === false, "music ok");
+    eq(toRuminateHit("امشي شوي") === false, "walk ok");
     cplWipe();
+    saveCplMeta({ aName: "Lina", bName: "Omar", active: "a", screen: "plan", safety: false });
+    saveJSON(K_CPL_PLAN, makeCplPlan());
+    var metaTo = loadCplMeta();
+    eq(trySaveCplTimeout(metaTo, { body: "x", thoughts: "", voice: "", phrase: "بدي وقفة", acts: ["breath", "walk"], custom: "", back: true, share: false, fear: "no" }) === "short", "sign too short");
+    eq(trySaveCplTimeout(metaTo, { body: "قلبي يدق", thoughts: "", voice: "", phrase: "ب", acts: ["breath", "walk"], custom: "", back: true, share: false, fear: "no" }) === "short", "phrase short");
+    eq(trySaveCplTimeout(metaTo, { body: "قلبي يدق", thoughts: "", voice: "", phrase: "بدي وقفة", acts: ["breath"], custom: "", back: true, share: false, fear: "no" }) === "short", "need 2 acts");
+    eq(trySaveCplTimeout(metaTo, { body: "قلبي يدق", thoughts: "", voice: "", phrase: "بدي وقفة", acts: ["breath"], custom: "مي", back: true, share: false, fear: "no" }) === "ok", "custom counts");
+    eq(trySaveCplTimeout(metaTo, { body: "قلبي يدق", thoughts: "", voice: "", phrase: "بدي وقفة", acts: ["breath", "walk", "music", "shower"], custom: "مي باردة", back: true, share: false, fear: "no" }) === "short", "max 4 acts");
+    eq(trySaveCplTimeout(metaTo, { body: "قلبي يدق", thoughts: "", voice: "", phrase: "بدي وقفة", acts: ["breath", "walk"], custom: "", back: false, share: false, fear: "no" }) === "short", "need return");
+    eq(trySaveCplTimeout(metaTo, { body: "قلبي يدق", thoughts: "", voice: "", phrase: "بدي وقفة", acts: ["breath", "walk"], custom: "", back: true, share: false, fear: "" }) === "short", "need fear answer");
+    var aBody = "TOBODYSECRET99";
+    var aThink = "TOTHINKSECRET99";
+    var aVoice = "TOVOICESECRET99";
+    var aPhrase = "TOPHRASESECRET99";
+    var aCustom = "TOCUSTOMA99calm";
+    var bBody = "TOOTHERBODY88";
+    var bPhrase = "TOPHRASEB77share";
+    var bCustom = "TOCUSTOMB88calm";
+    eq(trySaveCplTimeout(metaTo, { body: aBody, thoughts: aThink, voice: aVoice, phrase: aPhrase, acts: ["breath", "walk"], custom: aCustom, back: true, share: false, fear: "no" }) === "ok", "save a private");
+    var storedA = loadCplSide("a").timeout;
+    eq(storedA.saved === true && storedA.share === false && storedA.back === true && storedA.fear === "no", "a saved flags");
+    eq(storedA.acts.join(",") === "breath,walk", "a acts");
+    eq(String(localStorage.getItem(K_CPL_A) || "").indexOf(aBody) !== -1, "body on a");
+    eq(String(localStorage.getItem(K_CPL_B) || "").indexOf(aBody) === -1, "body not on b");
+    eq(String(localStorage.getItem(K_CPL_B) || "").indexOf(aPhrase) === -1 && String(localStorage.getItem(K_CPL_B) || "").indexOf(aCustom) === -1, "a plan not on b record");
+    clearToDrafts();
+    var ownToPlan = viewCplPlan(loadCplMeta());
+    eq(ownToPlan.indexOf(aBody) !== -1 && ownToPlan.indexOf(aThink) !== -1 && ownToPlan.indexOf(aVoice) !== -1, "own signs on own plan");
+    eq(ownToPlan.indexOf(aPhrase) !== -1 && ownToPlan.indexOf(aCustom) !== -1, "own phrase and calm on own plan");
+    eq(ownToPlan.indexOf('data-cpl-timeout="plan"') !== -1 && ownToPlan.indexOf('data-cpl-timeout="status"') !== -1, "form and status");
+    eq(ownToPlan.indexOf('data-to-status="a">' + CPL.toReady) !== -1, "a ready");
+    eq(ownToPlan.indexOf('data-to-status="b">' + CPL.toEmpty) !== -1, "b empty");
+    eq(/id="cpl-to-share"[^>]*checked/.test(ownToPlan) === false, "share off");
+    eq(ownToPlan.indexOf(CPL.toLesson) !== -1 && ownToPlan.indexOf(CPL.toRuminate) !== -1 && ownToPlan.indexOf(CPL.toFearQ) !== -1, "lesson fear rumination");
+    var statusOnly = cplToStatusHTML(loadCplMeta());
+    eq(statusOnly.indexOf(aBody) === -1 && statusOnly.indexOf(aPhrase) === -1 && statusOnly.indexOf(aCustom) === -1 && statusOnly.indexOf(aThink) === -1, "status hides text");
+    metaTo = loadCplMeta();
+    metaTo.active = "b";
+    saveCplMeta(metaTo);
+    clearToDrafts();
+    var otherToPlan = viewCplPlan(loadCplMeta());
+    eq(otherToPlan.indexOf(aBody) === -1 && otherToPlan.indexOf(aThink) === -1 && otherToPlan.indexOf(aVoice) === -1, "signs hidden from other");
+    eq(otherToPlan.indexOf(aPhrase) === -1 && otherToPlan.indexOf(aCustom) === -1, "phrase and calm hidden from other");
+    eq(otherToPlan.indexOf('data-to-status="a">' + CPL.toReady) !== -1, "other sees status only");
+    eq(trySaveCplTimeout(loadCplMeta(), { body: bBody, thoughts: "بفكر خلص", voice: "بسكت", phrase: bPhrase, acts: ["music", "shower"], custom: bCustom, back: true, share: true, fear: "no" }) === "ok", "save b shared phrase");
+    eq(String(localStorage.getItem(K_CPL_A) || "").indexOf(bBody) === -1 && String(localStorage.getItem(K_CPL_A) || "").indexOf(bPhrase) === -1 && String(localStorage.getItem(K_CPL_A) || "").indexOf(bCustom) === -1, "b plan stays off a record");
+    clearToDrafts();
+    var bPlan = viewCplPlan(loadCplMeta());
+    eq(bPlan.indexOf(bBody) !== -1 && bPlan.indexOf(bPhrase) !== -1 && bPlan.indexOf(bCustom) !== -1, "b sees own");
+    eq(bPlan.indexOf(aBody) === -1 && bPlan.indexOf(aPhrase) === -1 && bPlan.indexOf(aCustom) === -1, "b plan still hides a");
+    eq(bPlan.indexOf('data-to-status="b">' + CPL.toReady) !== -1, "b ready");
+    eq(/id="cpl-to-share"[^>]*checked/.test(bPlan), "b share on");
+    var bAsk = viewCplAsk(loadCplMeta());
+    eq(bAsk.indexOf(aBody) === -1 && bAsk.indexOf(aPhrase) === -1 && bAsk.indexOf(aCustom) === -1, "ask hides other plan");
+    eq(bAsk.indexOf('data-cpl-timeout="plan"') !== -1 && bAsk.indexOf(bBody) !== -1, "ask shows own plan");
+    var bRev = viewCplReview(loadCplMeta());
+    eq(bRev.indexOf(aBody) === -1 && bRev.indexOf(aPhrase) === -1 && bRev.indexOf(aCustom) === -1, "review hides other plan");
+    eq(bRev.indexOf(bBody) !== -1, "review shows own plan");
+    var toSumBlob = JSON.stringify(buildCoupleSummary(loadCplSide("a"), loadCplSide("b"), "Lina", "Omar"));
+    eq(toSumBlob.indexOf(aBody) === -1 && toSumBlob.indexOf(aPhrase) === -1 && toSumBlob.indexOf(bPhrase) === -1 && toSumBlob.indexOf(bCustom) === -1 && toSumBlob.indexOf(aCustom) === -1, "summary object no timeout");
+    saveJSON(K_CPL_SUM, buildCoupleSummary(loadCplSide("a"), loadCplSide("b"), "Lina", "Omar"));
+    var toSumView = viewCplSummary(loadCplMeta());
+    eq(toSumView.indexOf(aBody) === -1 && toSumView.indexOf(bPhrase) === -1 && toSumView.indexOf(bCustom) === -1 && toSumView.indexOf('data-cpl-timeout="plan"') === -1, "summary view no plan");
+    var toPlan = makeCplPlan();
+    toPlan.startDate = isoAddDays(jerusalemToday(), -3);
+    saveJSON(K_CPL_PLAN, toPlan);
+    var jointTo = loadCplMeta();
+    jointTo.screen = "session";
+    jointTo.openDay = "c4";
+    jointTo.active = "a";
+    jointTo.safety = false;
+    saveCplMeta(jointTo);
+    state.view = "couples";
+    stopTo(true);
+    clearToDrafts();
+    var jointIdle = viewCplSession(loadCplMeta());
+    eq(jointIdle.indexOf('data-action="cpl-to-start"') !== -1 && jointIdle.indexOf('data-cpl-timeout="pause"') !== -1, "pause button");
+    eq(jointIdle.indexOf('data-cpl-timeout="plan"') === -1, "no private form on joint");
+    eq(jointIdle.indexOf(aBody) === -1 && jointIdle.indexOf(aThink) === -1 && jointIdle.indexOf(aVoice) === -1, "signs not on joint");
+    eq(jointIdle.indexOf(aCustom) === -1 && jointIdle.indexOf(bCustom) === -1 && jointIdle.indexOf(bBody) === -1, "calm lists hidden before pause");
+    eq(jointIdle.indexOf(aPhrase) === -1, "unshared phrase hidden on joint");
+    eq(jointIdle.indexOf(bPhrase) !== -1, "opt-in phrase on joint");
+    eq(jointIdle.indexOf("Omar وعد يرجع") !== -1, "opt-in return on joint");
+    eq(jointIdle.indexOf("Lina وعد يرجع") === -1, "unshared return hidden");
+    jointTo.openDay = "c1";
+    jointTo.active = "a";
+    var indTo = viewCplSession(jointTo);
+    eq(indTo.indexOf('data-cpl-timeout="plan"') !== -1, "form on individual day");
+    eq(indTo.indexOf('data-action="cpl-to-start"') === -1, "no pause on individual");
+    eq(indTo.indexOf(aBody) !== -1, "own signs on individual");
+    eq(indTo.indexOf(bBody) === -1 && indTo.indexOf(bPhrase) === -1 && indTo.indexOf(bCustom) === -1, "other plan off individual");
+    jointTo.openDay = "c4";
+    jointTo.screen = "session";
+    jointTo.active = "a";
+    saveCplMeta(jointTo);
+    state.view = "couples";
+    eq(startToPause() === true && toTurn.phase === "cool", "pause starts");
+    eq(toLeftSec() <= 20 * 60 && toLeftSec() >= 19 * 60, "20 minutes");
+    clearToDrafts();
+    var coolA = viewCplSession(loadCplMeta());
+    eq(coolA.indexOf('data-action="cpl-to-extend"') !== -1, "extend option");
+    eq(coolA.indexOf('data-cpl-timeout="calm"') !== -1 && coolA.indexOf(aCustom) !== -1, "own calm during pause");
+    eq(coolA.indexOf(bCustom) === -1 && coolA.indexOf(bBody) === -1, "other calm hidden during pause");
+    eq(coolA.indexOf(aBody) === -1 && coolA.indexOf(aThink) === -1 && coolA.indexOf(aVoice) === -1, "signs hidden during pause");
+    eq(coolA.indexOf(aPhrase) === -1 && coolA.indexOf(bPhrase) !== -1, "share rules during pause");
+    eq(coolA.indexOf('data-cpl-timeout="plan"') === -1, "form stays off during pause");
+    var metaSwitch = loadCplMeta();
+    metaSwitch.active = "b";
+    metaSwitch.screen = "session";
+    metaSwitch.openDay = "c4";
+    saveCplMeta(metaSwitch);
+    clearToDrafts();
+    var coolB = viewCplSession(metaSwitch);
+    eq(coolB.indexOf(bCustom) !== -1, "b calm after switch");
+    eq(coolB.indexOf(aCustom) === -1 && coolB.indexOf(aBody) === -1 && coolB.indexOf(aPhrase) === -1, "a private hidden after switch");
+    eq(coolB.indexOf(bPhrase) !== -1 && toTurn.phase === "cool", "timer survives switch");
+    eq(extendToPause() === true, "extend");
+    eq(toLeftSec() <= 30 * 60 && toLeftSec() >= 29 * 60, "30 minutes");
+    eq(extendToPause() === false, "extend once");
+    eq(viewCplSession(loadCplMeta()).indexOf(CPL.toExtended) !== -1, "extended note");
+    eq(viewCplSession(loadCplMeta()).indexOf('data-action="cpl-to-extend"') === -1, "extend hidden");
+    toTurn.endsAt = Date.now() - 1000;
+    onToTick();
+    eq(toTurn.phase === "repair", "repair after countdown");
+    clearToDrafts();
+    var repairView = viewCplSession(loadCplMeta());
+    eq(repairView.indexOf(CPL.toRepairTitle) !== -1 && repairView.indexOf(CPL.toRepairs[0]) !== -1, "repair step");
+    eq(repairView.indexOf('data-action="cpl-to-repair"') !== -1 && repairView.indexOf(CPL.toRepairGo) !== -1, "repair controls");
+    eq(repairView.indexOf(aCustom) === -1 && repairView.indexOf(aBody) === -1 && repairView.indexOf(bCustom) === -1 && repairView.indexOf(bBody) === -1, "no private lists on repair");
+    eq(repairView.indexOf(bPhrase) !== -1 && repairView.indexOf(aPhrase) === -1, "share rules on repair");
+    toTurn.repairPick = "0";
+    toTurn.repairText = "";
+    var saidPhrase = CPL.toRepairs[0];
+    eq(finishRepair() === "ok", "repair continues");
+    eq(toTurn.phase === "idle" && toTurn.said === saidPhrase && slTurn.running === true, "speaker timer continues");
+    eq(String(localStorage.getItem(K_CPL_A) || "").indexOf(saidPhrase) === -1 && String(localStorage.getItem(K_CPL_B) || "").indexOf(saidPhrase) === -1, "repair not stored on accounts");
     stopSl(true);
+    var afterRepair = viewCplSession(loadCplMeta());
+    eq(afterRepair.indexOf(saidPhrase) !== -1 && afterRepair.indexOf('data-action="cpl-to-start"') !== -1, "repair phrase then pause again");
+    eq(afterRepair.indexOf(aBody) === -1 && afterRepair.indexOf(bBody) === -1 && afterRepair.indexOf(aCustom) === -1, "signs still private after repair");
+    stopTo(true);
+    cplWipe();
+    saveCplMeta({ aName: "Lina", bName: "Omar", active: "a", screen: "plan", safety: false });
+    saveJSON(K_CPL_PLAN, makeCplPlan());
+    state.cplToBySide = { a: { body: "حرارة", thoughts: "", voice: "", phrase: "بدي وقفة", acts: ["walk"], custom: "بعيد الخناقة براسي", back: true, share: false, fear: "no", saved: false }, b: null };
+    var rumCard = cplToCard(loadCplMeta());
+    eq(rumCard.indexOf(CPL.toRuminateHint) !== -1 && rumCard.indexOf('data-action="cpl-to-save"') !== -1, "ruminate hint does not block");
+    eq(trySaveCplTimeout(loadCplMeta(), state.cplToBySide.a) === "ok", "ruminate still saves");
+    cplWipe();
+    saveCplMeta({ aName: "Lina", bName: "Omar", active: "a", screen: "plan", safety: false });
+    saveJSON(K_CPL_PLAN, makeCplPlan());
+    var fearMeta = loadCplMeta();
+    eq(trySaveCplTimeout(fearMeta, { body: "قلبي يدق", thoughts: "", voice: "", phrase: "بدي وقفة", acts: ["breath", "walk"], custom: "", back: true, share: false, fear: "yes" }) === "safety", "fear yes");
+    eq(JSON.stringify(loadCplSide("a").timeout).indexOf("قلبي يدق") === -1, "fear plan not stored");
+    enterSafety(fearMeta);
+    state.view = "couples";
+    state.hold = false;
+    var fearHtml = viewCouples();
+    eq(fearHtml.indexOf(">100<") !== -1 && fearHtml.indexOf(">1201<") !== -1, "fear shows numbers");
+    eq(fearHtml.indexOf(CPL.toSafetyLine) !== -1, "timeout not a solution");
+    eq(fearHtml.indexOf(CPL.toTitle) === -1 && fearHtml.indexOf('data-cpl-timeout="plan"') === -1 && fearHtml.indexOf("قلبي يدق") === -1, "plan hidden on safety");
+    cplWipe();
+    saveCplMeta({ aName: "Lina", bName: "Omar", active: "a", screen: "plan", safety: false });
+    saveJSON(K_CPL_PLAN, makeCplPlan());
+    var keyMeta = loadCplMeta();
+    eq(trySaveCplTimeout(keyMeta, { body: CPL.hitSample, thoughts: "خايف", voice: "", phrase: "بدي وقفة", acts: ["breath", "walk"], custom: "", back: true, share: false, fear: "no" }) === "safety", "keyword safety");
+    eq(JSON.stringify(loadCplSide("a").timeout).indexOf(CPL.hitSample) === -1, "violent plan not stored");
+    enterSafety(keyMeta);
+    state.view = "couples";
+    state.hold = false;
+    eq(viewCouples().indexOf(CPL.toSafetyLine) !== -1 && viewCouples().indexOf(">100<") !== -1 && viewCouples().indexOf(">1201<") !== -1, "keyword shows card");
+    eq(viewCouples().indexOf(CPL.hitSample) === -1, "hit not rendered");
+    cplWipe();
+    saveCplMeta({ aName: "Lina", bName: "Omar", active: "a", screen: "plan", safety: false });
+    saveJSON(K_CPL_PLAN, makeCplPlan());
+    eq(trySaveCplTimeout(loadCplMeta(), { body: "بدي اموت", thoughts: "", voice: "", phrase: "بدي وقفة", acts: ["breath", "walk"], custom: "", back: true, share: false, fear: "no" }) === "crisis", "timeout crisis");
+    eq(JSON.stringify(loadCplSide("a").timeout).indexOf("بدي اموت") === -1, "crisis plan not stored");
+    cplWipe();
+    saveCplMeta({ aName: "Lina", bName: "Omar", active: "a", screen: "summary", safety: false });
+    var badTo = cplBlank();
+    badTo.done = true;
+    badTo.answers = ["money", "loud", "بقرب", "space", "x", "cooking", "بقرب", "text"];
+    badTo.timeout = { body: CPL.hitSample, thoughts: "علامة", voice: "صوت", phrase: "وقفة محايدة", acts: ["breath", "walk"], custom: "", back: true, share: true, fear: "no", saved: true };
+    saveCplSide("a", badTo);
+    var goodTo = cplBlank();
+    goodTo.done = true;
+    goodTo.answers = ["money", "quiet", "بسكت", "time", "y", "patience", "بسكت", "ask"];
+    saveCplSide("b", goodTo);
+    eq(finishBothIfReady(loadCplMeta()) === false, "scrub timeout stops");
+    eq(loadCplMeta().safety === true, "scrub timeout safety");
+    eq(JSON.stringify(loadCplSide("a").timeout).indexOf(CPL.hitSample) === -1, "scrub removed timeout");
+    eq(viewCouples().indexOf(">100<") !== -1 && viewCouples().indexOf(CPL.toSafetyLine) !== -1, "scrub shows card");
+    cplWipe();
+    saveCplMeta({ aName: "Lina", bName: "Omar", active: "a", screen: "plan", safety: false });
+    var holdTo = cplBlank();
+    holdTo.timeout = { body: "HOLDTIMEOUT99", thoughts: "", voice: "", phrase: "وقفة هون", acts: ["breath", "walk"], custom: "HOLDCALM99", back: true, share: true, fear: "no", saved: true };
+    saveCplSide("a", holdTo);
+    saveJSON(K_CPL_PLAN, makeCplPlan());
+    state.hold = true;
+    state.view = "couples";
+    var heldTo = viewHTML();
+    eq(heldTo.indexOf(CPL.toTitle) === -1 && heldTo.indexOf("HOLDTIMEOUT99") === -1 && heldTo.indexOf("HOLDCALM99") === -1, "hold hides timeout");
+    eq(cplToCard(loadCplMeta()) === "" && cplToPauseCard(loadCplMeta()) === "" && cplToStatusHTML(loadCplMeta()) === "", "timeout helpers hide on hold");
+    eq(trySaveCplTimeout(loadCplMeta(), { body: "قلبي يدق", thoughts: "", voice: "", phrase: "بدي وقفة", acts: ["breath", "walk"], custom: "", back: true, share: false, fear: "no" }) === "hidden", "no save on hold");
+    state.hold = false;
+    state.crisis = null;
+    stopTo(true);
+    stopSl(true);
+    cplWipe();
     return errors;
   }
   function init() {
     try { state.hold = sessionStorage.getItem(K_HOLD) === "1"; } catch (e) {}
+    loadToClock();
     var pending = null;
     try { pending = localStorage.getItem(K_PENDING); } catch (e2) {}
     if (pending === "text" || pending === "screen") state.crisis = { reason: pending };

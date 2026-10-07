@@ -918,3 +918,84 @@ textarea.cpl-soft-input { min-height: 4.2rem; }
   background: #f7f1e6;
   border: 1px solid #e0d0b8;
 }
+
+/* Time-out and repair plan — private per partner, pause on joint days */
+.cpl-to-plan {
+  background: #f8efe6;
+  border-color: #e4cbb6;
+}
+.cpl-to-plan h2,
+.cpl-to h2,
+.cpl-to-status h2 { font-size: 1.15rem; }
+.cpl-to-plan textarea { min-height: 4.2rem; }
+.cpl-to-fear {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  margin: 10px 0 12px;
+  padding: 8px 12px 10px;
+}
+.cpl-to-fear legend {
+  font-family: var(--font-ui);
+  font-weight: 700;
+  padding-inline: 4px;
+}
+.cpl-to-acts { display: grid; gap: 4px; margin-bottom: 8px; }
+.cpl-to-status { margin-top: 8px; }
+.cpl-to-status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 8px 12px;
+  margin: 6px 0;
+}
+.cpl-to-status-row b {
+  font-family: var(--font-ui);
+  color: var(--olive-deep);
+}
+.cpl-to {
+  background: linear-gradient(180deg, #fbf6ef, #f3e4d4);
+  border: 1px solid #e4cbb6;
+  border-radius: 16px;
+  padding: 14px;
+  margin: 12px 0;
+  box-shadow: var(--shadow-sm);
+}
+.cpl-to .cpl-to-pause {
+  font-size: 1.15rem;
+  min-height: 52px;
+}
+.cpl-to-tick {
+  font-family: var(--font-ui);
+  font-variant-numeric: tabular-nums;
+  font-size: clamp(1.7rem, 6vw, 2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  color: var(--clay-deep);
+  margin: 6px 0 12px;
+}
+.cpl-to.is-repair .cpl-to-tick,
+.cpl-to-said {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+.cpl-to-calm {
+  margin: 6px 0 0;
+  padding-inline-start: 1.2rem;
+}
+.cpl-to-calm li { margin: 2px 0; }
+.cpl-to .chips { margin-top: 0; }
+.cpl-to textarea { min-height: 4.2rem; }
+
+@media (max-width: 380px) {
+  .cpl-to-status-row { align-items: flex-start; }
+  .cpl-to-pause { font-size: 1.05rem; }
+}
