@@ -6,7 +6,7 @@
   --font-ui: "Cairo", "Noto Naskh Arabic", system-ui, sans-serif;
   --lh: 1.75;
 }
-h1, h2, h3, .btn, .nav button, .brand-name, .choice strong, .score b, .phase-name, .count, .kicker, .eyebrow, .section-label, .tag, .call b, .tile strong, label.field, .top-link, .safety-link, .who b, .cpl-nice-count b {
+h1, h2, h3, .btn, .nav button, .brand-name, .choice strong, .score b, .phase-name, .count, .kicker, .eyebrow, .section-label, .tag, .call b, .tile strong, label.field, .top-link, .safety-link, .who b, .cpl-nice-count b, .cpl-prog-val, .cpl-prog-dir, .cpl-prog-name {
   font-family: var(--font-ui);
 }
 
@@ -998,4 +998,88 @@ textarea.cpl-soft-input { min-height: 4.2rem; }
 @media (max-width: 380px) {
   .cpl-to-status-row { align-items: flex-start; }
   .cpl-to-pause { font-size: 1.05rem; }
+}
+
+/* Private weekly progress check-in */
+.cpl-prog {
+  background: #f4f7f4;
+  border-color: #c9d9ce;
+}
+.cpl-prog h2,
+.cpl-prog-joint h2 { font-size: 1.15rem; }
+.cpl-prog textarea { min-height: 4.2rem; }
+.cpl-prog-scale {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: 6px;
+  font-weight: 400;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.cpl-prog-val {
+  font-variant-numeric: tabular-nums;
+  color: var(--olive-deep);
+  font-size: 1.15rem;
+}
+.cpl-prog-range {
+  display: block;
+  width: 100%;
+  margin: 4px 0 8px;
+  accent-color: var(--olive);
+  min-height: var(--touch);
+}
+.cpl-prog-row { margin: 12px 0; }
+.cpl-prog-name { margin-bottom: 4px; }
+.cpl-prog-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0;
+}
+.cpl-prog-k {
+  flex: 0 0 7.2rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.cpl-prog-track {
+  flex: 1;
+  height: 10px;
+  background: #efe6da;
+  border-radius: 999px;
+  overflow: hidden;
+}
+.cpl-prog-track i {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: #c4b39a;
+  border-radius: inherit;
+}
+.cpl-prog-track i.is-now { background: var(--olive); }
+.cpl-prog-dir { margin: 2px 0 0; }
+.cpl-prog-suggest { margin: 6px 0; }
+.cpl-prog-joint {
+  background: #f7f1e6;
+  border: 1px solid #e0d0b8;
+}
+.cpl-prog-share {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px 12px;
+  margin: 8px 0;
+}
+.cpl-prog-share p,
+.cpl-prog-share li { overflow-wrap: anywhere; }
+.cpl-prog-share .meta {
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+}
+@media (max-width: 380px) {
+  .cpl-prog-k { flex-basis: 5.4rem; }
+  .cpl-prog-scale { font-size: 0.8rem; }
 }

@@ -311,7 +311,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
   "summaryOnly": "الصورة المشتركة بس. الكلام الخاص ما بيننسخ لهون.",
   "startWeek": "ابدأ خطة السبع أيام للزوجين",
   "planTitle": "سبع أيام",
-  "planIntro": "أول تلات أيام فردية. الدليل ببدّل مين الجلسة إله: الشريك الأول، بعدين الثاني، بعدين الأول. بهالأيام كل واحد يجهّز خطة وقفة ورجوع خاصة فيه. من اليوم الرابع الجلسات مشتركة، والاثنين يكونوا موجودين، وفيها تمرين دور المتكلم والمستمع بمؤقت، وزر وقفة إذا الحكي علا. اليوم اللي بعده بيضل مقفول ليومه.",
+  "planIntro": "أول تلات أيام فردية. الدليل ببدّل مين الجلسة إله: الشريك الأول، بعدين الثاني، بعدين الأول. بهالأيام كل واحد يجهّز خطة وقفة ورجوع خاصة فيه. من اليوم الرابع الجلسات مشتركة، والاثنين يكونوا موجودين، وفيها تمرين دور المتكلم والمستمع بمؤقت، وزر وقفة إذا الحكي علا. اليوم اللي بعده بيضل مقفول ليومه. وبعد كم يوم، كل شريك إله فحص قصير خاص، مرة بالأسبوع تقريبًا.",
   "planProgress": "خلص {done} من {total} جلسات. بلشت {start}.",
   "dayLabel": "يوم {n}",
   "openDay": "افتح الجلسة",
@@ -444,6 +444,50 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
   "toSaid": "جملة الإصلاح: {phrase}",
   "toSafetyLine": "الوقفة مش حل للعنف. إذا في خوف أو تهديد أو ضرب، الجلسات المشتركة مش مناسبة. اطلع واتصل بالأرقام.",
   "toDoneTick": "خلص وقت الوقفة. وقت الرجوع.",
+  "progTitle": "فحص قصير هالأسبوع",
+  "progLesson": "فحص ذاتي قصير، مش تشخيص ومش جلسة مع معالج. بتقارن شعورك هسّة بخط البداية من أسئلتك الخاصة، وبتشوف تغيرك إنت بس.",
+  "progWait": "الفحص القصير بينفتح بعد كم يوم من الخطة، ومرة بالأسبوع تقريبًا. لسّه بدري.",
+  "progHelped": "شو ساعد هالأسبوع؟",
+  "progHard": "شو لسّه صعب؟",
+  "progShare": "شارك ملخص قصير بالجلسة المشتركة الجاية. الملخص اتجاه كل موضوع من غير الأرقام، وشو ساعد، وشو لسّه صعب.",
+  "progSave": "احفظ الفحص",
+  "progNeed": "اكتب سطر عن اللي ساعد، وسطر عن اللي لسّه صعب.",
+  "progPrivateHint": "الأرقام بتضل عندك إنت. الشريك ما بشوف درجتك. الجلسة المشتركة بتعرض بس الملخص إذا علّمت المشاركة.",
+  "progScaleLow": "٠ ثقيل",
+  "progScaleHigh": "١٠ أخف",
+  "progUp": "أخف من وقت الأسئلة",
+  "progDown": "أثقل من وقت الأسئلة",
+  "progSame": "زي وقت الأسئلة",
+  "progShareUp": "أخف شوي",
+  "progShareDown": "لسّه أثقل",
+  "progShareSame": "زي ما هو",
+  "progEncourageUp": "في إشي خف من وقت الأسئلة. كمّلوا على الإشي الصغير اللي ساعد.",
+  "progEncourageSame": "ما في تغيير كبير هسّة. الإشي الصغير المتكرر بكفّي.",
+  "progEncourageDown": "في موضوع لسّه ثقيل أو صار أثقل. الاقتراح تحت تمرين موجود بالدليل، بهدوء، ومش حكم.",
+  "progSuggest": "«{area}» لسّه ثقيل أو صار أثقل. جرّب {exercise}.",
+  "progExSoft": "طلب ببداية لطيفة، بالبطاقة الخاصة فيك تحت",
+  "progExTimeout": "خطة وقفة ورجوع، بالبطاقة الخاصة فيك تحت",
+  "progExNice": "لاحظت إشي لطيف، بالبطاقة الخاصة فيك تحت",
+  "progExSpeaker": "دور المتكلم والمستمع، بالجلسة المشتركة",
+  "progBaseTitle": "كيف الموضوع هسّة، وقت الأسئلة",
+  "progBaseBody": "حط مؤشر لكل موضوع انكتب عندك بالأسئلة الخاصة. ٠ يعني ثقيل، و١٠ يعني أخف. هاد خط البداية، مش علامة ومش تشخيص.",
+  "progBasePrivate": "الأرقام بتضل عندك إنت، وما بتنعرض للشريك.",
+  "progBaseSave": "احفظ خط البداية",
+  "progBaseNeed": "حرّك المؤشرات، وبعدين احفظ خط البداية.",
+  "progTopicFallback": "موضوع الخناقة",
+  "progStart": "كيف الخناقة بتبلّش",
+  "progListen": "السماع لبعض",
+  "progFlood": "الغضب والغرق",
+  "progWarm": "ملاحظة الإشي اللطيف والقرب",
+  "progNextWeek": "فحصك إنت بس. المرة الجاية بعد أسبوع تقريبًا.",
+  "progSharedNote": "علّمت مشاركة ملخص قصير للجلسة المشتركة الجاية. الأرقام ما انحطت.",
+  "progKeptNote": "ما انشارك إشي. الفحص ضل عندك إنت.",
+  "progJointTitle": "ملخص الفحص، اللي انختار ينشارك",
+  "progJointHow": "اقروا اللي انختار ينشارك، بهدوء. الأرقام مش هون. اللي ما علّم المشاركة، ملخصه مش معروض.",
+  "progJointEmpty": "ما في ملخص مشاركة هسّة. كل واحد يقدر يعلّم المشاركة من فحصه الخاص.",
+  "progBy": "{name}",
+  "progTherapist": "إذا في خوف، أو الفحص صار أثقل بفرق كبير، فكرة منيحة تشوف معالج أزواج مرخّص. الدليل مش معالج، وما في تشخيص ولا أدوية. الجلسات المشتركة مش رح تكمل.",
+  "progBaseKicker": "خط البداية من أسئلتك",
   "resetAsk": "امسح أجوبة الزوجين عن هاد الجهاز",
   "resetYes": "أيوه، امسحها",
   "resetNo": "خلّيها",
@@ -591,7 +635,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
   function loadProgram() { return loadJSON(K_PROGRAM, null); }
   function saveProgram(p) { saveJSON(K_PROGRAM, p); }
 
-  var state = { view: "home", dayId: null, crisis: null, hold: false, guideText: "", guide: null, pad: "", pst: {}, check: null, result: null, formError: "", confirmClear: false, cplErr: "", cplReset: false, cplNiceDraft: "", cplNiceShare: false, cplNiceErr: "", cplSoftErr: "", cplSoftBySide: { a: { situation: "", feeling: "", request: "", share: false }, b: { situation: "", feeling: "", request: "", share: false } }, cplToErr: "", cplToBySide: { a: null, b: null } };
+  var state = { view: "home", dayId: null, crisis: null, hold: false, guideText: "", guide: null, pad: "", pst: {}, check: null, result: null, formError: "", confirmClear: false, cplErr: "", cplReset: false, cplNiceDraft: "", cplNiceShare: false, cplNiceErr: "", cplSoftErr: "", cplSoftBySide: { a: { situation: "", feeling: "", request: "", share: false }, b: { situation: "", feeling: "", request: "", share: false } }, cplToErr: "", cplToBySide: { a: null, b: null }, cplProgErr: "", cplProgBySide: { a: { scores: {}, helped: "", hard: "", share: false }, b: { scores: {}, helped: "", hard: "", share: false } } };
   var breath = { running: false, timer: null, mode: "468", phaseIdx: 0, left: 4, cycle: 0, totalCycles: 5, dayId: null, finishedMsg: "" };
   var slClock = null;
   var slTurn = { left: 180, running: false, done: false };
@@ -1183,7 +1227,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
   }
 
   function cplBlank() {
-    return { answers: ["", "", "", "", "", "", "", ""], done: false, doneAt: null, qi: 0, notes: {}, nice: [], soft: [], timeout: emptyTimeout() };
+    return { answers: ["", "", "", "", "", "", "", ""], done: false, doneAt: null, qi: 0, notes: {}, nice: [], soft: [], timeout: emptyTimeout(), baseline: null, progress: [], baseAsk: false };
   }
   var cplNiceSeq = 0;
   function cplNiceId() {
@@ -1288,6 +1332,8 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
       if (raw && Array.isArray(raw.nice)) rec.nice = sanitizeNiceList(raw.nice);
       if (raw && Array.isArray(raw.soft)) rec.soft = sanitizeSoftList(raw.soft);
       if (raw && raw.timeout) rec.timeout = sanitizeTimeout(raw.timeout);
+      if (raw && raw.baseline) rec.baseline = sanitizeBaseline(raw.baseline);
+      if (raw && raw.progress) rec.progress = sanitizeProgress(raw.progress);
     } else {
       rec = raw;
       if (!rec.notes || typeof rec.notes !== "object") rec.notes = {};
@@ -1295,6 +1341,9 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
       rec.nice = sanitizeNiceList(rec.nice);
       rec.soft = sanitizeSoftList(rec.soft);
       rec.timeout = sanitizeTimeout(rec.timeout);
+      rec.baseline = sanitizeBaseline(rec.baseline);
+      rec.progress = sanitizeProgress(rec.progress);
+      rec.baseAsk = rec.baseAsk === true && !rec.done;
     }
     return rec;
   }
@@ -1357,6 +1406,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
     state.cplToErr = "";
     clearSoftDrafts();
     clearToDrafts();
+    clearProgDrafts();
     stopTo(true);
   }
   function scrubSide(which) {
@@ -1393,12 +1443,27 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
     if (rec.timeout && rec.timeout.fear === "yes") { hitV = true; rec.timeout = emptyTimeout(); }
     else if (isCrisisText(toBlobNow)) { hitC = true; rec.timeout = emptyTimeout(); }
     else if (cplViolent(toBlobNow)) { hitV = true; rec.timeout = emptyTimeout(); }
+    var keptProg = [];
+    (rec.progress || []).forEach(function (p) {
+      var pBlob = (p.helped || "") + " " + (p.hard || "");
+      if (p.summary) pBlob += " " + (p.summary.helped || "") + " " + (p.summary.hard || "") + " " + (p.summary.lines || []).join(" ");
+      if (isCrisisText(pBlob)) { hitC = true; return; }
+      if (cplViolent(pBlob)) { hitV = true; return; }
+      keptProg.push(p);
+    });
+    rec.progress = keptProg;
+    if (rec.baseline && rec.baseline.areas) {
+      var baseLabels = rec.baseline.areas.map(function (a) { return a.label || ""; }).join(" ");
+      if (isCrisisText(baseLabels)) { hitC = true; rec.baseline = null; }
+      else if (cplViolent(baseLabels)) { hitV = true; rec.baseline = null; }
+    }
     saveCplSide(which, rec);
     return { hitV: hitV, hitC: hitC };
   }
-  function enterSafety(meta) {
+  function enterSafety(meta, why) {
     meta.safety = true;
     meta.screen = "safety";
+    if (why === "progress") meta.safetyFrom = "progress";
     saveCplMeta(meta);
     try { localStorage.removeItem(K_CPL_PLAN); localStorage.removeItem(K_CPL_SUM); } catch (e) {}
     state.cplErr = "";
@@ -1408,6 +1473,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
     state.cplToErr = "";
     clearSoftDrafts();
     clearToDrafts();
+    clearProgDrafts();
     stopTo(true);
     render();
   }
@@ -1508,6 +1574,20 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
     var repairGuard = readRepairInput();
     if (repairGuard === "crisis") { triggerCrisis("text"); return "stop"; }
     if (repairGuard === "safety") { enterSafety(meta); return "stop"; }
+    var helpedBox = readCplBox("cpl-prog-helped");
+    var hardBox = readCplBox("cpl-prog-hard");
+    if (helpedBox != null || hardBox != null) {
+      var progBlob = String(helpedBox || "") + " " + String(hardBox || "");
+      if (isCrisisText(progBlob) || cplViolent(progBlob)) {
+        var progSide = meta.active === "b" ? "b" : "a";
+        progDraftFor(progSide).helped = "";
+        progDraftFor(progSide).hard = "";
+        enterSafety(meta, "progress");
+        return "stop";
+      }
+      if (helpedBox != null) progDraftFor(meta.active === "b" ? "b" : "a").helped = String(helpedBox).slice(0, 180);
+      if (hardBox != null) progDraftFor(meta.active === "b" ? "b" : "a").hard = String(hardBox).slice(0, 180);
+    }
     return "ok";
   }
   function cplNiceCard(meta) {
@@ -2273,8 +2353,408 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
     }
     return '<section class="' + cls + '" data-cpl-timeout="pause">' + main + cplSharedTimeoutHTML(meta) + "</section>";
   }
+  function emptyProgDraft() {
+    return { scores: {}, helped: "", hard: "", share: false };
+  }
+  function clearProgDrafts() {
+    state.cplProgBySide = { a: emptyProgDraft(), b: emptyProgDraft() };
+    state.cplProgErr = "";
+  }
+  function progDraftFor(side) {
+    var w = side === "b" ? "b" : "a";
+    if (!state.cplProgBySide) clearProgDrafts();
+    if (!state.cplProgBySide[w]) state.cplProgBySide[w] = emptyProgDraft();
+    return state.cplProgBySide[w];
+  }
+  function clampProgScore(v) {
+    var n = Math.round(Number(v));
+    if (!isFinite(n)) return 5;
+    if (n < 0) return 0;
+    if (n > 10) return 10;
+    return n;
+  }
+  function progBlobHas(text, keys) {
+    var t = norm(text);
+    if (!t) return false;
+    for (var i = 0; i < keys.length; i++) {
+      var k = norm(keys[i]);
+      if (k && t.indexOf(k) !== -1) return true;
+    }
+    return false;
+  }
+  function cplProgThemes() {
+    return [
+      { id: "start", label: CPL.progStart, exercise: "soft", keys: ["نبره", "صراخ", "زعق", "دايما", "دائما", "نقد", "احتقار", "بتبلش", "ببلش", "صوت عالي", "بتصرخ", "بصرخ"] },
+      { id: "listen", label: CPL.progListen, exercise: "speaker", keys: ["ما بسمع", "بقاطع", "ما بيسمع", "ما بتسمع", "مقاطعه", "ما حد بسمع", "ما بسمعوني"] },
+      { id: "flood", label: CPL.progFlood, exercise: "timeout", keys: ["غضب", "بتزعق", "بزعق", "غرق", "قلبي", "بتنرفز", "بنرفز", "بصرخ", "بتصرخ", "عصبي"] },
+      { id: "warm", label: CPL.progWarm, exercise: "nice", keys: ["بعيد", "بارد", "ما بنقعد", "ما في وقت", "ما بنلاحظ", "وحده", "لحالي", "ما في حكي منيح"] }
+    ];
+  }
+  function exerciseForProgText(raw) {
+    var themes = cplProgThemes();
+    for (var i = 0; i < themes.length; i++) {
+      if (progBlobHas(raw, themes[i].keys)) return themes[i].exercise;
+    }
+    return "soft";
+  }
+  function cplProgAreasFromAnswers(rec) {
+    var answers = rec && rec.answers ? rec.answers : [];
+    var topic = cplClip(answers[0] || "");
+    if (!topic || topic === CPL.emptyBit) topic = CPL.progTopicFallback;
+    var areas = [{ id: "topic", label: topic, exercise: exerciseForProgText(answers[0] || "") }];
+    var blob = answers.join(" ");
+    var themes = cplProgThemes();
+    var seen = { topic: 1 };
+    var i;
+    for (i = 0; i < themes.length; i++) {
+      if (seen[themes[i].id]) continue;
+      if (progBlobHas(blob, themes[i].keys)) {
+        areas.push({ id: themes[i].id, label: themes[i].label, exercise: themes[i].exercise });
+        seen[themes[i].id] = 1;
+      }
+    }
+    function hasId(id) { return !!seen[id]; }
+    var move = cplMove(rec || { answers: answers });
+    if (move === "pursue" && !hasId("flood")) {
+      areas.push({ id: "flood", label: CPL.progFlood, exercise: "timeout" });
+      seen.flood = 1;
+    }
+    if (move === "withdraw" && !hasId("listen")) {
+      areas.push({ id: "listen", label: CPL.progListen, exercise: "speaker" });
+      seen.listen = 1;
+    }
+    if (areas.length === 1 && String(answers[1] || "").trim().length >= 2 && !hasId("start")) {
+      areas.push({ id: "start", label: CPL.progStart, exercise: "soft" });
+    }
+    if (areas.length > 4) areas = areas.slice(0, 4);
+    return areas;
+  }
+  function sanitizeBaseline(raw) {
+    if (!raw || typeof raw !== "object" || !Array.isArray(raw.areas)) return null;
+    var areas = [];
+    var allowedEx = { soft: 1, timeout: 1, nice: 1, speaker: 1 };
+    for (var i = 0; i < raw.areas.length && areas.length < 4; i++) {
+      var a = raw.areas[i];
+      if (!a || typeof a !== "object") continue;
+      var id = String(a.id || "").replace(/[^a-z0-9_-]/g, "").slice(0, 24);
+      var label = String(a.label || "").trim().slice(0, 90);
+      if (!id || !label) continue;
+      areas.push({ id: id, label: label, exercise: allowedEx[a.exercise] ? a.exercise : "soft", score: clampProgScore(a.score) });
+    }
+    if (!areas.length) return null;
+    var date = String(raw.date || "");
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) date = "";
+    return { date: date, areas: areas };
+  }
+  function sanitizeProgress(list) {
+    if (!Array.isArray(list)) return [];
+    var out = [];
+    for (var i = 0; i < list.length && out.length < 24; i++) {
+      var p = list[i];
+      if (!p || typeof p !== "object") continue;
+      var date = String(p.date || "");
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) continue;
+      var ratings = [];
+      var src = Array.isArray(p.ratings) ? p.ratings : [];
+      for (var r = 0; r < src.length && ratings.length < 4; r++) {
+        var row = src[r];
+        if (!row) continue;
+        var id = String(row.id || "").replace(/[^a-z0-9_-]/g, "").slice(0, 24);
+        if (!id) continue;
+        ratings.push({ id: id, score: clampProgScore(row.score) });
+      }
+      if (!ratings.length) continue;
+      var share = p.share === true;
+      var summary = null;
+      if (share && p.summary && typeof p.summary === "object") {
+        var lines = [];
+        var sl = Array.isArray(p.summary.lines) ? p.summary.lines : [];
+        for (var li = 0; li < sl.length && lines.length < 4; li++) {
+          var line = String(sl[li] || "").trim().slice(0, 140);
+          if (line) lines.push(line);
+        }
+        summary = {
+          lines: lines,
+          helped: String(p.summary.helped || "").trim().slice(0, 80),
+          hard: String(p.summary.hard || "").trim().slice(0, 80)
+        };
+      }
+      out.push({
+        id: String(p.id || ("p" + i)).slice(0, 40),
+        date: date,
+        ratings: ratings,
+        helped: String(p.helped || "").trim().slice(0, 180),
+        hard: String(p.hard || "").trim().slice(0, 180),
+        share: share,
+        summary: summary
+      });
+    }
+    return out;
+  }
+  function cplProgLast(rec) {
+    var list = rec && rec.progress ? rec.progress : [];
+    return list.length ? list[list.length - 1] : null;
+  }
+  function cplProgAge(plan) {
+    if (!plan || !plan.startDate) return -1;
+    return daysBetween(plan.startDate, jerusalemToday());
+  }
+  function cplProgDue(rec) {
+    var last = cplProgLast(rec);
+    if (!last || !last.date) return true;
+    return daysBetween(last.date, jerusalemToday()) >= 7;
+  }
+  function progDirWord(base, now) {
+    if (now > base) return CPL.progShareUp;
+    if (now < base) return CPL.progShareDown;
+    return CPL.progShareSame;
+  }
+  function progExerciseName(ex) {
+    if (ex === "timeout") return CPL.progExTimeout;
+    if (ex === "nice") return CPL.progExNice;
+    if (ex === "speaker") return CPL.progExSpeaker;
+    return CPL.progExSoft;
+  }
+  function buildProgSummary(areas, ratings, helped, hard) {
+    var lines = [];
+    for (var i = 0; i < areas.length; i++) {
+      var a = areas[i];
+      if (ratings[a.id] == null) continue;
+      lines.push(a.label + ": " + progDirWord(a.score, ratings[a.id]));
+    }
+    return {
+      lines: lines,
+      helped: String(helped || "").trim().slice(0, 80),
+      hard: String(hard || "").trim().slice(0, 80)
+    };
+  }
+  function progSharpDrop(areas, ratings) {
+    for (var i = 0; i < areas.length; i++) {
+      var now = ratings[areas[i].id];
+      if (now == null) continue;
+      if (areas[i].score - now >= 4) return true;
+    }
+    return false;
+  }
+  function progEncourage(areas, ratings) {
+    var up = 0, down = 0, low = 0;
+    for (var i = 0; i < areas.length; i++) {
+      var now = ratings[areas[i].id];
+      if (now == null) continue;
+      if (now > areas[i].score) up++;
+      else if (now < areas[i].score) down++;
+      if (now <= 4 || now < areas[i].score) low++;
+    }
+    if (down === 0 && up > 0 && low === 0) return CPL.progEncourageUp;
+    if (down > 0 || low > 0) return CPL.progEncourageDown;
+    return CPL.progEncourageSame;
+  }
+  function progSliderHTML(area, value, kind) {
+    var v = clampProgScore(value == null ? 5 : value);
+    return '<label class="field cpl-prog-field">' + esc(area.label) +
+      '<span class="cpl-prog-scale"><span>' + esc(CPL.progScaleLow) + '</span><b id="prog-val-' + esc(area.id) + '" class="cpl-prog-val">' + String(v) + "</b><span>" + esc(CPL.progScaleHigh) + "</span></span>" +
+      '<input type="range" class="cpl-prog-range" dir="rtl" min="0" max="10" step="1" value="' + String(v) + '" data-cpl="' + kind + '" data-area="' + esc(area.id) + '" aria-valuemin="0" aria-valuemax="10" aria-valuenow="' + String(v) + '" aria-label="' + esc(area.label) + '">' +
+      "</label>";
+  }
+  function readScoreMap(kind, areas, draftScores) {
+    var scores = {};
+    for (var i = 0; i < areas.length; i++) {
+      var id = areas[i].id;
+      var el = null;
+      if (typeof document !== "undefined") el = document.querySelector('[data-cpl="' + kind + '"][data-area="' + id + '"]');
+      if (el) scores[id] = clampProgScore(el.value);
+      else if (draftScores && draftScores[id] != null && draftScores[id] !== "") scores[id] = clampProgScore(draftScores[id]);
+      else if (typeof document !== "undefined" && kind) scores[id] = 5;
+      else return null;
+    }
+    return scores;
+  }
+  function trySaveCplBaseline(meta, scores) {
+    if (state.hold || !meta || meta.safety) return "hidden";
+    var side = meta.active === "b" ? "b" : "a";
+    var rec = loadCplSide(side);
+    if (rec.baseline) return "ok";
+    var draftAreas = cplProgAreasFromAnswers(rec);
+    var labelBlob = draftAreas.map(function (a) { return a.label; }).join(" ");
+    if (isCrisisText(labelBlob)) return "crisis";
+    if (cplViolent(labelBlob)) return "safety";
+    if (!scores) return "short";
+    var areas = [];
+    for (var i = 0; i < draftAreas.length; i++) {
+      var id = draftAreas[i].id;
+      if (scores[id] == null || scores[id] === "") return "short";
+      areas.push({ id: id, label: draftAreas[i].label, exercise: draftAreas[i].exercise, score: clampProgScore(scores[id]) });
+    }
+    if (!areas.length) return "short";
+    rec.baseline = { date: jerusalemToday(), areas: areas };
+    rec.baseAsk = false;
+    saveCplSide(side, rec);
+    progDraftFor(side).scores = {};
+    state.cplProgErr = "";
+    return "ok";
+  }
+  function trySaveCplProg(meta, payload) {
+    if (state.hold || !meta || meta.safety) return "hidden";
+    var side = meta.active === "b" ? "b" : "a";
+    var rec = loadCplSide(side);
+    if (!rec.done || !rec.baseline) return "early";
+    var plan = loadCplPlan();
+    if (!plan || cplProgAge(plan) < 3) return "early";
+    if (!cplProgDue(rec)) return "week";
+    var helped = String((payload && payload.helped) || "").trim().slice(0, 180);
+    var hard = String((payload && payload.hard) || "").trim().slice(0, 180);
+    var blob = helped + " " + hard;
+    if (isCrisisText(blob) || cplViolent(blob)) {
+      progDraftFor(side).helped = "";
+      progDraftFor(side).hard = "";
+      return "safety";
+    }
+    var areas = rec.baseline.areas;
+    var ratings = [];
+    var map = {};
+    if (!payload || !payload.scores) return "short";
+    for (var i = 0; i < areas.length; i++) {
+      var id = areas[i].id;
+      if (payload.scores[id] == null || payload.scores[id] === "") return "short";
+      var sc = clampProgScore(payload.scores[id]);
+      map[id] = sc;
+      ratings.push({ id: id, score: sc });
+    }
+    if (helped.length < 2 || hard.length < 2) return "short";
+    if (progSharpDrop(areas, map)) return "safety";
+    var share = payload.share === true;
+    rec.progress.push({
+      id: cplNiceId().replace(/^n/, "p"),
+      date: jerusalemToday(),
+      ratings: ratings,
+      helped: helped,
+      hard: hard,
+      share: share,
+      summary: share ? buildProgSummary(areas, map, helped, hard) : null
+    });
+    saveCplSide(side, rec);
+    state.cplProgBySide[side] = emptyProgDraft();
+    state.cplProgErr = "";
+    return "ok";
+  }
+  function progCompareRow(area, now) {
+    var base = clampProgScore(area.score);
+    var cur = clampProgScore(now);
+    var dir = cur > base ? "up" : (cur < base ? "down" : "same");
+    var word = dir === "up" ? CPL.progUp : (dir === "down" ? CPL.progDown : CPL.progSame);
+    var arrow = dir === "up" ? "↑" : (dir === "down" ? "↓" : "→");
+    return '<div class="cpl-prog-row" data-cpl-prog="row">' +
+      '<div class="cpl-prog-name">' + esc(area.label) + "</div>" +
+      '<div class="cpl-prog-line"><span class="cpl-prog-k">' + esc(CPL.progBaseKicker) + '</span><span class="cpl-prog-track"><i style="width:' + (base * 10) + '%"></i></span></div>' +
+      '<div class="cpl-prog-line"><span class="cpl-prog-k">هسّة</span><span class="cpl-prog-track"><i class="is-now" style="width:' + (cur * 10) + '%"></i></span></div>' +
+      '<p class="cpl-prog-dir" data-prog-dir="' + dir + '">' + arrow + " " + esc(word) + "</p></div>";
+  }
+  function cplProgBaseCard(meta, mode) {
+    var side = meta.active === "b" ? "b" : "a";
+    var rec = loadCplSide(side);
+    var areas = cplProgAreasFromAnswers(rec);
+    var draft = progDraftFor(side);
+    var sliders = areas.map(function (a) {
+      var v = draft.scores && draft.scores[a.id] != null ? draft.scores[a.id] : 5;
+      return progSliderHTML(a, v, "base-score");
+    }).join("");
+    var back = mode === "interview"
+      ? '<button type="button" class="btn secondary block" data-action="cpl-prev">' + esc(CPL.back) + "</button>"
+      : "";
+    return '<section class="card cpl-prog" data-cpl-prog="base"><p class="kicker">' + esc(fill(CPL.privateTag, { name: nameOf(meta, side) })) + "</p>" +
+      "<h2>" + esc(CPL.progBaseTitle) + "</h2>" +
+      "<p>" + esc(CPL.progBaseBody) + "</p>" +
+      '<p class="muted">' + esc(CPL.progBasePrivate) + "</p>" +
+      sliders +
+      (state.cplProgErr ? '<p class="err">' + esc(state.cplProgErr) + "</p>" : "") +
+      '<div class="stack"><button type="button" class="btn block" data-action="cpl-base-save">' + esc(CPL.progBaseSave) + "</button>" +
+      back + "</div></section>";
+  }
+  function cplProgResultHTML(meta, rec) {
+    var side = meta.active === "b" ? "b" : "a";
+    var last = cplProgLast(rec);
+    var areas = rec.baseline.areas;
+    var map = {};
+    (last.ratings || []).forEach(function (r) { map[r.id] = r.score; });
+    var rows = areas.map(function (a) {
+      var now = map[a.id];
+      if (now == null) now = a.score;
+      return progCompareRow(a, now);
+    }).join("");
+    var suggestions = areas.filter(function (a) {
+      var now = map[a.id];
+      return now != null && (now <= 4 || now < a.score);
+    }).map(function (a) {
+      return '<p class="cpl-prog-suggest" data-cpl-prog="suggest">' + esc(fill(CPL.progSuggest, { area: a.label, exercise: progExerciseName(a.exercise) })) + "</p>";
+    }).join("");
+    return '<section class="card cpl-prog" data-cpl-prog="result"><p class="kicker">' + esc(fill(CPL.privateTag, { name: nameOf(meta, side) })) + "</p>" +
+      "<h2>" + esc(CPL.progTitle) + "</h2>" +
+      "<p>" + esc(CPL.progLesson) + "</p>" +
+      rows +
+      '<p class="okbox" data-cpl-prog="encourage">' + esc(progEncourage(areas, map)) + "</p>" +
+      suggestions +
+      "<p>" + esc(last.share ? CPL.progSharedNote : CPL.progKeptNote) + "</p>" +
+      (last.helped ? "<p><strong>" + esc(CPL.progHelped) + "</strong> " + esc(last.helped) + "</p>" : "") +
+      (last.hard ? "<p><strong>" + esc(CPL.progHard) + "</strong> " + esc(last.hard) + "</p>" : "") +
+      '<p class="muted">' + esc(CPL.progNextWeek) + "</p></section>";
+  }
+  function cplProgFormHTML(meta, rec) {
+    var side = meta.active === "b" ? "b" : "a";
+    var draft = progDraftFor(side);
+    var sliders = rec.baseline.areas.map(function (a) {
+      var v = draft.scores && draft.scores[a.id] != null ? draft.scores[a.id] : a.score;
+      return progSliderHTML(a, v, "prog-score");
+    }).join("");
+    return '<section class="card cpl-prog" data-cpl-prog="form"><p class="kicker">' + esc(fill(CPL.privateTag, { name: nameOf(meta, side) })) + "</p>" +
+      "<h2>" + esc(CPL.progTitle) + "</h2>" +
+      "<p>" + esc(CPL.progLesson) + "</p>" +
+      '<p class="muted">' + esc(CPL.progPrivateHint) + "</p>" +
+      sliders +
+      '<label class="field">' + esc(CPL.progHelped) + '<textarea id="cpl-prog-helped" maxlength="180" data-cpl="prog-helped">' + esc(draft.helped || "") + "</textarea></label>" +
+      '<label class="field">' + esc(CPL.progHard) + '<textarea id="cpl-prog-hard" maxlength="180" data-cpl="prog-hard">' + esc(draft.hard || "") + "</textarea></label>" +
+      '<label class="check"><input type="checkbox" id="cpl-prog-share" data-cpl="prog-share"' + (draft.share ? " checked" : "") + ">" + esc(CPL.progShare) + "</label>" +
+      (state.cplProgErr ? '<p class="err">' + esc(state.cplProgErr) + "</p>" : "") +
+      '<button type="button" class="btn block" data-action="cpl-prog-save">' + esc(CPL.progSave) + "</button></section>";
+  }
+  function cplProgWaitHTML(meta) {
+    var side = meta.active === "b" ? "b" : "a";
+    return '<section class="card cpl-prog" data-cpl-prog="wait"><p class="kicker">' + esc(fill(CPL.privateTag, { name: nameOf(meta, side) })) + "</p>" +
+      "<h2>" + esc(CPL.progTitle) + "</h2>" +
+      "<p>" + esc(CPL.progLesson) + "</p>" +
+      "<p>" + esc(CPL.progWait) + "</p></section>";
+  }
+  function cplProgCard(meta) {
+    if (state.hold || !meta || meta.safety) return "";
+    if (meta.active !== "a" && meta.active !== "b") return "";
+    var side = meta.active === "b" ? "b" : "a";
+    var rec = loadCplSide(side);
+    if (!rec.done) return "";
+    if (!rec.baseline) return cplProgBaseCard(meta, "legacy");
+    var plan = loadCplPlan();
+    if (!plan) return "";
+    if (cplProgAge(plan) < 3) return cplProgWaitHTML(meta);
+    if (!cplProgDue(rec)) return cplProgResultHTML(meta, rec);
+    return cplProgFormHTML(meta, rec);
+  }
+  function cplJointProgCard(meta) {
+    if (state.hold || !meta || meta.safety) return "";
+    var blocks = [];
+    ["a", "b"].forEach(function (w) {
+      var last = cplProgLast(loadCplSide(w));
+      if (!last || last.share !== true || !last.summary) return;
+      var lines = (last.summary.lines || []).map(function (line) { return "<li>" + esc(line) + "</li>"; }).join("");
+      var extra = "";
+      if (last.summary.helped) extra += "<p>" + esc(CPL.progHelped) + " " + esc(last.summary.helped) + "</p>";
+      if (last.summary.hard) extra += "<p>" + esc(CPL.progHard) + " " + esc(last.summary.hard) + "</p>";
+      blocks.push('<article class="cpl-prog-share" data-cpl-prog="shared" data-who="' + w + '"><p class="meta">' + esc(fill(CPL.progBy, { name: nameOf(meta, w) })) + "</p>" +
+        (lines ? "<ul>" + lines + "</ul>" : "") + extra + "</article>");
+    });
+    var body = blocks.length ? blocks.join("") : "<p>" + esc(CPL.progJointEmpty) + "</p>";
+    return '<section class="card cpl-prog-joint" data-cpl-prog="joint"><h2>' + esc(CPL.progJointTitle) + "</h2>" +
+      "<p>" + esc(CPL.progJointHow) + "</p>" + body + "</section>";
+  }
   function cplSideCards(meta) {
-    return cplNiceCard(meta) + cplSoftCard(meta) + cplToCard(meta);
+    return cplProgCard(meta) + cplNiceCard(meta) + cplSoftCard(meta) + cplToCard(meta);
   }
   function viewCplSetup(meta) {
     return '<section class="card"><p class="kicker">' + esc(CPL.kicker) + "</p><h1>" + esc(CPL.tile) + "</h1>" +
@@ -2303,6 +2783,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
   function viewCplAsk(meta) {
     var side = meta.active === "b" ? "b" : "a";
     var rec = loadCplSide(side);
+    if (rec.baseAsk && !rec.done) return whoBanner(meta) + cplProgBaseCard(meta, "interview") + cplSideCards(meta);
     var i = rec.qi || 0;
     if (i < 0) i = 0;
     if (i > 7) i = 7;
@@ -2514,7 +2995,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
     if (def.mode === "joint") {
       both = '<label class="check"><input type="checkbox" data-cpl="both" data-day="' + esc(def.id) + '"' + (day.bothHere ? " checked" : "") + ">" + esc(CPL.bothHere) + "</label>";
     }
-    var slHTML = def.mode === "joint" ? "</section>" + cplSlCard(meta) + cplToPauseCard(meta) + '<section class="card">' : "";
+    var slHTML = def.mode === "joint" ? "</section>" + cplSlCard(meta) + cplToPauseCard(meta) + cplJointProgCard(meta) + '<section class="card">' : "";
     var niceJoint = (def.mode === "joint" && day.bothHere) ? "</section>" + cplJointNiceCard(meta) + cplJointSoftCard(meta) + '<section class="card">' : "";
     var nicePrivate = def.mode === "joint" ? "" : cplSideCards(meta);
     return head + sumHTML +
@@ -2537,6 +3018,10 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
       '<a class="call" href="tel:100"><span>' + esc(CPL.policeLabel) + "</span><b>100</b></a>" +
       '<a class="call" href="tel:1201"><span>' + esc(CPL.eranShort) + "</span><b>1201</b></a>" +
       "<p>" + esc(CPL.safetyCall) + "</p>" +
+      (meta.safetyFrom === "progress"
+        ? '<p data-cpl-prog="therapist">' + esc(CPL.progTherapist) + "</p>" +
+          '<a class="call" href="tel:101"><span>' + esc(C.ui.emergencyLabel) + "</span><b>101</b></a>"
+        : "") +
       '<p class="disclaimer">' + esc(CPL.disc) + "</p>" +
       cplResetBlock() + "</section>";
   }
@@ -2724,6 +3209,40 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
       ensureToDraft(fearSide).fear = "no";
       return;
     }
+    if (kind === "base-score" || kind === "prog-score") {
+      if (state.hold || meta.safety) return;
+      var scoreSide = meta.active === "b" ? "b" : "a";
+      var scoreVal = clampProgScore(el.value);
+      var scoreId = String(el.dataset.area || "").replace(/[^a-z0-9_-]/g, "");
+      if (!scoreId) return;
+      progDraftFor(scoreSide).scores[scoreId] = scoreVal;
+      if (typeof document !== "undefined") {
+        var scoreLab = document.getElementById("prog-val-" + scoreId);
+        if (scoreLab) scoreLab.textContent = String(scoreVal);
+      }
+      el.setAttribute("aria-valuenow", String(scoreVal));
+      return;
+    }
+    if (kind === "prog-helped" || kind === "prog-hard") {
+      if (state.hold || meta.safety) return;
+      var progSideIn = meta.active === "b" ? "b" : "a";
+      var progKey = kind === "prog-helped" ? "helped" : "hard";
+      var progVal = String(el.value || "").slice(0, 180);
+      if (isCrisisText(progVal) || cplViolent(progVal)) {
+        progDraftFor(progSideIn).helped = "";
+        progDraftFor(progSideIn).hard = "";
+        el.value = "";
+        enterSafety(meta, "progress");
+        return;
+      }
+      progDraftFor(progSideIn)[progKey] = progVal;
+      return;
+    }
+    if (kind === "prog-share") {
+      if (state.hold || meta.safety) return;
+      progDraftFor(meta.active === "b" ? "b" : "a").share = !!el.checked;
+      return;
+    }
     if (kind === "to-repair") {
       if (state.hold || meta.safety) return;
       var repVal = String(el.value || "").slice(0, 160);
@@ -2746,6 +3265,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
     state.cplErr = "";
     state.cplNiceErr = "";
     state.cplToErr = "";
+    state.cplProgErr = "";
     if (action === "cpl-reset-ask") { state.cplReset = true; render(); return; }
     if (action === "cpl-reset-no") { state.cplReset = false; render(); return; }
     if (action === "cpl-reset-yes") { cplWipe(); render(); return; }
@@ -2790,6 +3310,12 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
       if (applyGuardToCurrent(meta) === "stop") return;
       var recp = loadCplSide(meta.active);
       if (recp.done) { meta.screen = screenFor(meta, meta.active); saveCplMeta(meta); render(); return; }
+      if (recp.baseAsk) {
+        recp.baseAsk = false;
+        recp.qi = 7;
+        saveCplSide(meta.active, recp);
+        render(); return;
+      }
       recp.qi = Math.max(0, (recp.qi || 0) - 1);
       saveCplSide(meta.active, recp);
       render(); return;
@@ -2798,19 +3324,70 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
       if (applyGuardToCurrent(meta) === "stop") return;
       var recn = loadCplSide(meta.active);
       if (recn.done) { meta.screen = screenFor(meta, meta.active); saveCplMeta(meta); render(); return; }
+      if (recn.baseAsk) { render(); return; }
       var qi = recn.qi || 0;
       var text = String(recn.answers[qi] || "").trim();
       if (text.length < 2) { state.cplErr = CPL.needText; render(); return; }
       if (qi < 7) { recn.qi = qi + 1; saveCplSide(meta.active, recn); render(); return; }
-      recn.done = true;
-      recn.doneAt = new Date().toISOString();
+      recn.baseAsk = true;
       saveCplSide(meta.active, recn);
-      if (!loadCplSide(otherOf(meta.active)).done) meta.screen = "wait";
-      else {
-        if (!finishBothIfReady(meta)) return;
-        meta.screen = "summary";
+      render(); return;
+    }
+    if (action === "cpl-base-save") {
+      if (state.hold || meta.safety) { render(); return; }
+      var bSide = meta.active === "b" ? "b" : "a";
+      var bRec = loadCplSide(bSide);
+      var bAreas = bRec.baseline ? bRec.baseline.areas : cplProgAreasFromAnswers(bRec);
+      var bScores = readScoreMap("base-score", bAreas, progDraftFor(bSide).scores);
+      if (!bScores) { state.cplProgErr = CPL.progBaseNeed; render(); return; }
+      var bResult = trySaveCplBaseline(meta, bScores);
+      if (bResult === "crisis") { triggerCrisis("text"); return; }
+      if (bResult === "safety") { enterSafety(meta); return; }
+      if (bResult === "short") { state.cplProgErr = CPL.progBaseNeed; render(); return; }
+      if (bResult === "hidden") return;
+      var afterBase = loadCplSide(bSide);
+      if (!afterBase.done) {
+        afterBase.done = true;
+        afterBase.doneAt = new Date().toISOString();
+        afterBase.baseAsk = false;
+        saveCplSide(bSide, afterBase);
+        if (!loadCplSide(otherOf(bSide)).done) meta.screen = "wait";
+        else {
+          if (!finishBothIfReady(meta)) return;
+          meta.screen = "summary";
+        }
+        saveCplMeta(meta);
       }
-      saveCplMeta(meta);
+      render(); return;
+    }
+    if (action === "cpl-prog-save") {
+      if (state.hold || meta.safety) { render(); return; }
+      var pSide = meta.active === "b" ? "b" : "a";
+      var pRec = loadCplSide(pSide);
+      if (!pRec.baseline) { render(); return; }
+      var pDraft = progDraftFor(pSide);
+      var helpedEl = readCplBox("cpl-prog-helped");
+      var hardEl = readCplBox("cpl-prog-hard");
+      var shareEl = (typeof document !== "undefined") ? document.getElementById("cpl-prog-share") : null;
+      var pScores = readScoreMap("prog-score", pRec.baseline.areas, pDraft.scores);
+      if (!pScores) { state.cplProgErr = CPL.progNeed; render(); return; }
+      var pPayload = {
+        scores: pScores,
+        helped: helpedEl != null ? helpedEl : pDraft.helped,
+        hard: hardEl != null ? hardEl : pDraft.hard,
+        share: shareEl ? !!shareEl.checked : pDraft.share === true
+      };
+      var pResult = trySaveCplProg(meta, pPayload);
+      if (pResult === "safety") { enterSafety(meta, "progress"); return; }
+      if (pResult === "short") {
+        pDraft.helped = String(pPayload.helped || "").slice(0, 180);
+        pDraft.hard = String(pPayload.hard || "").slice(0, 180);
+        pDraft.share = pPayload.share === true;
+        pDraft.scores = pScores;
+        state.cplProgErr = CPL.progNeed;
+        render(); return;
+      }
+      if (pResult === "early" || pResult === "week" || pResult === "hidden") { render(); return; }
       render(); return;
     }
     if (action === "cpl-review") { meta.screen = "review"; saveCplMeta(meta); render(); return; }
@@ -3667,6 +4244,129 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
     eq(heldTo.indexOf(CPL.toTitle) === -1 && heldTo.indexOf("HOLDTIMEOUT99") === -1 && heldTo.indexOf("HOLDCALM99") === -1, "hold hides timeout");
     eq(cplToCard(loadCplMeta()) === "" && cplToPauseCard(loadCplMeta()) === "" && cplToStatusHTML(loadCplMeta()) === "", "timeout helpers hide on hold");
     eq(trySaveCplTimeout(loadCplMeta(), { body: "قلبي يدق", thoughts: "", voice: "", phrase: "بدي وقفة", acts: ["breath", "walk"], custom: "", back: true, share: false, fear: "no" }) === "hidden", "no save on hold");
+    state.hold = false;
+    state.crisis = null;
+    stopTo(true);
+    stopSl(true);
+    cplWipe();
+    var progCopy = CPL.progTitle + CPL.progLesson + CPL.progWait + CPL.progHelped + CPL.progHard + CPL.progShare + CPL.progSave + CPL.progPrivateHint + CPL.progEncourageUp + CPL.progEncourageSame + CPL.progEncourageDown + CPL.progSuggest + CPL.progBaseTitle + CPL.progBaseBody + CPL.progJointTitle + CPL.progJointHow + CPL.progJointEmpty + CPL.progTherapist + CPL.progNextWeek + CPL.planIntro;
+    eq(progCopy.indexOf("هلق") === -1, "prog no halq");
+    eq(CPL.progLesson.indexOf("هسّة") !== -1 && CPL.progJointEmpty.indexOf("هسّة") !== -1, "prog hessa");
+    eq(CPL.progLesson.indexOf("تشخيص") !== -1 && CPL.progTherapist.indexOf("معالج أزواج مرخّص") !== -1, "prog not a therapist");
+    eq(viewCplSafety({ safety: true, aName: "Lina", bName: "Omar" }).indexOf("tel:101") === -1, "old safety card unchanged");
+    eq(viewCplSafety({ safety: true, safetyFrom: "progress", aName: "Lina", bName: "Omar" }).indexOf(">100<") !== -1, "progress safety keeps 100");
+    eq(viewCplSafety({ safety: true, safetyFrom: "progress" }).indexOf(">1201<") !== -1 && viewCplSafety({ safety: true, safetyFrom: "progress" }).indexOf("tel:101") !== -1, "progress safety 1201 and 101");
+    eq(viewCplSafety({ safety: true, safetyFrom: "progress" }).indexOf(CPL.progTherapist) !== -1, "therapist line");
+    eq(viewCplSafety({ safety: true }).indexOf(CPL.safetyTitle) !== -1 && viewCplSafety({ safety: true }).indexOf(CPL.safetyBody) !== -1, "safety copy stays");
+    var topicRec = cplBlank();
+    topicRec.answers = ["منختلف على المصاري", "بتبلش بصراخ ونبرة عالية", "بحكي أكثر وبلحق", "جواب هادي", "مثال خاص", "الطبخ", "بقرب وبصر", "ابعث رسالة"];
+    var topicAreas = cplProgAreasFromAnswers(topicRec);
+    eq(topicAreas[0].label.indexOf("المصاري") !== -1, "topic from interview");
+    eq(topicAreas.some(function (a) { return a.id === "start" && a.exercise === "soft"; }), "start area");
+    eq(topicAreas.some(function (a) { return a.id === "flood" && a.exercise === "timeout"; }), "flood from pursue");
+    var otherTopic = cplBlank();
+    otherTopic.answers = ["موضوع سري للثاني فقط", "بهدوء", "بسكت وبطلع", "وقت", "سر", "صبر", "بتراجع", "اسأل مرة"];
+    var otherAreas = cplProgAreasFromAnswers(otherTopic);
+    eq(JSON.stringify(topicAreas).indexOf("موضوع سري للثاني") === -1, "areas stay on own answers");
+    eq(otherAreas.some(function (a) { return a.id === "listen" && a.exercise === "speaker"; }), "withdraw points to listener");
+    cplWipe();
+    saveCplMeta({ aName: "Lina", bName: "Omar", active: "a", screen: "plan", safety: false });
+    var earlyA = cplBlank();
+    earlyA.done = true;
+    earlyA.answers = topicRec.answers.slice();
+    earlyA.baseline = { date: jerusalemToday(), areas: [{ id: "topic", label: "المصاري", exercise: "soft", score: 8 }, { id: "flood", label: CPL.progFlood, exercise: "timeout", score: 6 }] };
+    saveCplSide("a", earlyA);
+    var earlyB = cplBlank();
+    earlyB.done = true;
+    earlyB.answers = otherTopic.answers.slice();
+    earlyB.baseline = { date: jerusalemToday(), areas: [{ id: "topic", label: "موضوع سري للثاني فقط", exercise: "soft", score: 5 }] };
+    saveCplSide("b", earlyB);
+    saveJSON(K_CPL_PLAN, makeCplPlan());
+    var earlyCard = cplProgCard(loadCplMeta());
+    eq(earlyCard.indexOf('data-cpl-prog="wait"') !== -1 && earlyCard.indexOf(CPL.progWait) !== -1, "wait a few days");
+    eq(earlyCard.indexOf('data-action="cpl-prog-save"') === -1, "no form yet");
+    eq(trySaveCplProg(loadCplMeta(), { scores: { topic: 7, flood: 6 }, helped: "الحكي الهادئ", hard: "المصاري", share: true }) === "early", "save blocked early");
+    var aged = makeCplPlan();
+    aged.startDate = isoAddDays(jerusalemToday(), -4);
+    saveJSON(K_CPL_PLAN, aged);
+    var formCard = cplProgCard(loadCplMeta());
+    eq(formCard.indexOf('data-cpl-prog="form"') !== -1 && formCard.indexOf('data-action="cpl-prog-save"') !== -1, "form after a few days");
+    eq(formCard.indexOf("موضوع سري للثاني") === -1, "form hides partner topic");
+    eq(trySaveCplProg(loadCplMeta(), { scores: { topic: 7, flood: 5 }, helped: "ساعد الهدوء", hard: "HARD-PRIVATE-A", share: true }) === "ok", "checkin saved");
+    eq(trySaveCplProg(loadCplMeta(), { scores: { topic: 7, flood: 5 }, helped: "تاني", hard: "كمان", share: false }) === "week", "once a week");
+    var aStore = String(localStorage.getItem(K_CPL_A) || "");
+    var bStore = String(localStorage.getItem(K_CPL_B) || "");
+    eq(aStore.indexOf("HARD-PRIVATE-A") !== -1, "progress stored on a");
+    eq(bStore.indexOf("HARD-PRIVATE-A") === -1 && bStore.indexOf("ساعد الهدوء") === -1, "progress not on b");
+    var resultCard = cplProgCard(loadCplMeta());
+    eq(resultCard.indexOf('data-cpl-prog="result"') !== -1 && resultCard.indexOf('data-prog-dir="down"') !== -1, "own change");
+    eq(resultCard.indexOf(CPL.progEncourageDown) !== -1 && resultCard.indexOf('data-cpl-prog="suggest"') !== -1, "gentle suggestion");
+    eq(resultCard.indexOf(CPL.progExTimeout) !== -1, "points at timeout exercise");
+    eq(resultCard.indexOf("موضوع سري للثاني") === -1, "result hides partner");
+    saveCplMeta({ aName: "Lina", bName: "Omar", active: "b", screen: "plan", safety: false });
+    eq(trySaveCplProg(loadCplMeta(), { scores: { topic: 4 }, helped: "HELPED-SECRET-B", hard: "HARD-SECRET-B", share: false }) === "ok", "b private checkin");
+    eq(String(localStorage.getItem(K_CPL_A) || "").indexOf("HARD-SECRET-B") === -1, "b text stays off a");
+    var bResult = cplProgCard(loadCplMeta());
+    eq(bResult.indexOf("HARD-SECRET-B") !== -1 && bResult.indexOf("HARD-PRIVATE-A") === -1, "b sees only self");
+    saveCplMeta({ aName: "Lina", bName: "Omar", active: "a", screen: "session", safety: false, openDay: "c4", slSpeakerSide: "a" });
+    var jointProg = viewCplSession(loadCplMeta());
+    var jointAt = jointProg.indexOf('data-cpl-prog="joint"');
+    var jointSlice = jointAt === -1 ? "" : jointProg.slice(jointAt, jointProg.indexOf("<section", jointAt + 10));
+    eq(jointAt !== -1, "joint has share card");
+    eq(jointSlice.indexOf("HARD-PRIVATE-A") !== -1 || jointSlice.indexOf("لسّه أثقل") !== -1, "shared summary");
+    eq(jointSlice.indexOf("HARD-SECRET-B") === -1 && jointSlice.indexOf("HELPED-SECRET-B") === -1, "unshared stays off joint");
+    eq(jointSlice.indexOf("cpl-prog-val") === -1 && jointSlice.indexOf('data-prog-dir') === -1, "joint has no scores");
+    eq(jointProg.indexOf(CPL.slStart) !== -1, "joint exercises still there");
+    var aProg = loadCplSide("a");
+    aProg.progress[0].date = isoAddDays(jerusalemToday(), -7);
+    saveCplSide("a", aProg);
+    saveCplMeta({ aName: "Lina", bName: "Omar", active: "a", screen: "plan", safety: false });
+    eq(cplProgCard(loadCplMeta()).indexOf('data-cpl-prog="form"') !== -1, "due again next week");
+    var dropMeta = loadCplMeta();
+    eq(trySaveCplProg(dropMeta, { scores: { topic: 2, flood: 6 }, helped: "مشي قصير", hard: "الخناقة رجعت", share: true }) === "safety", "sharp drop safety");
+    enterSafety(dropMeta, "progress");
+    eq(loadCplMeta().safety === true && loadCplMeta().safetyFrom === "progress", "safety from progress");
+    eq(loadCplPlan() === null, "plan stopped");
+    var safeView = viewCouples();
+    eq(safeView.indexOf(">100<") !== -1 && safeView.indexOf(">1201<") !== -1 && safeView.indexOf(">101<") !== -1, "safety numbers");
+    eq(safeView.indexOf(CPL.progTherapist) !== -1 && safeView.indexOf(CPL.safetyTitle) !== -1, "safety card and therapist");
+    eq(safeView.indexOf(CPL.slStart) === -1 && safeView.indexOf('data-action="cpl-to-start"') === -1 && safeView.indexOf('data-action="cpl-prog-save"') === -1, "no joint exercises");
+    eq(JSON.stringify(loadCplSide("a").progress).indexOf("الخناقة رجعت") === -1, "sharp checkin not stored");
+    cplWipe();
+    saveCplMeta({ aName: "Lina", bName: "Omar", active: "a", screen: "plan", safety: false });
+    var vioA = cplBlank();
+    vioA.done = true;
+    vioA.answers = ["منختلف على المصاري", "بهدوء", "بقرب", "وقت", "x", "طبخ", "بقرب", "رسالة"];
+    vioA.baseline = { date: jerusalemToday(), areas: [{ id: "topic", label: "المصاري", exercise: "soft", score: 5 }] };
+    saveCplSide("b", cplBlank());
+    saveCplSide("a", vioA);
+    var vioPlan = makeCplPlan();
+    vioPlan.startDate = isoAddDays(jerusalemToday(), -4);
+    saveJSON(K_CPL_PLAN, vioPlan);
+    var vioMeta = loadCplMeta();
+    eq(trySaveCplProg(vioMeta, { scores: { topic: 5 }, helped: "قهوة", hard: CPL.hitSample, share: false }) === "safety", "violence keyword");
+    enterSafety(vioMeta, "progress");
+    eq(loadCplMeta().screen === "safety" && viewCouples().indexOf(CPL.slTitle) === -1, "violence stops joint");
+    eq(JSON.stringify(loadCplSide("a")).indexOf(CPL.hitSample) === -1, "violence text not stored");
+    cplWipe();
+    saveCplMeta({ aName: "Lina", bName: "Omar", active: "a", screen: "plan", safety: false });
+    var harmA = cplBlank();
+    harmA.done = true;
+    harmA.answers = ["منختلف على المصاري", "بهدوء", "بقرب", "وقت", "x", "طبخ", "بقرب", "رسالة"];
+    harmA.baseline = { date: jerusalemToday(), areas: [{ id: "topic", label: "المصاري", exercise: "soft", score: 5 }] };
+    saveCplSide("a", harmA);
+    var harmPlan = makeCplPlan();
+    harmPlan.startDate = isoAddDays(jerusalemToday(), -4);
+    saveJSON(K_CPL_PLAN, harmPlan);
+    var harmMeta = loadCplMeta();
+    eq(trySaveCplProg(harmMeta, { scores: { topic: 5 }, helped: "بدي اموت", hard: "صعب", share: true }) === "safety", "self-harm keyword");
+    enterSafety(harmMeta, "progress");
+    eq(viewCouples().indexOf(">101<") !== -1 && viewCouples().indexOf(CPL.progTherapist) !== -1, "self-harm shows card");
+    eq(viewCouples().indexOf("بدي اموت") === -1 && JSON.stringify(loadCplSide("a").progress || []).indexOf("بدي اموت") === -1, "self-harm not stored");
+    eq(loadCplPlan() === null, "self-harm stops plan");
+    state.hold = true;
+    eq(cplProgCard(loadCplMeta()) === "" && cplJointProgCard(loadCplMeta()) === "", "hold hides progress");
+    eq(trySaveCplProg(loadCplMeta(), { scores: { topic: 5 }, helped: "هدوء", hard: "المصاري", share: false }) === "hidden", "no save on hold");
     state.hold = false;
     state.crisis = null;
     stopTo(true);
