@@ -1083,3 +1083,76 @@ textarea.cpl-soft-input { min-height: 4.2rem; }
   .cpl-prog-k { flex-basis: 5.4rem; }
   .cpl-prog-scale { font-size: 0.8rem; }
 }
+
+/* Rituals of connection — private planner, joint agreement, weekly tick */
+.cpl-rit {
+  background: #f8f3ea;
+  border-color: #e4d3b8;
+}
+.cpl-rit h2,
+.cpl-rit-joint h2,
+.cpl-rit-plan h2 { font-size: 1.15rem; }
+.cpl-rit textarea,
+textarea.cpl-rit-input { min-height: 4.2rem; }
+.cpl-rit .chips { margin-top: 0; }
+.cpl-rit .chip {
+  border-radius: 14px;
+  text-align: start;
+  white-space: normal;
+  line-height: 1.45;
+  height: auto;
+  max-width: 100%;
+}
+.cpl-rit-item {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px 12px;
+  margin: 8px 0;
+}
+.cpl-rit-item p { overflow-wrap: anywhere; }
+.cpl-rit-item .meta {
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+}
+.cpl-rit-item.is-overlap {
+  background: var(--olive-soft);
+  border-color: var(--olive);
+}
+.cpl-rit-item.is-agreed { border-color: var(--olive-deep); }
+.cpl-rit-badge {
+  display: inline-block;
+  margin: 0 0 6px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--olive);
+  color: #fff;
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+}
+.cpl-rit-del { min-height: var(--touch); margin-top: 4px; }
+.cpl-rit-joint,
+.cpl-rit-plan {
+  background: #f7f1e6;
+  border: 1px solid #e0d0b8;
+}
+.cpl-rit-week {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 8px 12px;
+  margin: 6px 0;
+  min-height: var(--touch);
+}
+.cpl-rit-week.is-now {
+  background: var(--olive-soft);
+  border-color: var(--olive);
+}
+@media (max-width: 380px) {
+  .cpl-rit .chip { font-size: 0.88rem; padding: 8px 12px; }
+}
