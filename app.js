@@ -332,7 +332,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
   "summaryOnly": "الصورة المشتركة بس. الكلام الخاص ما بيننسخ لهون.",
   "startWeek": "ابدأ خطة السبع أيام للزوجين",
   "planTitle": "سبع أيام",
-  "planIntro": "أول تلات أيام فردية. الدليل ببدّل مين الجلسة إله: الشريك الأول، بعدين الثاني، بعدين الأول. بهالأيام كل واحد يجهّز خطة وقفة ورجوع خاصة فيه، وفيك تختار طقوس قرب صغيرة وتضل عندك. من اليوم الرابع الجلسات مشتركة، والاثنين يكونوا موجودين، وفيها تمرين دور المتكلم والمستمع بمؤقت، وزر وقفة إذا الحكي علا، والطقوس اللي انشاركت عشان تتفقوا على طقس واحد للأسبوع. اليوم اللي بعده بيضل مقفول ليومه. وبعد كم يوم، كل شريك إله فحص قصير خاص، مرة بالأسبوع تقريبًا.",
+  "planIntro": "أول تلات أيام فردية. الدليل ببدّل مين الجلسة إله: الشريك الأول، بعدين الثاني، بعدين الأول. بهالأيام كل واحد يجهّز خطة وقفة ورجوع خاصة فيه، وفيك تختار طقوس قرب صغيرة وتضل عندك. من اليوم الرابع الجلسات مشتركة، والاثنين يكونوا موجودين، وفيها تمرين دور المتكلم والمستمع بمؤقت، وزر وقفة إذا الحكي علا، والطقوس اللي انشاركت عشان تتفقوا على طقس واحد للأسبوع. اليوم اللي بعده بيضل مقفول ليومه. وبعد كم يوم، كل شريك إله فحص قصير خاص، مرة بالأسبوع تقريبًا. وبآخر الخطة، أو من زر على هالصفحة، كل شريك يراجع لحاله ويختار شو يشارك، وبعدين فيكم تتفقوا على خطة نكمّل.",
   "planProgress": "خلص {done} من {total} جلسات. بلشت {start}.",
   "dayLabel": "يوم {n}",
   "openDay": "افتح الجلسة",
@@ -546,6 +546,59 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
   "ritBy": "{name}",
   "ritSavedNote": "انحفظ عالسبع أيام. هناك مربع «عملناها هالأسبوع».",
   "ritTherapist": "إذا في خوف أو تهديد أو ضرب، طقوس القرب مش الخطوة الجاية. فكرة منيحة تشوف معالج أزواج مرخّص. الدليل مش معالج، وما في تشخيص ولا أدوية.",
+  "wrapTitle": "مراجعة آخر الأسبوع",
+  "wrapLesson": "هاي مراجعة خاصة فيك بآخر الخطة. دليل ذاتي، مش معالج أزواج مرخّص، وما في تشخيص ولا أدوية. بتعيد تقييم المواضيع، وبتختار المهارة اللي ساعدت، وبتعهّد تعهد واحد للشهر الجاي.",
+  "wrapPrompt": "وصلتوا لآخر يوم بالخطة. كل واحد يراجع لحاله. اللي ما بتعلّمه للمشاركة بضل عندك.",
+  "wrapOpen": "مراجعة آخر الأسبوع وخطة نكمّل",
+  "wrapRate": "كيف الموضوع هسّة، من ٠ لـ ١٠",
+  "wrapFromCheck": "حطينا أرقام الفحص القصير تبع {date}. فيك تعدّلها. المقارنة مع خط البداية.",
+  "wrapSkillsH": "شو ساعد أكتر؟ اختَر من ١ لـ ٣",
+  "wrapCommit": "تعهد واحد للشهر الجاي، إلك إنت",
+  "wrapShareScores": "شارك اتجاه التغيير بالجلسة المشتركة. الأرقام بتضل عندك.",
+  "wrapShareSkills": "شارك المهارات اللي اخترتها",
+  "wrapShareCommit": "شارك التعهد",
+  "wrapSave": "احفظ مراجعتي",
+  "wrapNeed": "حرّك كل مؤشر، اختَر من مهارة لـ ٣، واكتب التعهد بكلمتين أو أكثر.",
+  "wrapSkillsNeed": "اختَر مهارة واحدة على الأقل، ولحد ٣.",
+  "wrapPrivateHint": "كل بند خاص فيك لحد ما تعلّم مشاركته. الشريك ما بشوفه غير هيك.",
+  "wrapSaved": "انحفظت عندك إنت.",
+  "wrapEdit": "عدّل المراجعة",
+  "wrapBack": "رجوع للسبع أيام",
+  "skillTimer": "مؤقت المتكلم والمستمع",
+  "skillNice": "دفتر الإشي اللطيف",
+  "skillSoft": "طلب ببداية لطيفة",
+  "skillTimeout": "وقفة ورجوع",
+  "skillRitual": "طقوس القرب",
+  "keepTitle": "خطة نكمّل",
+  "keepHow": "هون بس اللي انشارك. اتفقوا: أي مهارات تضل، كم مرة، وموعد مراجعة بعد حوالي ٤ أسابيع.",
+  "keepEmpty": "ما في إشي مشارَك هسّة. كل واحد يعلّم المشاركة من مراجعته الخاصة.",
+  "keepNoSkills": "عشان تتفقوا على خطة، لازم مهارة وحدة على الأقل تكون مشاركة.",
+  "keepNeedBoth": "علّموا إنكم الاتنين موجودين عشان تتفقوا.",
+  "keepSkills": "نكمّل على",
+  "keepOften": "كم مرة",
+  "keepDate": "موعد المراجعة الجاية",
+  "keepDateHint": "بعد حوالي ٤ أسابيع",
+  "keepSave": "احفظوا خطة نكمّل",
+  "keepNeed": "اختَروا مهارة من اللي انشارك، وكم مرة، وموعد.",
+  "keepDateBad": "حطوا موعد بين أسبوع وشهرين. المقترح حوالي ٤ أسابيع.",
+  "keepPlanTitle": "خطة نكمّل اللي اتفقنا عليها",
+  "keepPlanWait": "لسه ما في خطة نكمّل. من جلسة مشتركة، والاتنين موجودين، بتتفقوا عليها.",
+  "keepOftenLine": "كم مرة: {often}",
+  "keepDateLine": "نراجع يوم {date}",
+  "keepBy": "{name}",
+  "keepOverlap": "الاتنين اختاروها",
+  "oftenDaily": "كل يوم، شوي",
+  "oftenTwice": "مرتين بالأسبوع",
+  "oftenWeekly": "مرة بالأسبوع",
+  "printTitle": "ملخص خطة نكمّل",
+  "printNote": "الملخص فيه اللي انشارك والخطة المتفق عليها بس. الكلام الخاص مش هون، وما بينبعت لمحل.",
+  "printCopy": "انسخ الملخص",
+  "printPrint": "اطبع الملخص",
+  "printCopied": "اننسخ الملخص على الجهاز.",
+  "printEmpty": "لما تتفقوا على الخطة، الملخص بيطلع هون، وفيك تنسخه أو تطبعه.",
+  "wrapTherapistTitle": "إيمتى تشوف معالج أزواج مرخّص",
+  "wrapTherapistBody": "التقييم ما خف، أو ضل زي ما هو، أو صار أثقل. فكرة منيحة تحكي مع معالج أزواج مرخّص. الدليل مرشد ذاتي، مش معالج، وما في تشخيص ولا أدوية.",
+  "wrapTherapistFear": "إذا في خوف، أو ضرب، أو تهديد، أو سيطرة، بطاقة السلامة هي الخطوة. اتصل، ولا تكمّل تمرين الحكي.",
   "progBaseKicker": "خط البداية من أسئلتك",
   "resetAsk": "امسح أجوبة الزوجين عن هاد الجهاز",
   "resetYes": "أيوه، امسحها",
@@ -694,7 +747,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
   function loadProgram() { return loadJSON(K_PROGRAM, null); }
   function saveProgram(p) { saveJSON(K_PROGRAM, p); }
 
-  var state = { view: "home", dayId: null, crisis: null, hold: false, guideText: "", guide: null, pad: "", pst: {}, check: null, result: null, formError: "", confirmClear: false, cplErr: "", cplReset: false, cplNiceDraft: "", cplNiceShare: false, cplNiceErr: "", cplSoftErr: "", cplSoftBySide: { a: { situation: "", feeling: "", request: "", share: false }, b: { situation: "", feeling: "", request: "", share: false } }, cplToErr: "", cplToBySide: { a: null, b: null }, cplProgErr: "", cplProgBySide: { a: { scores: {}, helped: "", hard: "", share: false }, b: { scores: {}, helped: "", hard: "", share: false } }, cplRitErr: "", cplRitBySide: { a: { preset: "", text: "", when: "", share: false }, b: { preset: "", text: "", when: "", share: false } } };
+  var state = { view: "home", dayId: null, crisis: null, hold: false, guideText: "", guide: null, pad: "", pst: {}, check: null, result: null, formError: "", confirmClear: false, cplErr: "", cplReset: false, cplNiceDraft: "", cplNiceShare: false, cplNiceErr: "", cplSoftErr: "", cplSoftBySide: { a: { situation: "", feeling: "", request: "", share: false }, b: { situation: "", feeling: "", request: "", share: false } }, cplToErr: "", cplToBySide: { a: null, b: null }, cplProgErr: "", cplProgBySide: { a: { scores: {}, helped: "", hard: "", share: false }, b: { scores: {}, helped: "", hard: "", share: false } }, cplRitErr: "", cplRitBySide: { a: { preset: "", text: "", when: "", share: false }, b: { preset: "", text: "", when: "", share: false } }, cplWrapErr: "", cplWrapEdit: "", cplWrapBySide: { a: emptyWrapDraft(), b: emptyWrapDraft() }, cplKeepErr: "", cplKeepCopied: false, cplKeepOften: "weekly", cplKeepSkills: [], cplKeepDate: "", cplKeepSeeded: false };
   var breath = { running: false, timer: null, mode: "468", phaseIdx: 0, left: 4, cycle: 0, totalCycles: 5, dayId: null, finishedMsg: "" };
   var slClock = null;
   var slTurn = { left: 180, running: false, done: false };
@@ -1289,7 +1342,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
   }
 
   function cplBlank() {
-    return { answers: ["", "", "", "", "", "", "", ""], done: false, doneAt: null, qi: 0, notes: {}, nice: [], soft: [], timeout: emptyTimeout(), baseline: null, progress: [], rituals: [], baseAsk: false };
+    return { answers: ["", "", "", "", "", "", "", ""], done: false, doneAt: null, qi: 0, notes: {}, nice: [], soft: [], timeout: emptyTimeout(), baseline: null, progress: [], rituals: [], review: null, baseAsk: false };
   }
   var cplNiceSeq = 0;
   function cplNiceId() {
@@ -1397,6 +1450,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
       if (raw && raw.baseline) rec.baseline = sanitizeBaseline(raw.baseline);
       if (raw && raw.progress) rec.progress = sanitizeProgress(raw.progress);
       if (raw && Array.isArray(raw.rituals)) rec.rituals = sanitizeRitualList(raw.rituals);
+      if (raw && raw.review) rec.review = sanitizeReview(raw.review);
     } else {
       rec = raw;
       if (!rec.notes || typeof rec.notes !== "object") rec.notes = {};
@@ -1407,6 +1461,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
       rec.baseline = sanitizeBaseline(rec.baseline);
       rec.progress = sanitizeProgress(rec.progress);
       rec.rituals = sanitizeRitualList(rec.rituals);
+      rec.review = sanitizeReview(rec.review);
       rec.baseAsk = rec.baseAsk === true && !rec.done;
     }
     return rec;
@@ -1472,6 +1527,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
     clearToDrafts();
     clearProgDrafts();
     clearRitDrafts();
+    clearWrapDrafts();
     stopTo(true);
   }
   function scrubSide(which) {
@@ -1525,6 +1581,11 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
       keptRit.push(r);
     });
     rec.rituals = keptRit;
+    if (rec.review) {
+      var revBlob = rec.review.commitment || "";
+      if (isCrisisText(revBlob)) { hitC = true; rec.review = null; }
+      else if (cplViolent(revBlob)) { hitV = true; rec.review = null; }
+    }
     if (rec.baseline && rec.baseline.areas) {
       var baseLabels = rec.baseline.areas.map(function (a) { return a.label || ""; }).join(" ");
       if (isCrisisText(baseLabels)) { hitC = true; rec.baseline = null; }
@@ -1538,6 +1599,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
     meta.screen = "safety";
     if (why === "progress") meta.safetyFrom = "progress";
     if (why === "rituals") meta.safetyFrom = "rituals";
+    if (why === "review") meta.safetyFrom = "review";
     saveCplMeta(meta);
     try { localStorage.removeItem(K_CPL_PLAN); localStorage.removeItem(K_CPL_SUM); } catch (e) {}
     state.cplErr = "";
@@ -1549,6 +1611,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
     clearToDrafts();
     clearProgDrafts();
     clearRitDrafts();
+    clearWrapDrafts();
     stopTo(true);
     render();
   }
@@ -1681,6 +1744,21 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
       var ritDraftNow = ritDraftFor(ritSideNow);
       if (ritTextBox != null) ritDraftNow.text = String(ritTextBox).slice(0, 180);
       if (ritWhenBox != null) ritDraftNow.when = String(ritWhenBox).slice(0, 80);
+    }
+    var wrapBox = readCplBox("cpl-wrap-commit");
+    if (wrapBox != null) {
+      var wrapSide = meta.active === "b" ? "b" : "a";
+      if (isCrisisText(wrapBox)) {
+        wrapDraftFor(wrapSide).commitment = "";
+        triggerCrisis("text");
+        return "stop";
+      }
+      if (cplViolent(wrapBox)) {
+        wrapDraftFor(wrapSide).commitment = "";
+        enterSafety(meta, "review");
+        return "stop";
+      }
+      wrapDraftFor(wrapSide).commitment = String(wrapBox).slice(0, 220);
     }
     return "ok";
   }
@@ -3192,6 +3270,611 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
       '<p class="muted">' + esc(fill(CPL.ritBy, { name: nameOf(meta, agreed.side) })) + "</p>" +
       weeks + "</section>";
   }
+  function emptyWrapDraft() {
+    return { scores: {}, skills: [], commitment: "", shareScores: false, shareSkills: false, shareCommitment: false, fromCheckin: false, checkDate: "", seeded: false };
+  }
+  function clearWrapDrafts() {
+    state.cplWrapBySide = { a: emptyWrapDraft(), b: emptyWrapDraft() };
+    state.cplWrapErr = "";
+    state.cplWrapEdit = "";
+    state.cplKeepErr = "";
+    state.cplKeepCopied = false;
+    state.cplKeepOften = "weekly";
+    state.cplKeepSkills = [];
+    state.cplKeepDate = "";
+    state.cplKeepSeeded = false;
+  }
+  function wrapDraftFor(side) {
+    var w = side === "b" ? "b" : "a";
+    if (!state.cplWrapBySide) clearWrapDrafts();
+    if (!state.cplWrapBySide[w]) state.cplWrapBySide[w] = emptyWrapDraft();
+    return state.cplWrapBySide[w];
+  }
+  function wrapSkillIds() {
+    return ["timer", "nice", "soft", "timeout", "ritual"];
+  }
+  function wrapSkillLabel(id) {
+    if (id === "timer") return CPL.skillTimer;
+    if (id === "nice") return CPL.skillNice;
+    if (id === "soft") return CPL.skillSoft;
+    if (id === "timeout") return CPL.skillTimeout;
+    if (id === "ritual") return CPL.skillRitual;
+    return "";
+  }
+  function keepOftenIds() {
+    return ["daily", "twice", "weekly"];
+  }
+  function keepOftenLabel(id) {
+    if (id === "daily") return CPL.oftenDaily;
+    if (id === "twice") return CPL.oftenTwice;
+    if (id === "weekly") return CPL.oftenWeekly;
+    return "";
+  }
+  function sanitizeReview(raw) {
+    if (!raw || typeof raw !== "object") return null;
+    var date = String(raw.date || "");
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return null;
+    var ratings = [];
+    var src = Array.isArray(raw.ratings) ? raw.ratings : [];
+    var seen = {};
+    for (var i = 0; i < src.length && ratings.length < 4; i++) {
+      var row = src[i];
+      if (!row) continue;
+      var id = String(row.id || "").replace(/[^a-z0-9_-]/g, "").slice(0, 24);
+      if (!id || seen[id]) continue;
+      seen[id] = 1;
+      ratings.push({ id: id, score: clampProgScore(row.score) });
+    }
+    if (!ratings.length) return null;
+    var skills = [];
+    var sk = Array.isArray(raw.skills) ? raw.skills : [];
+    var seenS = {};
+    for (var s = 0; s < sk.length && skills.length < 3; s++) {
+      var sid = String(sk[s] || "");
+      if (!wrapSkillLabel(sid) || seenS[sid]) continue;
+      seenS[sid] = 1;
+      skills.push(sid);
+    }
+    if (!skills.length) return null;
+    var commitment = String(raw.commitment || "").trim().slice(0, 220);
+    if (commitment.length < 2) return null;
+    return {
+      date: date,
+      ratings: ratings,
+      skills: skills,
+      commitment: commitment,
+      shareScores: raw.shareScores === true,
+      shareSkills: raw.shareSkills === true,
+      shareCommitment: raw.shareCommitment === true
+    };
+  }
+  function wrapAreas(rec) {
+    if (rec && rec.baseline && rec.baseline.areas && rec.baseline.areas.length) return rec.baseline.areas;
+    return cplProgAreasFromAnswers(rec || { answers: [] });
+  }
+  function wrapHasBase(area) {
+    return !!(area && area.score != null && area.score !== "" && isFinite(Number(area.score)));
+  }
+  function wrapSeedScores(rec) {
+    var scores = {};
+    var last = cplProgLast(rec);
+    var fromProg = {};
+    var fromCheckin = false;
+    var checkDate = "";
+    if (last && last.ratings && last.ratings.length) {
+      last.ratings.forEach(function (r) { fromProg[r.id] = clampProgScore(r.score); });
+      fromCheckin = true;
+      checkDate = last.date || "";
+    }
+    var areas = wrapAreas(rec);
+    for (var i = 0; i < areas.length; i++) {
+      var id = areas[i].id;
+      if (fromProg[id] != null) scores[id] = fromProg[id];
+      else if (wrapHasBase(areas[i])) scores[id] = clampProgScore(areas[i].score);
+      else scores[id] = 5;
+    }
+    return { scores: scores, fromCheckin: fromCheckin, checkDate: checkDate };
+  }
+  function ensureWrapDraft(side, rec) {
+    var draft = wrapDraftFor(side);
+    if (draft.seeded) return draft;
+    var seed = wrapSeedScores(rec);
+    draft.scores = {};
+    var areas = wrapAreas(rec);
+    for (var i = 0; i < areas.length; i++) {
+      var id = areas[i].id;
+      draft.scores[id] = seed.scores[id] != null ? seed.scores[id] : 5;
+    }
+    draft.fromCheckin = seed.fromCheckin;
+    draft.checkDate = seed.checkDate;
+    draft.seeded = true;
+    return draft;
+  }
+  function wrapNoGain(areas, ratingsMap) {
+    var any = false;
+    for (var i = 0; i < (areas || []).length; i++) {
+      var now = ratingsMap[areas[i].id];
+      if (now == null) continue;
+      if (!wrapHasBase(areas[i])) {
+        if (clampProgScore(now) <= 4) any = true;
+      } else if (clampProgScore(now) <= clampProgScore(areas[i].score)) any = true;
+    }
+    return any;
+  }
+  function reviewMap(rec) {
+    var map = {};
+    var rev = rec && rec.review;
+    if (!rev) return map;
+    (rev.ratings || []).forEach(function (r) { map[r.id] = r.score; });
+    return map;
+  }
+  function trySaveCplReview(meta, payload) {
+    if (state.hold || !meta || meta.safety) return "hidden";
+    var side = meta.active === "b" ? "b" : "a";
+    var rec = loadCplSide(side);
+    if (!rec.done) return "early";
+    if (!loadCplPlan()) return "early";
+    var commitment = String((payload && payload.commitment) || "").trim().slice(0, 220);
+    if (isCrisisText(commitment)) {
+      wrapDraftFor(side).commitment = "";
+      return "crisis";
+    }
+    if (cplViolent(commitment)) {
+      wrapDraftFor(side).commitment = "";
+      return "safety";
+    }
+    var areas = wrapAreas(rec);
+    if (!payload || !payload.scores) return "short";
+    var ratings = [];
+    for (var i = 0; i < areas.length; i++) {
+      var id = areas[i].id;
+      if (payload.scores[id] == null || payload.scores[id] === "") return "short";
+      ratings.push({ id: id, score: clampProgScore(payload.scores[id]) });
+    }
+    var skills = [];
+    var seen = {};
+    var src = (payload && payload.skills) || [];
+    for (var s = 0; s < src.length; s++) {
+      var sid = String(src[s] || "");
+      if (!wrapSkillLabel(sid) || seen[sid]) continue;
+      seen[sid] = 1;
+      skills.push(sid);
+    }
+    if (!ratings.length || skills.length < 1 || skills.length > 3 || commitment.length < 2) return "short";
+    rec.review = {
+      date: jerusalemToday(),
+      ratings: ratings,
+      skills: skills.slice(0, 3),
+      commitment: commitment,
+      shareScores: payload.shareScores === true,
+      shareSkills: payload.shareSkills === true,
+      shareCommitment: payload.shareCommitment === true
+    };
+    saveCplSide(side, rec);
+    state.cplWrapBySide[side] = emptyWrapDraft();
+    if (state.cplWrapEdit === side) state.cplWrapEdit = "";
+    state.cplWrapErr = "";
+    pruneKeep();
+    return "ok";
+  }
+  function setCplReviewShare(side, which, on) {
+    var w = side === "b" ? "b" : "a";
+    var rec = loadCplSide(w);
+    if (!rec.review) return false;
+    if (which === "scores") rec.review.shareScores = on === true;
+    else if (which === "skills") rec.review.shareSkills = on === true;
+    else if (which === "commitment") rec.review.shareCommitment = on === true;
+    else return false;
+    saveCplSide(w, rec);
+    if (which === "skills") pruneKeep();
+    return true;
+  }
+  function cplAtLastStage(plan) {
+    return !!(plan && plan.days && plan.days.length && todayIndex(plan, jerusalemToday()) >= plan.days.length - 1);
+  }
+  function sharedSkillCounts() {
+    var counts = {};
+    ["a", "b"].forEach(function (w) {
+      var rev = loadCplSide(w).review;
+      if (!rev || rev.shareSkills !== true) return;
+      var seen = {};
+      (rev.skills || []).forEach(function (id) {
+        if (!wrapSkillLabel(id) || seen[id]) return;
+        seen[id] = 1;
+        counts[id] = (counts[id] || 0) + 1;
+      });
+    });
+    return counts;
+  }
+  function sharedSkillIds() {
+    return Object.keys(sharedSkillCounts());
+  }
+  function pruneKeep() {
+    var plan = loadCplPlan();
+    if (!plan || !plan.keepGoing) return;
+    var allowed = {};
+    sharedSkillIds().forEach(function (id) { allowed[id] = 1; });
+    var next = [];
+    var src = plan.keepGoing.skills || [];
+    for (var i = 0; i < src.length; i++) if (allowed[src[i]]) next.push(src[i]);
+    if (!next.length) delete plan.keepGoing;
+    else plan.keepGoing.skills = next;
+    saveJSON(K_CPL_PLAN, plan);
+  }
+  function loadKeep(plan) {
+    if (!plan || !plan.keepGoing || typeof plan.keepGoing !== "object") return null;
+    var raw = plan.keepGoing;
+    var allowed = {};
+    sharedSkillIds().forEach(function (id) { allowed[id] = 1; });
+    var skills = [];
+    var seen = {};
+    var src = Array.isArray(raw.skills) ? raw.skills : [];
+    for (var i = 0; i < src.length; i++) {
+      var id = String(src[i] || "");
+      if (!allowed[id] || seen[id] || !wrapSkillLabel(id)) continue;
+      seen[id] = 1;
+      skills.push(id);
+    }
+    var oftenId = String(raw.oftenId || "");
+    if (!keepOftenLabel(oftenId) || !skills.length) return null;
+    var checkIn = String(raw.checkIn || "");
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(checkIn)) return null;
+    var agreedOn = String(raw.agreedOn || "");
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(agreedOn)) agreedOn = jerusalemToday();
+    return { skills: skills, oftenId: oftenId, often: keepOftenLabel(oftenId), checkIn: checkIn, agreedOn: agreedOn };
+  }
+  function tryAgreeKeep(meta, payload) {
+    if (state.hold || !meta || meta.safety) return "hidden";
+    var plan = loadCplPlan();
+    if (!plan || !cplJointReached(plan)) return "early";
+    var found = cplDayDef(meta && meta.openDay);
+    if (!found || found.def.mode !== "joint") return "early";
+    if (found.index > todayIndex(plan, jerusalemToday())) return "early";
+    if (!jointBothHere(meta)) return "both";
+    var allowed = {};
+    sharedSkillIds().forEach(function (id) { allowed[id] = 1; });
+    var skills = [];
+    var seen = {};
+    ((payload && payload.skills) || []).forEach(function (id) {
+      id = String(id || "");
+      if (!allowed[id] || seen[id]) return;
+      seen[id] = 1;
+      skills.push(id);
+    });
+    var oftenId = String((payload && payload.oftenId) || "");
+    if (!skills.length || !keepOftenLabel(oftenId)) return "short";
+    var checkIn = String((payload && payload.checkIn) || "");
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(checkIn)) return "short";
+    var gap = daysBetween(jerusalemToday(), checkIn);
+    if (gap < 7 || gap > 70) return "date";
+    plan.keepGoing = {
+      skills: skills,
+      oftenId: oftenId,
+      often: keepOftenLabel(oftenId),
+      checkIn: checkIn,
+      agreedOn: jerusalemToday()
+    };
+    saveJSON(K_CPL_PLAN, plan);
+    state.cplKeepErr = "";
+    state.cplKeepSeeded = false;
+    return "ok";
+  }
+  function cplWrapTherapistHTML() {
+    return '<section class="card cpl-wrap-therapist" data-cpl-wrap="therapist"><h2>' + esc(CPL.wrapTherapistTitle) + "</h2>" +
+      "<p>" + esc(CPL.wrapTherapistBody) + "</p>" +
+      "<p><strong>" + esc(CPL.wrapTherapistFear) + "</strong></p>" +
+      '<a class="call" href="tel:100"><span>' + esc(CPL.policeLabel) + "</span><b>100</b></a>" +
+      '<a class="call" href="tel:1201"><span>' + esc(CPL.eranShort) + "</span><b>1201</b></a>" +
+      "<p>" + esc(CPL.safetyCall) + "</p>" +
+      '<p class="disclaimer">' + esc(CPL.disc) + "</p></section>";
+  }
+  function wrapCompareHTML(areas, map) {
+    return (areas || []).map(function (a) {
+      if (!wrapHasBase(a) || map[a.id] == null) return "";
+      return progCompareRow(a, map[a.id]);
+    }).join("");
+  }
+  function cplWrapFormHTML(meta, rec) {
+    var side = meta.active === "b" ? "b" : "a";
+    var draft = ensureWrapDraft(side, rec);
+    var areas = wrapAreas(rec);
+    var sliders = areas.map(function (a) {
+      var v = draft.scores && draft.scores[a.id] != null ? draft.scores[a.id] : 5;
+      return progSliderHTML(a, v, "wrap-score");
+    }).join("");
+    var skills = wrapSkillIds().map(function (id) {
+      var on = draft.skills && draft.skills.indexOf(id) !== -1;
+      return '<label class="check cpl-wrap-skill"><input type="checkbox" data-cpl="wrap-skill" data-skill="' + id + '"' + (on ? " checked" : "") + ">" + esc(wrapSkillLabel(id)) + "</label>";
+    }).join("");
+    var from = draft.fromCheckin
+      ? '<p class="muted" data-cpl-wrap="from-check">' + esc(fill(CPL.wrapFromCheck, { date: draft.checkDate ? fmtNiceDate(draft.checkDate) : "" })) + "</p>"
+      : "";
+    return '<section class="card cpl-wrap" data-cpl-wrap="form"><p class="kicker">' + esc(fill(CPL.privateTag, { name: nameOf(meta, side) })) + "</p>" +
+      "<h1>" + esc(CPL.wrapTitle) + "</h1>" +
+      "<p>" + esc(CPL.wrapLesson) + "</p>" +
+      '<p class="muted">' + esc(CPL.wrapPrivateHint) + "</p>" +
+      "<h2>" + esc(CPL.wrapRate) + "</h2>" + from + sliders + wrapCompareHTML(areas, draft.scores || {}) +
+      "<h2>" + esc(CPL.wrapSkillsH) + "</h2>" +
+      '<div class="cpl-wrap-skills" data-cpl-wrap="skills">' + skills + "</div>" +
+      '<label class="field">' + esc(CPL.wrapCommit) + '<textarea id="cpl-wrap-commit" maxlength="220" data-cpl="wrap-commit">' + esc(draft.commitment || "") + "</textarea></label>" +
+      '<label class="check"><input type="checkbox" id="cpl-wrap-share-scores" data-cpl="wrap-share-scores"' + (draft.shareScores ? " checked" : "") + ">" + esc(CPL.wrapShareScores) + "</label>" +
+      '<label class="check"><input type="checkbox" id="cpl-wrap-share-skills" data-cpl="wrap-share-skills"' + (draft.shareSkills ? " checked" : "") + ">" + esc(CPL.wrapShareSkills) + "</label>" +
+      '<label class="check"><input type="checkbox" id="cpl-wrap-share-commit" data-cpl="wrap-share-commit"' + (draft.shareCommitment ? " checked" : "") + ">" + esc(CPL.wrapShareCommit) + "</label>" +
+      (state.cplWrapErr ? '<p class="err" data-cpl-wrap="err">' + esc(state.cplWrapErr) + "</p>" : "") +
+      '<div class="stack"><button type="button" class="btn block" data-action="cpl-wrap-save">' + esc(CPL.wrapSave) + "</button>" +
+      '<button type="button" class="btn secondary block" data-action="cpl-back-plan">' + esc(CPL.wrapBack) + "</button></div></section>";
+  }
+  function cplWrapResultHTML(meta, rec) {
+    var side = meta.active === "b" ? "b" : "a";
+    var rev = rec.review;
+    var areas = wrapAreas(rec);
+    var map = reviewMap(rec);
+    var skillList = (rev.skills || []).map(function (id) { return "<li>" + esc(wrapSkillLabel(id)) + "</li>"; }).join("");
+    var therapist = wrapNoGain(areas, map) ? cplWrapTherapistHTML() : "";
+    return '<section class="card cpl-wrap" data-cpl-wrap="result"><p class="kicker">' + esc(fill(CPL.privateTag, { name: nameOf(meta, side) })) + "</p>" +
+      "<h1>" + esc(CPL.wrapTitle) + "</h1>" +
+      "<p>" + esc(CPL.wrapLesson) + "</p>" +
+      '<p class="okbox">' + esc(CPL.wrapSaved) + "</p>" +
+      "<h2>" + esc(CPL.wrapRate) + "</h2>" + wrapCompareHTML(areas, map) +
+      "<h2>" + esc(CPL.wrapSkillsH) + "</h2><ul data-cpl-wrap=\"mine-skills\">" + skillList + "</ul>" +
+      "<p data-cpl-wrap=\"commit\"><strong>" + esc(CPL.wrapCommit) + "</strong> " + esc(rev.commitment) + "</p>" +
+      '<p class="muted">' + esc(CPL.wrapPrivateHint) + "</p>" +
+      '<label class="check"><input type="checkbox" data-cpl="wrap-flag-scores"' + (rev.shareScores ? " checked" : "") + ">" + esc(CPL.wrapShareScores) + "</label>" +
+      '<label class="check"><input type="checkbox" data-cpl="wrap-flag-skills"' + (rev.shareSkills ? " checked" : "") + ">" + esc(CPL.wrapShareSkills) + "</label>" +
+      '<label class="check"><input type="checkbox" data-cpl="wrap-flag-commitment"' + (rev.shareCommitment ? " checked" : "") + ">" + esc(CPL.wrapShareCommit) + "</label>" +
+      '<div class="stack"><button type="button" class="btn secondary block" data-action="cpl-wrap-edit">' + esc(CPL.wrapEdit) + "</button>" +
+      '<button type="button" class="btn secondary block" data-action="cpl-back-plan">' + esc(CPL.wrapBack) + "</button></div></section>" + therapist;
+  }
+  function viewCplWrap(meta) {
+    if (state.hold || !meta || meta.safety) return viewCplPlan(meta);
+    var side = meta.active === "b" ? "b" : "a";
+    var rec = loadCplSide(side);
+    if (!rec.done || !loadCplPlan()) return viewCplPlan(meta);
+    if (rec.review && isCrisisText(rec.review.commitment)) {
+      rec.review = null;
+      saveCplSide(side, rec);
+      rec = loadCplSide(side);
+    }
+    if (rec.review && cplViolent(rec.review.commitment)) {
+      rec.review = null;
+      saveCplSide(side, rec);
+      meta.safety = true;
+      meta.screen = "safety";
+      meta.safetyFrom = "review";
+      saveCplMeta(meta);
+      try { localStorage.removeItem(K_CPL_PLAN); localStorage.removeItem(K_CPL_SUM); } catch (e) {}
+      clearWrapDrafts();
+      return viewCplSafety(meta);
+    }
+    if (rec.review && state.cplWrapEdit !== side) return whoBanner(meta) + cplWrapResultHTML(meta, rec);
+    if (rec.review && state.cplWrapEdit === side && !wrapDraftFor(side).seeded) {
+      var draft = wrapDraftFor(side);
+      draft.scores = {};
+      (rec.review.ratings || []).forEach(function (r) { draft.scores[r.id] = r.score; });
+      draft.skills = rec.review.skills.slice();
+      draft.commitment = rec.review.commitment;
+      draft.shareScores = rec.review.shareScores === true;
+      draft.shareSkills = rec.review.shareSkills === true;
+      draft.shareCommitment = rec.review.shareCommitment === true;
+      draft.fromCheckin = false;
+      draft.seeded = true;
+    }
+    return whoBanner(meta) + cplWrapFormHTML(meta, rec);
+  }
+  function cplSharedWrapBlocks(meta) {
+    var blocks = [];
+    ["a", "b"].forEach(function (w) {
+      var rec = loadCplSide(w);
+      var rev = rec.review;
+      if (!rev) return;
+      var parts = [];
+      if (rev.shareScores) {
+        var areas = wrapAreas(rec);
+        var map = reviewMap(rec);
+        var lines = areas.map(function (a) {
+          if (!wrapHasBase(a) || map[a.id] == null) return "";
+          return "<li>" + esc(a.label + ": " + progDirWord(a.score, map[a.id])) + "</li>";
+        }).join("");
+        if (lines) parts.push('<ul data-cpl-wrap="shared-scores">' + lines + "</ul>");
+      }
+      if (rev.shareSkills && rev.skills.length) {
+        parts.push("<p>" + esc(CPL.wrapSkillsH) + "</p><ul>" + rev.skills.map(function (id) {
+          return "<li>" + esc(wrapSkillLabel(id)) + "</li>";
+        }).join("") + "</ul>");
+      }
+      if (rev.shareCommitment && rev.commitment) {
+        parts.push('<p data-cpl-wrap="shared-commit"><strong>' + esc(CPL.wrapCommit) + "</strong> " + esc(rev.commitment) + "</p>");
+      }
+      if (!parts.length) return;
+      blocks.push('<article class="cpl-wrap-share" data-cpl-wrap="shared" data-who="' + w + '"><p class="meta">' + esc(fill(CPL.keepBy, { name: nameOf(meta, w) })) + "</p>" + parts.join("") + "</article>");
+    });
+    return blocks;
+  }
+  function sharedWrapNoGain() {
+    var any = false;
+    ["a", "b"].forEach(function (w) {
+      var rec = loadCplSide(w);
+      if (!rec.review || rec.review.shareScores !== true) return;
+      if (wrapNoGain(wrapAreas(rec), reviewMap(rec))) any = true;
+    });
+    return any;
+  }
+  function ensureKeepDraft(plan) {
+    if (state.cplKeepSeeded) return;
+    var keep = loadKeep(plan);
+    if (keep) {
+      state.cplKeepSkills = keep.skills.slice();
+      state.cplKeepOften = keep.oftenId;
+      state.cplKeepDate = keep.checkIn;
+    } else {
+      state.cplKeepSkills = sharedSkillIds();
+      state.cplKeepOften = "weekly";
+      state.cplKeepDate = isoAddDays(jerusalemToday(), 28);
+    }
+    state.cplKeepSeeded = true;
+  }
+  function cplJointKeepCard(meta) {
+    if (state.hold || !meta || meta.safety) return "";
+    var plan = loadCplPlan();
+    if (!plan || !cplJointReached(plan)) return "";
+    var found = cplDayDef(meta.openDay);
+    if (!found || found.def.mode !== "joint") return "";
+    if (found.index > todayIndex(plan, jerusalemToday())) return "";
+    var blocks = cplSharedWrapBlocks(meta);
+    var counts = sharedSkillCounts();
+    var ids = Object.keys(counts);
+    var both = jointBothHere(meta);
+    ensureKeepDraft(plan);
+    var body = !blocks.length ? "<p>" + esc(CPL.keepEmpty) + "</p>" : blocks.join("");
+    var foot = "";
+    if (!both) foot += '<p class="warnbox" data-cpl-keep="need-both">' + esc(CPL.keepNeedBoth) + "</p>";
+    else if (!ids.length) foot += "<p data-cpl-keep=\"no-skills\">" + esc(blocks.length ? CPL.keepNoSkills : CPL.keepEmpty) + "</p>";
+    else {
+      var skills = ids.map(function (id) {
+        var on = state.cplKeepSkills.indexOf(id) !== -1;
+        var badge = counts[id] > 1 ? '<span class="cpl-keep-badge" data-cpl-keep="overlap">' + esc(CPL.keepOverlap) + "</span>" : "";
+        return '<label class="check cpl-keep-skill">' + badge + '<input type="checkbox" data-cpl="keep-skill" data-skill="' + id + '"' + (on ? " checked" : "") + ">" + esc(wrapSkillLabel(id)) + "</label>";
+      }).join("");
+      var often = keepOftenIds().map(function (id) {
+        var on = state.cplKeepOften === id ? " on" : "";
+        return '<button type="button" class="chip' + on + '" data-action="cpl-keep-often" data-often="' + id + '">' + esc(keepOftenLabel(id)) + "</button>";
+      }).join("");
+      var dateVal = state.cplKeepDate || isoAddDays(jerusalemToday(), 28);
+      foot += "<h3>" + esc(CPL.keepSkills) + "</h3>" + skills +
+        "<h3>" + esc(CPL.keepOften) + "</h3>" +
+        '<div class="chips" data-cpl-keep="often">' + often + "</div>" +
+        '<label class="field">' + esc(CPL.keepDate) + '<input type="date" id="cpl-keep-date" data-cpl="keep-date" value="' + esc(dateVal) + '"><span class="muted">' + esc(CPL.keepDateHint) + "</span></label>" +
+        (state.cplKeepErr ? '<p class="err" data-cpl-keep="err">' + esc(state.cplKeepErr) + "</p>" : "") +
+        '<button type="button" class="btn block" data-action="cpl-keep-save">' + esc(CPL.keepSave) + "</button>";
+    }
+    var agreed = loadKeep(loadCplPlan());
+    var agreedHTML = "";
+    if (agreed) {
+      agreedHTML = '<div data-cpl-keep="agreed"><p class="okbox">' + esc(CPL.keepPlanTitle) + "</p>" +
+        "<p>" + esc(CPL.keepSkills) + " " + esc(agreed.skills.map(wrapSkillLabel).join("، ")) + "</p>" +
+        "<p>" + esc(fill(CPL.keepOftenLine, { often: agreed.often })) + "</p>" +
+        "<p>" + esc(fill(CPL.keepDateLine, { date: fmtNiceDate(agreed.checkIn) })) + "</p></div>";
+    }
+    var therapist = sharedWrapNoGain() ? cplWrapTherapistHTML() : "";
+    return '<section class="card cpl-wrap-joint" data-cpl-keep="joint"><h2>' + esc(CPL.keepTitle) + "</h2>" +
+      "<p>" + esc(CPL.keepHow) + "</p>" + body + agreedHTML + foot + therapist + "</section>";
+  }
+  function cplKeepPlain(meta) {
+    var keep = loadKeep(loadCplPlan());
+    if (!keep) return "";
+    var lines = [CPL.printTitle, CPL.disc, CPL.printNote, ""];
+    ["a", "b"].forEach(function (w) {
+      var rec = loadCplSide(w);
+      var rev = rec.review;
+      if (!rev) return;
+      var bits = [];
+      if (rev.shareScores) {
+        var areas = wrapAreas(rec);
+        var map = reviewMap(rec);
+        areas.forEach(function (a) {
+          if (!wrapHasBase(a) || map[a.id] == null) return;
+          bits.push(a.label + ": " + progDirWord(a.score, map[a.id]));
+        });
+      }
+      if (rev.shareSkills && rev.skills.length) bits.push(CPL.keepSkills + ": " + rev.skills.map(wrapSkillLabel).join("، "));
+      if (rev.shareCommitment && rev.commitment) bits.push(CPL.wrapCommit + ": " + rev.commitment);
+      if (!bits.length) return;
+      lines.push(nameOf(meta, w));
+      bits.forEach(function (b) { lines.push(b); });
+      lines.push("");
+    });
+    lines.push(CPL.keepPlanTitle);
+    lines.push(CPL.keepSkills + ": " + keep.skills.map(wrapSkillLabel).join("، "));
+    lines.push(fill(CPL.keepOftenLine, { often: keep.often }));
+    lines.push(fill(CPL.keepDateLine, { date: fmtNiceDate(keep.checkIn) }));
+    if (sharedWrapNoGain()) {
+      lines.push("");
+      lines.push(CPL.wrapTherapistTitle);
+      lines.push(CPL.wrapTherapistBody);
+      lines.push(CPL.wrapTherapistFear);
+      lines.push(CPL.safetyCall);
+    }
+    lines.push("");
+    lines.push(CPL.disc);
+    return lines.join("\n");
+  }
+  function cplKeepPrintCard(meta) {
+    if (state.hold || !meta || meta.safety) return "";
+    if (!loadCplPlan()) return "";
+    var text = cplKeepPlain(meta);
+    if (!text) {
+      return '<section class="card cpl-keep-print" data-cpl-keep="print-wait"><h2>' + esc(CPL.printTitle) + "</h2><p>" + esc(CPL.printEmpty) + "</p></section>";
+    }
+    return '<section class="card cpl-keep-print" data-cpl-keep="print"><h2>' + esc(CPL.printTitle) + "</h2>" +
+      "<p>" + esc(CPL.printNote) + "</p>" +
+      '<pre class="cpl-keep-text" data-cpl-keep="text">' + esc(text) + "</pre>" +
+      (state.cplKeepCopied ? '<p class="okbox" data-cpl-keep="copied">' + esc(CPL.printCopied) + "</p>" : "") +
+      '<div class="stack cpl-keep-actions"><button type="button" class="btn block" data-action="cpl-keep-copy">' + esc(CPL.printCopy) + "</button>" +
+      '<button type="button" class="btn secondary block" data-action="cpl-keep-print">' + esc(CPL.printPrint) + "</button></div></section>";
+  }
+  function cplWrapPlanBits(meta) {
+    if (state.hold || !meta || meta.safety) return "";
+    var plan = loadCplPlan();
+    if (!plan) return "";
+    var side = meta.active === "b" ? "b" : "a";
+    var rec = loadCplSide(side);
+    var prompt = cplAtLastStage(plan) && !rec.review
+      ? '<p class="okbox" data-cpl-wrap="prompt">' + esc(CPL.wrapPrompt) + "</p>"
+      : "";
+    return '<section class="card cpl-wrap-open" data-cpl-wrap="entry">' + prompt +
+      "<h2>" + esc(CPL.wrapTitle) + "</h2>" +
+      "<p>" + esc(CPL.wrapLesson) + "</p>" +
+      '<button type="button" class="btn block" data-action="cpl-wrap-open" data-cpl-wrap="open">' + esc(CPL.wrapOpen) + "</button></section>";
+  }
+  function cplKeepPlanCard(meta) {
+    if (state.hold || !meta || meta.safety) return "";
+    var plan = loadCplPlan();
+    if (!plan || !cplJointReached(plan)) return "";
+    var keep = loadKeep(plan);
+    if (!keep) {
+      return '<section class="card cpl-keep-plan" data-cpl-keep="plan-wait"><h2>' + esc(CPL.keepPlanTitle) + "</h2><p>" + esc(CPL.keepPlanWait) + "</p></section>";
+    }
+    return '<section class="card cpl-keep-plan" data-cpl-keep="plan"><h2>' + esc(CPL.keepPlanTitle) + "</h2>" +
+      '<p data-cpl-keep="skills">' + esc(CPL.keepSkills) + " " + esc(keep.skills.map(wrapSkillLabel).join("، ")) + "</p>" +
+      '<p data-cpl-keep="often">' + esc(fill(CPL.keepOftenLine, { often: keep.often })) + "</p>" +
+      '<p data-cpl-keep="date">' + esc(fill(CPL.keepDateLine, { date: fmtNiceDate(keep.checkIn) })) + "</p></section>";
+  }
+  function readCheckedSkills(attr) {
+    if (typeof document === "undefined") return null;
+    var boxes = document.querySelectorAll('[data-cpl="' + attr + '"]');
+    if (!boxes || !boxes.length) return null;
+    var out = [];
+    for (var i = 0; i < boxes.length; i++) if (boxes[i].checked) out.push(String(boxes[i].getAttribute("data-skill") || ""));
+    return out;
+  }
+  function fallbackCopyText(text) {
+    if (typeof document === "undefined") return false;
+    try {
+      var ta = document.createElement("textarea");
+      ta.value = text;
+      ta.setAttribute("readonly", "readonly");
+      document.body.appendChild(ta);
+      ta.select();
+      var ok = document.execCommand("copy");
+      document.body.removeChild(ta);
+      return !!ok;
+    } catch (e) { return false; }
+  }
+  function copyKeepSummary(meta) {
+    var text = cplKeepPlain(meta);
+    if (!text) return;
+    function mark() { state.cplKeepCopied = true; render(); }
+    if (typeof navigator !== "undefined" && navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(mark).catch(function () { if (fallbackCopyText(text)) mark(); });
+      return;
+    }
+    if (fallbackCopyText(text)) mark();
+  }
+  function printKeepSummary() {
+    if (typeof document === "undefined" || typeof window === "undefined" || !window.print) return;
+    document.body.classList.add("cpl-printing");
+    window.print();
+  }
   function cplSideCards(meta) {
     return cplProgCard(meta) + cplNiceCard(meta) + cplSoftCard(meta) + cplToCard(meta) + cplRitCard(meta);
   }
@@ -3390,7 +4073,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
       '<div class="progress" aria-hidden="true"><span style="width:' + pct + '%"></span></div>' +
       cplNiceCountsHTML(meta) +
       cplToStatusHTML(meta) +
-      "</section>" + cplRitPlanCard(meta) + cplSideCards(meta) +
+      "</section>" + cplWrapPlanBits(meta) + cplKeepPlanCard(meta) + cplKeepPrintCard(meta) + cplRitPlanCard(meta) + cplSideCards(meta) +
       '<section class="card"><button type="button" class="btn secondary block cpl-reopen" data-action="cpl-reopen-sum">' + esc(CPL.reopenSum) + "</button>" +
       list + cplResetBlock() + "</section>";
   }
@@ -3436,7 +4119,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
     }
     var slHTML = def.mode === "joint" ? "</section>" + cplSlCard(meta) + cplToPauseCard(meta) + cplJointProgCard(meta) + '<section class="card">' : "";
     var niceJoint = def.mode === "joint"
-      ? "</section>" + cplJointRitCard(meta) + (day.bothHere ? cplJointNiceCard(meta) + cplJointSoftCard(meta) : "") + '<section class="card">'
+      ? "</section>" + cplJointRitCard(meta) + cplJointKeepCard(meta) + (day.bothHere ? cplJointNiceCard(meta) + cplJointSoftCard(meta) : "") + '<section class="card">'
       : "";
     var nicePrivate = def.mode === "joint" ? "" : cplSideCards(meta);
     return head + sumHTML +
@@ -3449,6 +4132,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
       '<textarea id="cpl-note" data-cpl="note" data-day="' + esc(def.id) + '">' + esc(note) + "</textarea></label>" +
       (state.cplErr ? '<p class="err">' + esc(state.cplErr) + "</p>" : "") +
       '<label class="check"><input type="checkbox" data-action="cpl-done" data-day="' + esc(def.id) + '"' + (day.completed ? " checked" : "") + ">" + esc(day.completed ? CPL.done : CPL.complete) + "</label>" +
+      (def.id === "c7" && idx <= todayIx ? '<button type="button" class="btn block" data-action="cpl-wrap-open" data-cpl-wrap="open">' + esc(CPL.wrapOpen) + "</button>" : "") +
       '<button type="button" class="btn secondary block" data-action="cpl-back-plan">' + esc(CPL.backPlan) + "</button></section>" + nicePrivate;
   }
   function viewCplSafety(meta) {
@@ -3466,6 +4150,9 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
       (meta.safetyFrom === "rituals"
         ? '<p data-cpl-ritual="therapist">' + esc(CPL.ritTherapist) + "</p>"
         : "") +
+      (meta.safetyFrom === "review"
+        ? '<p data-cpl-wrap="therapist">' + esc(CPL.wrapTherapistTitle) + "</p><p>" + esc(CPL.wrapTherapistBody) + "</p><p>" + esc(CPL.wrapTherapistFear) + "</p>"
+        : "") +
       '<p class="disclaimer">' + esc(CPL.disc) + "</p>" +
       cplResetBlock() + "</section>";
   }
@@ -3477,6 +4164,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
     if (meta.screen === "wait") return viewCplWait(meta);
     if (meta.screen === "review") return viewCplReview(meta);
     if (meta.screen === "summary") return viewCplSummary(meta);
+    if (meta.screen === "wrap") return viewCplWrap(meta);
     if (meta.screen === "session") return viewCplSession(meta);
     if (meta.screen === "plan") return viewCplPlan(meta);
     return viewCplWho(meta);
@@ -3733,6 +4421,87 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
       saveToTurn();
       return;
     }
+    if (kind === "wrap-score") {
+      if (state.hold || meta.safety) return;
+      var wrapSide = meta.active === "b" ? "b" : "a";
+      var wrapVal = clampProgScore(el.value);
+      var wrapArea = String(el.dataset.area || "").replace(/[^a-z0-9_-]/g, "");
+      if (!wrapArea) return;
+      wrapDraftFor(wrapSide).scores[wrapArea] = wrapVal;
+      wrapDraftFor(wrapSide).seeded = true;
+      if (typeof document !== "undefined") {
+        var wrapLab = document.getElementById("prog-val-" + wrapArea);
+        if (wrapLab) wrapLab.textContent = String(wrapVal);
+      }
+      el.setAttribute("aria-valuenow", String(wrapVal));
+      return;
+    }
+    if (kind === "wrap-commit") {
+      if (state.hold || meta.safety) return;
+      var wrapCommitSide = meta.active === "b" ? "b" : "a";
+      var wrapCommitVal = String(el.value || "").slice(0, 220);
+      if (isCrisisText(wrapCommitVal)) {
+        wrapDraftFor(wrapCommitSide).commitment = "";
+        el.value = "";
+        triggerCrisis("text");
+        return;
+      }
+      if (cplViolent(wrapCommitVal)) {
+        wrapDraftFor(wrapCommitSide).commitment = "";
+        el.value = "";
+        enterSafety(meta, "review");
+        return;
+      }
+      wrapDraftFor(wrapCommitSide).commitment = wrapCommitVal;
+      wrapDraftFor(wrapCommitSide).seeded = true;
+      return;
+    }
+    if (kind === "wrap-skill") {
+      if (state.hold || meta.safety) return;
+      var wrapSkillSide = meta.active === "b" ? "b" : "a";
+      var pickedSkills = readCheckedSkills("wrap-skill") || [];
+      if (pickedSkills.length > 3) {
+        el.checked = false;
+        pickedSkills = readCheckedSkills("wrap-skill") || [];
+        wrapDraftFor(wrapSkillSide).skills = pickedSkills;
+        wrapDraftFor(wrapSkillSide).seeded = true;
+        state.cplWrapErr = CPL.wrapSkillsNeed;
+        render();
+        return;
+      }
+      state.cplWrapErr = "";
+      wrapDraftFor(wrapSkillSide).skills = pickedSkills;
+      wrapDraftFor(wrapSkillSide).seeded = true;
+      return;
+    }
+    if (kind === "wrap-share-scores" || kind === "wrap-share-skills" || kind === "wrap-share-commit") {
+      if (state.hold || meta.safety) return;
+      var wrapShareSide = meta.active === "b" ? "b" : "a";
+      var wrapShareKey = kind === "wrap-share-scores" ? "shareScores" : (kind === "wrap-share-skills" ? "shareSkills" : "shareCommitment");
+      wrapDraftFor(wrapShareSide)[wrapShareKey] = !!el.checked;
+      wrapDraftFor(wrapShareSide).seeded = true;
+      return;
+    }
+    if (kind === "wrap-flag-scores" || kind === "wrap-flag-skills" || kind === "wrap-flag-commitment") {
+      if (state.hold || meta.safety) return;
+      var flagWhich = kind === "wrap-flag-scores" ? "scores" : (kind === "wrap-flag-skills" ? "skills" : "commitment");
+      setCplReviewShare(meta.active === "b" ? "b" : "a", flagWhich, !!el.checked);
+      render();
+      return;
+    }
+    if (kind === "keep-skill") {
+      if (state.hold || meta.safety) return;
+      var keepPicked = readCheckedSkills("keep-skill");
+      if (keepPicked) state.cplKeepSkills = keepPicked;
+      state.cplKeepSeeded = true;
+      return;
+    }
+    if (kind === "keep-date") {
+      if (state.hold || meta.safety) return;
+      state.cplKeepDate = String(el.value || "").slice(0, 10);
+      state.cplKeepSeeded = true;
+      return;
+    }
     if (kind === "both") {
       var plan2 = loadCplPlan();
       if (!plan2) return;
@@ -3748,6 +4517,8 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
     state.cplToErr = "";
     state.cplProgErr = "";
     state.cplRitErr = "";
+    state.cplWrapErr = "";
+    state.cplKeepErr = "";
     if (action === "cpl-reset-ask") { state.cplReset = true; render(); return; }
     if (action === "cpl-reset-no") { state.cplReset = false; render(); return; }
     if (action === "cpl-reset-yes") { cplWipe(); render(); return; }
@@ -3782,10 +4553,11 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
       if (applyGuardToCurrent(meta) === "stop") return;
       state.cplNiceDraft = "";
       state.cplNiceShare = false;
+      var stayWrap = meta.screen === "wrap";
       var who = action === "cpl-pick" ? t.dataset.who : otherOf(meta.active);
       if (who !== "a" && who !== "b") who = "a";
       meta.active = who;
-      meta.screen = screenFor(meta, who);
+      meta.screen = (stayWrap && loadCplPlan() && loadCplSide(who).done) ? "wrap" : screenFor(meta, who);
       saveCplMeta(meta);
       render(); return;
     }
@@ -3935,6 +4707,92 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
       var ritTickResult = toggleCplRitualTick(String(t.dataset.week || ""), !!t.checked);
       if (ritTickResult === "hidden") return;
       render(); return;
+    }
+    if (action === "cpl-wrap-open") {
+      if (applyGuardToCurrent(meta) === "stop") return;
+      if (!loadCplPlan()) { render(); return; }
+      meta.screen = "wrap";
+      saveCplMeta(meta);
+      render(); return;
+    }
+    if (action === "cpl-wrap-edit") {
+      if (state.hold || meta.safety) { render(); return; }
+      var editSide = meta.active === "b" ? "b" : "a";
+      state.cplWrapBySide[editSide] = emptyWrapDraft();
+      state.cplWrapEdit = editSide;
+      meta.screen = "wrap";
+      saveCplMeta(meta);
+      render(); return;
+    }
+    if (action === "cpl-wrap-save") {
+      if (state.hold || meta.safety) { render(); return; }
+      var wSide = meta.active === "b" ? "b" : "a";
+      var wRec = loadCplSide(wSide);
+      var wDraft = wrapDraftFor(wSide);
+      var wCommit = readCplBox("cpl-wrap-commit");
+      var wShareScores = (typeof document !== "undefined") ? document.getElementById("cpl-wrap-share-scores") : null;
+      var wShareSkills = (typeof document !== "undefined") ? document.getElementById("cpl-wrap-share-skills") : null;
+      var wShareCommit = (typeof document !== "undefined") ? document.getElementById("cpl-wrap-share-commit") : null;
+      var wSkills = readCheckedSkills("wrap-skill");
+      var wScores = readScoreMap("wrap-score", wrapAreas(wRec), wDraft.scores);
+      var wPayload = {
+        scores: wScores,
+        skills: wSkills != null ? wSkills : (wDraft.skills || []),
+        commitment: wCommit != null ? wCommit : wDraft.commitment,
+        shareScores: wShareScores ? !!wShareScores.checked : wDraft.shareScores === true,
+        shareSkills: wShareSkills ? !!wShareSkills.checked : wDraft.shareSkills === true,
+        shareCommitment: wShareCommit ? !!wShareCommit.checked : wDraft.shareCommitment === true
+      };
+      var wResult = trySaveCplReview(meta, wPayload);
+      if (wResult === "crisis") { triggerCrisis("text"); return; }
+      if (wResult === "safety") { enterSafety(meta, "review"); return; }
+      if (wResult === "short") {
+        wDraft.commitment = String(wPayload.commitment || "").slice(0, 220);
+        wDraft.skills = wPayload.skills || [];
+        wDraft.shareScores = wPayload.shareScores === true;
+        wDraft.shareSkills = wPayload.shareSkills === true;
+        wDraft.shareCommitment = wPayload.shareCommitment === true;
+        if (wScores) wDraft.scores = wScores;
+        wDraft.seeded = true;
+        state.cplWrapErr = (wPayload.skills && (wPayload.skills.length < 1 || wPayload.skills.length > 3)) ? CPL.wrapSkillsNeed : CPL.wrapNeed;
+        render(); return;
+      }
+      if (wResult === "early" || wResult === "hidden") { render(); return; }
+      render(); return;
+    }
+    if (action === "cpl-keep-often") {
+      if (state.hold || meta.safety) { render(); return; }
+      var oftenPick = String(t.dataset.often || "");
+      if (!keepOftenLabel(oftenPick)) return;
+      state.cplKeepOften = oftenPick;
+      state.cplKeepSeeded = true;
+      render(); return;
+    }
+    if (action === "cpl-keep-save") {
+      if (state.hold || meta.safety) { render(); return; }
+      var keepSkillsNow = readCheckedSkills("keep-skill");
+      var keepDateEl = (typeof document !== "undefined") ? document.getElementById("cpl-keep-date") : null;
+      var keepPayload = {
+        skills: keepSkillsNow != null ? keepSkillsNow : state.cplKeepSkills,
+        oftenId: state.cplKeepOften,
+        checkIn: keepDateEl && keepDateEl.value ? keepDateEl.value : state.cplKeepDate
+      };
+      var keepResult = tryAgreeKeep(meta, keepPayload);
+      if (keepResult === "both") { state.cplKeepErr = CPL.keepNeedBoth; render(); return; }
+      if (keepResult === "date") { state.cplKeepErr = CPL.keepDateBad; state.cplKeepSeeded = true; render(); return; }
+      if (keepResult === "short") { state.cplKeepErr = CPL.keepNeed; state.cplKeepSeeded = true; render(); return; }
+      if (keepResult === "early" || keepResult === "hidden") { render(); return; }
+      render(); return;
+    }
+    if (action === "cpl-keep-copy") {
+      if (state.hold || meta.safety) return;
+      copyKeepSummary(meta);
+      return;
+    }
+    if (action === "cpl-keep-print") {
+      if (state.hold || meta.safety) return;
+      printKeepSummary();
+      return;
     }
     if (action === "cpl-review") { meta.screen = "review"; saveCplMeta(meta); render(); return; }
     if (action === "cpl-start-plan") {
@@ -5058,6 +5916,188 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
     stopTo(true);
     stopSl(true);
     cplWipe();
+    var wrapCopy = [CPL.wrapTitle, CPL.wrapLesson, CPL.wrapPrompt, CPL.wrapOpen, CPL.wrapRate, CPL.wrapFromCheck, CPL.wrapSkillsH, CPL.wrapCommit, CPL.wrapShareScores, CPL.wrapShareSkills, CPL.wrapShareCommit, CPL.wrapSave, CPL.wrapNeed, CPL.wrapSkillsNeed, CPL.wrapPrivateHint, CPL.wrapSaved, CPL.wrapEdit, CPL.wrapBack, CPL.skillTimer, CPL.skillNice, CPL.skillSoft, CPL.skillTimeout, CPL.skillRitual, CPL.keepTitle, CPL.keepHow, CPL.keepEmpty, CPL.keepNoSkills, CPL.keepNeedBoth, CPL.keepSkills, CPL.keepOften, CPL.keepDate, CPL.keepDateHint, CPL.keepSave, CPL.keepNeed, CPL.keepDateBad, CPL.keepPlanTitle, CPL.keepPlanWait, CPL.keepOftenLine, CPL.keepDateLine, CPL.keepBy, CPL.keepOverlap, CPL.oftenDaily, CPL.oftenTwice, CPL.oftenWeekly, CPL.printTitle, CPL.printNote, CPL.printCopy, CPL.printPrint, CPL.printCopied, CPL.printEmpty, CPL.wrapTherapistTitle, CPL.wrapTherapistBody, CPL.wrapTherapistFear, CPL.planIntro].join("\n");
+    eq(wrapCopy.indexOf("هلق") === -1, "wrap no halq");
+    eq(CPL.wrapRate.indexOf("هسّة") !== -1 && CPL.keepEmpty.indexOf("هسّة") !== -1 && CPL.wrapFromCheck.indexOf("هسّة") === -1, "wrap hessa where now is said");
+    eq(CPL.wrapFromCheck.indexOf("{date}") !== -1, "checkin date slot");
+    eq(CPL.wrapLesson.indexOf("مش معالج") !== -1 && CPL.wrapLesson.indexOf("تشخيص") !== -1 && CPL.wrapLesson.indexOf("أدوية") !== -1, "wrap not a therapist");
+    eq(CPL.wrapTherapistBody.indexOf("معالج أزواج مرخّص") !== -1 && CPL.wrapTherapistFear.indexOf("سيطرة") !== -1, "when to see a therapist");
+    eq(CPL.planIntro.indexOf("خطة نكمّل") !== -1 && CPL.planIntro.indexOf("مؤقت") !== -1, "plan still mentions timer and the new review");
+    eq(viewCplSafety({ safety: true, aName: "Lina", bName: "Omar" }).indexOf(CPL.wrapTherapistTitle) === -1, "old safety card no wrap line");
+    eq(viewCplSafety({ safety: true, safetyFrom: "review", aName: "Lina", bName: "Omar" }).indexOf(">100<") !== -1 && viewCplSafety({ safety: true, safetyFrom: "review" }).indexOf(">1201<") !== -1 && viewCplSafety({ safety: true, safetyFrom: "review" }).indexOf(CPL.wrapTherapistTitle) !== -1, "review safety card");
+    eq(wrapSkillIds().join(",") === "timer,nice,soft,timeout,ritual", "five skills");
+    cplWipe();
+    saveCplMeta({ aName: "Lina", bName: "Omar", active: "a", screen: "plan", safety: false });
+    var earlyWrap = makeCplPlan();
+    saveJSON(K_CPL_PLAN, earlyWrap);
+    var earlyWrapHtml = viewCplPlan(loadCplMeta());
+    eq(earlyWrapHtml.indexOf('data-cpl-wrap="open"') !== -1 && earlyWrapHtml.indexOf(CPL.wrapOpen) !== -1, "button on the plan");
+    eq(earlyWrapHtml.indexOf('data-cpl-wrap="prompt"') === -1, "prompt waits for the last day");
+    eq(earlyWrapHtml.indexOf('data-cpl-keep="plan"') === -1, "keep plan waits for a joint day");
+    eq(cplJointKeepCard(loadCplMeta()) === "", "no keep card before joint days");
+    var lastPlan = makeCplPlan();
+    lastPlan.startDate = isoAddDays(jerusalemToday(), -6);
+    saveJSON(K_CPL_PLAN, lastPlan);
+    var lastPrompt = viewCplPlan(loadCplMeta());
+    eq(lastPrompt.indexOf('data-cpl-wrap="prompt"') !== -1 && lastPrompt.indexOf(CPL.wrapPrompt) !== -1, "last day prompts a private review");
+    var topicA = ["منختلف على المصاري", "بهدوء", "بقرب", "وقت", "SECRET-REVIEW-A", "طبخ", "بقرب", "رسالة"];
+    var topicB = ["موضوع سري للثاني فقط", "بهدوء", "بسكت", "وقت", "SECRET-REVIEW-B", "صبر", "بتراجع", "اسأل"];
+    var sideWrapA = cplBlank();
+    sideWrapA.done = true;
+    sideWrapA.answers = topicA.slice();
+    sideWrapA.baseline = { date: isoAddDays(jerusalemToday(), -6), areas: [{ id: "topic", label: "المصاري", exercise: "soft", score: 4 }, { id: "flood", label: CPL.progFlood, exercise: "timeout", score: 5 }] };
+    sideWrapA.progress = [{ id: "pA", date: isoAddDays(jerusalemToday(), -1), ratings: [{ id: "topic", score: 8 }, { id: "flood", score: 8 }], helped: "هدوء", hard: "PROG-HARD-PRIVATE", share: false, summary: null }];
+    saveCplSide("a", sideWrapA);
+    var sideWrapB = cplBlank();
+    sideWrapB.done = true;
+    sideWrapB.answers = topicB.slice();
+    sideWrapB.baseline = { date: isoAddDays(jerusalemToday(), -6), areas: [{ id: "topic", label: "موضوع سري للثاني فقط", exercise: "soft", score: 7 }] };
+    saveCplSide("b", sideWrapB);
+    saveCplMeta({ aName: "Lina", bName: "Omar", active: "a", screen: "wrap", safety: false });
+    clearWrapDrafts();
+    var seeded = viewCplWrap(loadCplMeta());
+    eq(seeded.indexOf('data-cpl-wrap="form"') !== -1 && seeded.indexOf('data-cpl-wrap="from-check"') !== -1, "reuses the progress check-in");
+    eq(seeded.indexOf('value="8" data-cpl="wrap-score" data-area="topic"') !== -1, "topic slider starts from the check-in");
+    eq(seeded.indexOf('value="8" data-cpl="wrap-score" data-area="flood"') !== -1, "flood slider starts from the check-in");
+    eq(seeded.indexOf("PROG-HARD-PRIVATE") === -1 && seeded.indexOf("SECRET-REVIEW-B") === -1 && seeded.indexOf("موضوع سري للثاني") === -1, "form stays on this partner");
+    eq(seeded.indexOf('data-prog-dir="up"') !== -1, "form shows change against the baseline");
+    eq(/id="cpl-wrap-share-scores"[^>]*checked/.test(seeded) === false && /id="cpl-wrap-share-skills"[^>]*checked/.test(seeded) === false && /id="cpl-wrap-share-commit"[^>]*checked/.test(seeded) === false, "sharing starts off");
+    eq(trySaveCplReview(loadCplMeta(), { scores: { topic: 8, flood: 8 }, skills: [], commitment: "تمام", shareScores: false, shareSkills: false, shareCommitment: false }) === "short", "needs a skill");
+    eq(trySaveCplReview(loadCplMeta(), { scores: { topic: 8, flood: 8 }, skills: ["timer", "nice", "soft", "timeout"], commitment: "تمام", shareScores: false, shareSkills: false, shareCommitment: false }) === "short", "max three skills");
+    eq(trySaveCplReview(loadCplMeta(), { scores: { topic: 8, flood: 8 }, skills: ["timer", "nice"], commitment: "ا", shareScores: false, shareSkills: false, shareCommitment: false }) === "short", "commitment needs two letters");
+    eq(loadCplSide("a").review === null, "rejected review not stored");
+    eq(trySaveCplReview(loadCplMeta(), { scores: { topic: 8, flood: 8 }, skills: ["timer", "nice"], commitment: "COMMIT-PRIVATE-A", shareScores: true, shareSkills: true, shareCommitment: false }) === "ok", "a review saved");
+    eq(String(localStorage.getItem(K_CPL_A) || "").indexOf("COMMIT-PRIVATE-A") !== -1, "review stored on a");
+    eq(String(localStorage.getItem(K_CPL_B) || "").indexOf("COMMIT-PRIVATE-A") === -1, "review not stored on b");
+    var aResult = viewCplWrap(loadCplMeta());
+    eq(aResult.indexOf('data-cpl-wrap="result"') !== -1 && aResult.indexOf("COMMIT-PRIVATE-A") !== -1, "a sees the private commitment");
+    eq(aResult.indexOf('data-prog-dir="up"') !== -1 && aResult.indexOf(CPL.progUp) !== -1, "a sees the lift from baseline");
+    eq(aResult.indexOf('data-cpl-wrap="therapist"') === -1 && aResult.indexOf(">100<") === -1, "improved scores skip the safety card");
+    eq(aResult.indexOf(CPL.skillTimer) !== -1 && aResult.indexOf(CPL.skillNice) !== -1, "chosen skills shown");
+    eq(viewCplPlan(loadCplMeta()).indexOf('data-cpl-wrap="prompt"') === -1, "prompt leaves after the review");
+    eq(viewCplPlan(loadCplMeta()).indexOf("COMMIT-PRIVATE-A") === -1, "private commitment stays off the plan");
+    saveCplMeta({ aName: "Lina", bName: "Omar", active: "b", screen: "wrap", safety: false });
+    clearWrapDrafts();
+    var bForm = viewCplWrap(loadCplMeta());
+    eq(bForm.indexOf("COMMIT-PRIVATE-A") === -1 && bForm.indexOf("SECRET-REVIEW-A") === -1 && bForm.indexOf("المصاري") === -1, "b does not see a");
+    eq(bForm.indexOf("موضوع سري للثاني فقط") !== -1 && bForm.indexOf('data-cpl-wrap="from-check"') === -1, "b rates own areas without a check-in");
+    eq(trySaveCplReview(loadCplMeta(), { scores: { topic: 3 }, skills: ["timer", "ritual"], commitment: "COMMIT-SHARED-B", shareScores: true, shareSkills: true, shareCommitment: true }) === "ok", "b review saved");
+    var bResult = viewCplWrap(loadCplMeta());
+    eq(bResult.indexOf("COMMIT-SHARED-B") !== -1 && bResult.indexOf("COMMIT-PRIVATE-A") === -1, "b sees only self");
+    eq(bResult.indexOf('data-prog-dir="down"') !== -1 && bResult.indexOf('data-cpl-wrap="therapist"') !== -1, "worse score shows the therapist section");
+    eq(bResult.indexOf(">100<") !== -1 && bResult.indexOf(">1201<") !== -1 && bResult.indexOf(CPL.wrapTherapistBody) !== -1, "worse score shows the safety card");
+    eq(loadCplPlan() !== null && loadCplMeta().safety !== true, "a flat or worse score does not wipe the plan");
+    var sameMeta = loadCplMeta();
+    eq(trySaveCplReview(sameMeta, { scores: { topic: 7 }, skills: ["soft"], commitment: "نفس التقييم", shareScores: true, shareSkills: false, shareCommitment: false }) === "ok", "same score still saves");
+    eq(viewCplWrap(loadCplMeta()).indexOf('data-cpl-wrap="therapist"') !== -1 && viewCplWrap(loadCplMeta()).indexOf('data-prog-dir="same"') !== -1, "no improvement shows the therapist section");
+    eq(trySaveCplReview(loadCplMeta(), { scores: { topic: 3 }, skills: ["timer", "ritual"], commitment: "COMMIT-SHARED-B", shareScores: true, shareSkills: true, shareCommitment: true }) === "ok", "restore b shared review");
+    saveCplMeta({ aName: "Lina", bName: "Omar", active: "a", screen: "session", safety: false, openDay: "c4" });
+    var keepClosed = viewCplSession(loadCplMeta());
+    eq(keepClosed.indexOf('data-cpl-keep="joint"') !== -1 && keepClosed.indexOf('data-cpl-keep="need-both"') !== -1, "joint lists shared items and waits");
+    eq(keepClosed.indexOf("COMMIT-SHARED-B") !== -1 && keepClosed.indexOf("COMMIT-PRIVATE-A") === -1, "only the shared commitment is on the joint screen");
+    eq(keepClosed.indexOf(CPL.skillTimer) !== -1 && keepClosed.indexOf('data-cpl-keep="overlap"') === -1, "skills show, overlap waits for both here");
+    eq(keepClosed.indexOf('data-action="cpl-keep-save"') === -1, "no agreement before both are here");
+    eq(keepClosed.indexOf(CPL.slStart) !== -1 && keepClosed.indexOf('data-cpl="wrap-score"') === -1, "speaker timer stays and private sliders do not");
+    eq(keepClosed.indexOf('data-cpl-wrap="therapist"') !== -1 && keepClosed.indexOf(">100<") !== -1, "shared worse score shows the safety card on the joint screen");
+    eq(tryAgreeKeep(loadCplMeta(), { skills: ["timer"], oftenId: "weekly", checkIn: isoAddDays(jerusalemToday(), 28) }) === "both", "agreement needs both");
+    for (var kd = 0; kd < lastPlan.days.length; kd++) if (lastPlan.days[kd].id === "c4") lastPlan.days[kd].bothHere = true;
+    saveJSON(K_CPL_PLAN, lastPlan);
+    state.cplKeepSeeded = false;
+    var keepOpen = viewCplSession(loadCplMeta());
+    eq(keepOpen.indexOf('data-action="cpl-keep-save"') !== -1 && keepOpen.indexOf('data-cpl-keep="overlap"') !== -1, "both here can agree, overlap marked");
+    eq(keepOpen.indexOf('value="' + isoAddDays(jerusalemToday(), 28) + '"') !== -1, "check-in date defaults to about four weeks");
+    eq(tryAgreeKeep(loadCplMeta(), { skills: ["soft"], oftenId: "weekly", checkIn: isoAddDays(jerusalemToday(), 28) }) === "short", "cannot keep a skill nobody shared");
+    eq(tryAgreeKeep(loadCplMeta(), { skills: ["timer", "ritual"], oftenId: "nope", checkIn: isoAddDays(jerusalemToday(), 28) }) === "short", "often must be one of the choices");
+    eq(tryAgreeKeep(loadCplMeta(), { skills: ["timer"], oftenId: "weekly", checkIn: isoAddDays(jerusalemToday(), 3) }) === "date", "date too soon");
+    eq(tryAgreeKeep(loadCplMeta(), { skills: ["timer"], oftenId: "weekly", checkIn: isoAddDays(jerusalemToday(), 80) }) === "date", "date too far");
+    eq(tryAgreeKeep(loadCplMeta(), { skills: ["timer", "ritual"], oftenId: "twice", checkIn: isoAddDays(jerusalemToday(), 28) }) === "ok", "keep-going plan saved");
+    var agreedKeep = loadCplPlan().keepGoing;
+    eq(agreedKeep && agreedKeep.skills.join(",") === "timer,ritual" && agreedKeep.oftenId === "twice" && agreedKeep.checkIn === isoAddDays(jerusalemToday(), 28), "agreement stored on the couple plan");
+    eq(JSON.stringify(agreedKeep).indexOf("COMMIT-PRIVATE-A") === -1 && JSON.stringify(agreedKeep).indexOf("COMMIT-SHARED-B") === -1, "agreement stores skills and the date, not the words");
+    saveCplMeta({ aName: "Lina", bName: "Omar", active: "a", screen: "plan", safety: false });
+    var planKeep = viewCplPlan(loadCplMeta());
+    eq(planKeep.indexOf('data-cpl-keep="plan"') !== -1 && planKeep.indexOf(CPL.oftenTwice) !== -1 && planKeep.indexOf(CPL.skillTimer) !== -1 && planKeep.indexOf(CPL.skillRitual) !== -1, "plan screen shows the keep-going plan");
+    eq(planKeep.indexOf("COMMIT-PRIVATE-A") === -1 && planKeep.indexOf('data-cpl-keep="print"') !== -1 && planKeep.indexOf("COMMIT-SHARED-B") !== -1, "printable summary has shared words only");
+    var plain = cplKeepPlain(loadCplMeta());
+    eq(plain.indexOf("COMMIT-SHARED-B") !== -1 && plain.indexOf("COMMIT-PRIVATE-A") === -1 && plain.indexOf("PROG-HARD-PRIVATE") === -1 && plain.indexOf("SECRET-REVIEW-A") === -1, "copied summary is shared content only");
+    eq(plain.indexOf(CPL.oftenTwice) !== -1 && plain.indexOf(CPL.skillRitual) !== -1 && plain.indexOf(CPL.wrapTherapistTitle) !== -1 && plain.indexOf("100") !== -1 && plain.indexOf("1201") !== -1, "summary includes the plan and the safety line");
+    eq(plain.indexOf(CPL.progShareUp) !== -1 && plain.indexOf(CPL.progShareDown) !== -1, "summary shows direction, from both partners");
+    saveCplMeta({ aName: "Lina", bName: "Omar", active: "b", screen: "plan", safety: false });
+    eq(viewCplPlan(loadCplMeta()).indexOf("COMMIT-PRIVATE-A") === -1 && viewCplPlan(loadCplMeta()).indexOf(CPL.oftenTwice) !== -1, "the other partner sees the same shared plan");
+    eq(viewCplSummary(loadCplMeta()).indexOf("COMMIT-PRIVATE-A") === -1 && viewCplSummary(loadCplMeta()).indexOf("COMMIT-SHARED-B") === -1, "problem summary stays a summary");
+    saveCplMeta({ aName: "Lina", bName: "Omar", active: "a", screen: "wrap", safety: false });
+    onCplAction("cpl-switch", { dataset: {} });
+    eq(loadCplMeta().screen === "wrap" && loadCplMeta().active === "b", "switching partners stays on the private review");
+    eq(viewCplWrap(loadCplMeta()).indexOf("COMMIT-PRIVATE-A") === -1 && viewCplWrap(loadCplMeta()).indexOf("COMMIT-SHARED-B") !== -1, "the phone now shows the other review");
+    onCplAction("cpl-wrap-edit", { dataset: {} });
+    var edited = viewCplWrap(loadCplMeta());
+    eq(edited.indexOf('data-cpl-wrap="form"') !== -1 && edited.indexOf("COMMIT-SHARED-B") !== -1, "edit reopens the private form");
+    saveCplMeta({ aName: "Lina", bName: "Omar", active: "a", screen: "session", safety: false, openDay: "c7" });
+    var lastDay = viewCplSession(loadCplMeta());
+    eq(lastDay.indexOf('data-cpl-wrap="open"') !== -1 && lastDay.indexOf(CPL.slTitle) !== -1, "last session can open the review and still has the timer");
+    saveCplMeta({ aName: "Lina", bName: "Omar", active: "a", screen: "plan", safety: false });
+    var vioWrap = loadCplMeta();
+    eq(trySaveCplReview(vioWrap, { scores: { topic: 8, flood: 8 }, skills: ["timeout"], commitment: CPL.hitSample, shareCommitment: true }) === "safety", "violence keyword");
+    eq(JSON.stringify(loadCplSide("a").review || {}).indexOf(CPL.hitSample) === -1, "violent commitment not stored");
+    enterSafety(vioWrap, "review");
+    var vioWrapView = viewCouples();
+    eq(vioWrapView.indexOf(">100<") !== -1 && vioWrapView.indexOf(">1201<") !== -1 && vioWrapView.indexOf(CPL.wrapTherapistTitle) !== -1, "violence shows the safety card");
+    eq(vioWrapView.indexOf(CPL.hitSample) === -1 && vioWrapView.indexOf(CPL.slStart) === -1 && vioWrapView.indexOf('data-cpl-wrap="form"') === -1, "violence stops the plan");
+    eq(loadCplPlan() === null, "violence clears the couple plan");
+    cplWipe();
+    saveCplMeta({ aName: "Lina", bName: "Omar", active: "a", screen: "plan", safety: false });
+    var ctrlA = cplBlank();
+    ctrlA.done = true;
+    ctrlA.answers = topicA.slice();
+    ctrlA.baseline = { date: jerusalemToday(), areas: [{ id: "topic", label: "المصاري", exercise: "soft", score: 5 }] };
+    saveCplSide("a", ctrlA);
+    saveJSON(K_CPL_PLAN, makeCplPlan());
+    var ctrlMeta = loadCplMeta();
+    eq(trySaveCplReview(ctrlMeta, { scores: { topic: 5 }, skills: ["nice"], commitment: "بحبسني بالبيت", shareCommitment: false }) === "safety", "control keyword");
+    eq(JSON.stringify(loadCplSide("a").review || {}).indexOf("بحبسني") === -1, "control text not stored");
+    enterSafety(ctrlMeta, "review");
+    eq(viewCouples().indexOf(">100<") !== -1 && viewCouples().indexOf(">1201<") !== -1 && viewCouples().indexOf("بحبسني") === -1, "control shows the card");
+    cplWipe();
+    saveCplMeta({ aName: "Lina", bName: "Omar", active: "a", screen: "plan", safety: false });
+    var harmWrap = cplBlank();
+    harmWrap.done = true;
+    harmWrap.answers = topicA.slice();
+    harmWrap.baseline = { date: jerusalemToday(), areas: [{ id: "topic", label: "المصاري", exercise: "soft", score: 5 }] };
+    saveCplSide("a", harmWrap);
+    saveJSON(K_CPL_PLAN, makeCplPlan());
+    eq(trySaveCplReview(loadCplMeta(), { scores: { topic: 5 }, skills: ["nice"], commitment: "بدي اموت", shareCommitment: true }) === "crisis", "review crisis keyword");
+    eq(JSON.stringify(loadCplSide("a").review || {}).indexOf("بدي اموت") === -1, "crisis commitment not stored");
+    eq(loadCplPlan() !== null, "crisis keyword does not by itself delete the plan");
+    cplWipe();
+    saveCplMeta({ aName: "Lina", bName: "Omar", active: "a", screen: "summary", safety: false });
+    var scrubA = cplBlank();
+    scrubA.done = true;
+    scrubA.answers = topicA.slice();
+    scrubA.baseline = { date: jerusalemToday(), areas: [{ id: "topic", label: "المصاري", exercise: "soft", score: 5 }] };
+    scrubA.review = { date: jerusalemToday(), ratings: [{ id: "topic", score: 5 }], skills: ["timer"], commitment: CPL.hitSample, shareScores: true, shareSkills: true, shareCommitment: true };
+    saveCplSide("a", scrubA);
+    var scrubB = cplBlank();
+    scrubB.done = true;
+    scrubB.answers = topicB.slice();
+    saveCplSide("b", scrubB);
+    eq(finishBothIfReady(loadCplMeta()) === false, "scrub review stops");
+    eq(loadCplMeta().safety === true, "scrub review safety");
+    eq(JSON.stringify(loadCplSide("a").review || {}).indexOf(CPL.hitSample) === -1, "scrub removed the review");
+    eq(viewCouples().indexOf(">100<") !== -1 && viewCouples().indexOf(">1201<") !== -1, "scrub shows the card");
+    cplWipe();
+    state.hold = true;
+    saveCplMeta({ aName: "Lina", bName: "Omar", active: "a", screen: "plan", safety: false });
+    saveJSON(K_CPL_PLAN, makeCplPlan());
+    eq(cplWrapPlanBits(loadCplMeta()) === "" && cplJointKeepCard(loadCplMeta()) === "" && cplKeepPlanCard(loadCplMeta()) === "" && cplKeepPrintCard(loadCplMeta()) === "", "hold hides the review");
+    eq(trySaveCplReview(loadCplMeta(), { scores: { topic: 6 }, skills: ["nice"], commitment: "تعهد", shareCommitment: false }) === "hidden", "no review save on hold");
+    eq(tryAgreeKeep(loadCplMeta(), { skills: ["nice"], oftenId: "weekly", checkIn: isoAddDays(jerusalemToday(), 28) }) === "hidden", "no agreement on hold");
+    state.view = "couples";
+    eq(viewHTML().indexOf(CPL.wrapTitle) === -1 && viewHTML().indexOf(C.ui.holdTitle) !== -1, "hold screen stays over the review");
+    state.hold = false;
+    state.crisis = null;
+    stopTo(true);
+    stopSl(true);
+    cplWipe();
     return errors;
   }
   function init() {
@@ -5079,6 +6119,9 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
       if (ev.target && ev.target.id === "crisis-dismiss") dismissCrisis();
     });
     window.addEventListener("hashchange", function () { readRoute(); render(); });
+    window.addEventListener("afterprint", function () {
+      document.body.classList.remove("cpl-printing");
+    });
     render();
     if (state.crisis) { var h = document.getElementById("crisis-title"); if (h) h.focus(); }
   }
