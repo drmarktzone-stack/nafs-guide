@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://drmarktzone-stack.github.io/nafs-guide/sitemap.xml
