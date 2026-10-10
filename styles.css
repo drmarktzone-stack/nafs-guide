@@ -1240,3 +1240,5 @@ textarea.cpl-rit-input { min-height: 4.2rem; }
     background: #fff;
   }
 }
+
+.share-link{margin-inline-start:auto;margin-inline-end:8px}

@@ -271,6 +271,23 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
       fetch("https://abacus.jasoncameron.dev/hit/" + STAT_NS + "/" + key, { mode: "no-cors", cache: "no-store", credentials: "omit", keepalive: true, referrerPolicy: "no-referrer" }).catch(function () {});
     } catch (e) {}
   }
+
+  // Share with a friend: native share sheet, WhatsApp link fallback. Counts only "<lang>_shared".
+  var SHARE_URL = "https://drmarktzone-stack.github.io/nafs-guide/";
+  var SHARE_TEXT = "نَفَس 🌿 مرشد نفسي ذاتي مجاني بالعربي، بلا تسجيل. جرّبو:";
+  function nafsShare() {
+    nafsCount("shared");
+    try {
+      if (navigator.share) { navigator.share({ title: "نَفَس", text: SHARE_TEXT, url: SHARE_URL }).catch(function () {}); return; }
+    } catch (e) {}
+    window.open("https://wa.me/?text=" + encodeURIComponent(SHARE_TEXT + " " + SHARE_URL), "_blank", "noopener");
+  }
+  if (typeof document !== "undefined" && document.addEventListener) {
+    document.addEventListener("click", function (ev) {
+      var t = ev.target && ev.target.closest ? ev.target.closest("[data-share]") : null;
+      if (t) { ev.preventDefault(); nafsShare(); }
+    });
+  }
   function nafsCountOnce(ev, flagKey, value) {
     try {
       if (localStorage.getItem(flagKey) === value) return;
@@ -877,7 +894,7 @@ var C = {"prefix":"nafs_ar","norm":"ar","locale":"ar","dir":"rtl","htmlLang":"ar
   }
   function shell(content) {
     return '<header class="topbar"><button type="button" class="brand" data-go="home" aria-label="' + esc(C.appName) + '"><img class="mark" src="assets/mark.svg" width="40" height="40" alt=""><span><span class="brand-name">' + esc(C.appName) + '</span><span class="brand-sub">' + esc(C.brandSub) + "</span></span></button>" +
-      '<button type="button" class="top-link" data-go="history">' + esc(C.ui.history) + "</button></header>" +
+      '<button type="button" class="top-link share-link" data-share="1" aria-label="شارك">شارك</button>' + '<button type="button" class="top-link" data-go="history">' + esc(C.ui.history) + "</button></header>" +
       '<p class="disclaimer compact">' + esc(C.disclaimer) + "</p><main>" + content + "</main>" + navHTML();
   }
   function viewHome() {

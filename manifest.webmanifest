@@ -1,0 +1,30 @@
+{
+  "name": "نَفَس | مرشد نفسي ذاتي مجاني",
+  "short_name": "نَفَس",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "dir": "rtl",
+  "lang": "ar",
+  "background_color": "#f4efe7",
+  "theme_color": "#3a5244",
+  "description": "نَفَس مرشد ذاتي مجاني بالعربي: فحص قصير للمزاج والقلق (مش تشخيص)، برامج دعم لكم يوم، تمارين تنفّس، ومرشد للأزواج كل واحد بجاوب لحالو. بلا تسجيل. مش بديل عن معالج مرخّص.",
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
