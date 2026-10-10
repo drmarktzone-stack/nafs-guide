@@ -1156,3 +1156,87 @@ textarea.cpl-rit-input { min-height: 4.2rem; }
 @media (max-width: 380px) {
   .cpl-rit .chip { font-size: 0.88rem; padding: 8px 12px; }
 }
+
+/* End-of-week review and keep-going plan */
+.cpl-wrap,
+.cpl-wrap-open {
+  background: #f4f7f4;
+  border-color: #c9d9ce;
+}
+.cpl-wrap h1,
+.cpl-wrap h2,
+.cpl-wrap-open h2,
+.cpl-wrap-joint h2,
+.cpl-keep-plan h2,
+.cpl-keep-print h2 { font-size: 1.15rem; }
+.cpl-wrap h1 { font-size: 1.45rem; }
+.cpl-wrap textarea { min-height: 4.2rem; }
+.cpl-wrap-skill,
+.cpl-keep-skill {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 8px 12px;
+  margin: 6px 0;
+}
+.cpl-wrap-share {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px 12px;
+  margin: 8px 0;
+}
+.cpl-wrap-share p,
+.cpl-wrap-share li,
+.cpl-keep-text { overflow-wrap: anywhere; }
+.cpl-wrap-share .meta {
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+}
+.cpl-wrap-joint,
+.cpl-keep-plan,
+.cpl-keep-print {
+  background: #f7f1e6;
+  border: 1px solid #e0d0b8;
+}
+.cpl-keep-badge {
+  display: inline-block;
+  margin-inline-end: 6px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--olive);
+  color: #fff;
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+}
+.cpl-keep-text {
+  white-space: pre-wrap;
+  font-family: var(--font-body);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px;
+  margin: 8px 0;
+}
+.cpl-wrap-therapist {
+  background: var(--danger-bg);
+  border-color: var(--danger-line);
+  margin-top: 12px;
+}
+.cpl-wrap-therapist h2 { color: var(--danger-ink); font-size: 1.15rem; }
+.cpl-keep-plan p,
+.cpl-wrap-joint p { overflow-wrap: anywhere; }
+@media print {
+  body.cpl-printing .topbar,
+  body.cpl-printing .nav,
+  body.cpl-printing .disclaimer.compact,
+  body.cpl-printing .cpl-keep-actions { display: none !important; }
+  body.cpl-printing main > :not(.cpl-keep-print) { display: none !important; }
+  body.cpl-printing .cpl-keep-print {
+    border: 0;
+    box-shadow: none;
+    background: #fff;
+  }
+}
